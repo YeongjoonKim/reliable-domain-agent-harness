@@ -1,0 +1,19 @@
+flowchart TD
+  n0_0["Local caller · IMPLEMENTED"]
+  n1_0["In-process dispatcher · IMPLEMENTED"]
+  n2_0["Agent request · IMPLEMENTED"]
+  n2_1["Evidence search · PROPOSED"]
+  n2_2["Vision request · PROPOSED"]
+  n2_3["Evaluation request · PROPOSED"]
+  n3_0["Runtime / tools · IMPLEMENTED"]
+  n4_0["Safe result envelope · IMPLEMENTED"]
+  n0_0 --> n1_0
+  n1_0 --> n2_0
+  n1_0 --> n2_1
+  n1_0 --> n2_2
+  n1_0 --> n2_3
+  n2_0 --> n3_0
+  n2_1 --> n3_0
+  n2_2 --> n3_0
+  n2_3 --> n3_0
+  n3_0 --> n4_0

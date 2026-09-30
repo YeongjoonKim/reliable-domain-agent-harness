@@ -1,0 +1,25 @@
+flowchart TD
+  n0_0["Application · PROPOSED"]
+  n0_1["Scoped context · PROPOSED"]
+  n1_0["Request contract · IMPLEMENTED"]
+  n2_0["Task interpretation · PROPOSED"]
+  n2_1["Bounded plan · IMPLEMENTED"]
+  n3_0["Tool interfaces · PARTIAL"]
+  n4_0["Evidence assembly · IMPLEMENTED"]
+  n5_0["Template / model seam · PARTIAL"]
+  n5_1["Constraint checks · IMPLEMENTED"]
+  n6_0["Response · IMPLEMENTED"]
+  n6_1["Trace / evaluation · PARTIAL"]
+  n0_0 --> n1_0
+  n0_1 --> n1_0
+  n1_0 --> n2_0
+  n1_0 --> n2_1
+  n2_0 --> n3_0
+  n2_1 --> n3_0
+  n3_0 --> n4_0
+  n4_0 --> n5_0
+  n4_0 --> n5_1
+  n5_0 --> n6_0
+  n5_0 --> n6_1
+  n5_1 --> n6_0
+  n5_1 --> n6_1

@@ -1,0 +1,16 @@
+flowchart TD
+  n0_0["Retrieved candidates · PARTIAL"]
+  n1_0["Evidence scope check · IMPLEMENTED"]
+  n2_0["Value / unit check · IMPLEMENTED"]
+  n3_0["Template generation · IMPLEMENTED"]
+  n4_0["Claim correspondence · IMPLEMENTED"]
+  n5_0["Supported response · IMPLEMENTED"]
+  n5_1["Restricted response · IMPLEMENTED"]
+  n5_2["Model repair · PROPOSED"]
+  n0_0 --> n1_0
+  n1_0 --> n2_0
+  n2_0 --> n3_0
+  n3_0 --> n4_0
+  n4_0 --> n5_0
+  n4_0 --> n5_1
+  n4_0 --> n5_2

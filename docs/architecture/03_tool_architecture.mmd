@@ -1,0 +1,22 @@
+flowchart TD
+  n0_0["Runtime · IMPLEMENTED"]
+  n1_0["Typed tool boundary · IMPLEMENTED"]
+  n2_0["Structured data · PARTIAL"]
+  n2_1["Vector retrieval · PROPOSED"]
+  n2_2["Knowledge graph · PROPOSED"]
+  n2_3["External search · PROPOSED"]
+  n2_4["Vision · PROPOSED"]
+  n3_0["Evidence / empty / error · IMPLEMENTED"]
+  n4_0["Requirement coverage · IMPLEMENTED"]
+  n0_0 --> n1_0
+  n1_0 --> n2_0
+  n1_0 --> n2_1
+  n1_0 --> n2_2
+  n1_0 --> n2_3
+  n1_0 --> n2_4
+  n2_0 --> n3_0
+  n2_1 --> n3_0
+  n2_2 --> n3_0
+  n2_3 --> n3_0
+  n2_4 --> n3_0
+  n3_0 --> n4_0
