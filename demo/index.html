@@ -8,6 +8,8 @@
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="stylesheet" href="style.css">
 <script src="demo.js" defer></script>
+<script src="evidence.js" defer></script>
+<script src="evidence-view.js" defer></script>
 </head>
 <body>
 <header>
@@ -38,13 +40,16 @@
 <div class="panel-heading"><p id="panel-kicker" class="eyebrow"></p><h2 id="panel-title"></h2><p id="panel-summary"></p></div>
 <div id="cards" class="cards"></div>
 <div class="detail"><h3 id="detail-title"></h3><ol id="steps"></ol></div>
+<section class="detail" aria-label="Executed snapshot"><h3>Executed Python snapshot</h3>
+<p>공개 Python 예제의 실제 실행 결과입니다. 합성 입력 기반의 저장된 snapshot이며 운영 기록이나 실시간 연결이 아닙니다.</p>
+<pre id="execution-evidence"></pre></section>
 </section>
 <aside><h2>What this does not show</h2>
 <p>No language model is running. No real image is diagnosed. Logical steps are authored examples, not a measured waterfall.
-This interface is separate from the Python runtime; its scenario data is intentionally static.</p>
+The explanatory cards are static. The Executed Python snapshot panel displays saved output from the public runtime, not a live service.</p>
 <p><a href="../README.md">Read scope and limitations</a> · <a href="../docs/architecture/01_system_architecture.svg">Generic architecture</a></p>
 </aside>
 </main>
-<footer>Public reconstruction candidate · Publication approval pending · No company assets</footer>
+<footer>Public reconstruction · Owner-approved publication · No company assets</footer>
 </body>
 </html>
