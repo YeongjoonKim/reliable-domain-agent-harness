@@ -1,5 +1,7 @@
 # Evaluation / 평가 범위
 
+현재 새 코어의 전체 57 test methods, 24 synthetic conformance scenarios 및 동일 데이터의 paired evaluation은 [Public Core](public-core.md)에 있습니다. 아래는 보존된 초기 데모 평가입니다.
+
 23개 테스트: 행동 계약 14개, 실행 snapshot 2개, 저장소 검사기 7개입니다. timeout/error/empty, 부분 결과 보존, 요약의 검색 생략, session/subject 격리, 변조한 claim 거부와 취소 전파를 검사합니다.
 
 exporter의 5개 probe는 실제 계산한 계약 확인이며 모델 정확도나 독립 benchmark가 아닙니다. UI의 화면 전환과 Python 평가 실행은 서로 다른 작업입니다.

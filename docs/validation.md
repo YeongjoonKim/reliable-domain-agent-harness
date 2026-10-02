@@ -1,5 +1,7 @@
 # Validation / 검증 기록
 
+2026-10-02 추가 검증: 전체 공개 57 tests passed, 별도 실제 Docker 격리/수치 분석과 MCP stdio 왕복 통과. [실행 범위](public-core.md). 아래 기록은 기존 데모 검증 이력입니다.
+
 ## Actual Engineering Review · 2026-10-02
 
 공개 예제 검증과 별도로 실제 구현·설정·읽기 전용 API·관리자 화면을 재검토했습니다.

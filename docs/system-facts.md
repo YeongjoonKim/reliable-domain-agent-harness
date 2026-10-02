@@ -1,5 +1,7 @@
 # System Fact Summary
 
+아래 public 열은 초기 lightweight demo 범위입니다. 새 독립 코어의 registry·검증·격리·재현·MCP 구현은 [현재 Public Core](public-core.md)를 기준으로 합니다. 기존 상담 executor와 별도 Scientific Harness의 범위를 혼동하지 않습니다.
+
 2026-10-02 실제 소스·관리자 기능 재검토 기준. [단계별 구현 근거](actual-engineering.md).
 
 | 영역 | Actual Engineering Experience | Public Reference / Demo |

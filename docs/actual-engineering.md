@@ -1,5 +1,7 @@
 # Architecture ↔ Implementation Evidence
 
+추가 확인(2026-10-02): 별도 비공개 Scientific Harness의 goal/claim 기반 의미 검토, 서버 선택 span, Docker 격리, configuration/evidence replay 경로를 검토했고 선택 회귀 suite 229개가 통과했습니다. 20개 합성 제어 사례는 conformance이며 성능 benchmark가 아닙니다. 아래 표는 기존 상담·관리 화면의 범위입니다. 새 공개 코어는 이를 복사하지 않고 독립 작성했으며 [Public Core](public-core.md)로 구분합니다.
+
 검토일: 2026-10-02. 현재 코드와 component catalog, 실제 운영 관리자 UI를 함께 확인했습니다.
 기존 Reference Architecture는 유지하고 아래 대응표로 실제 구현과 연결합니다.
 

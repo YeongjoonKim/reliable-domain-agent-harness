@@ -1,5 +1,7 @@
 # Independently authored architecture
 
+이 도식 모음은 초기 lightweight reference의 상태를 보존합니다. 최신 실행 코어와 구현 상태는 [Public Core](../public-core.md) 및 저장소 README 상단에 있습니다.
+
 These SVGs and matching Mermaid sources describe generic engineering responsibilities,
 not the topology or names of a private platform.
 
