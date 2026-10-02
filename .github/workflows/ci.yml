@@ -27,3 +27,7 @@ jobs:
         run: python3 -m unittest discover -s tests -v
       - name: Offline example smoke
         run: python3 -m src.sample_agent
+      - name: Core recovery and paired synthetic evaluation
+        run: |
+          python3 -m src.harness.demo
+          python3 -m src.harness.evaluation

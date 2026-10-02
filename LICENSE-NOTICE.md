@@ -1,9 +1,9 @@
-# License notice
+# License Notice — Agent Harness
 
-No open-source license is granted at this stage. Independent reconstruction does not
-by itself establish clearance under employment, confidentiality or intellectual-property
-agreements. Publication and license selection require the owner's explicit review.
-Do not treat the absence of a license as permission to reuse or redistribute.
+No open-source license is granted at this stage. Public visibility is not permission
+to reuse or redistribute. The owner has not selected an open-source license.
 
-Third-party model and dependency licenses remain separate. No private platform code,
-data, prompts, configuration or model artifacts are intended for distribution here.
+공개 fixture와 계산 코드는 독립 작성물이다. 실제 시스템 화면은 사용자 승인 범위의 비식별 기술 증거이며 운영 플랫폼 소유권이나 제3자 데이터 재배포 권리를 주장하지 않는다.
+
+회사 원본 코드·비공개 Git history는 포함하지 않는다. 독립 재작성이나 비식별 검토만으로
+고용·비밀유지·지식재산 계약의 법적 clearance를 보증하지 않는다.

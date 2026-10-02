@@ -1,0 +1,142 @@
+{
+  "kind": "actual local Docker integration; not a mock",
+  "isolation": {
+    "uid": 65534,
+    "cwd": "/work",
+    "root_readonly": true,
+    "network_blocked": true,
+    "scratch_writable": true
+  },
+  "timeout": "timeout",
+  "output_limit": "output_limit",
+  "exit_code": 3,
+  "all_cleanup": true,
+  "artifact": {
+    "dataset_hash": "6d9e88df338d14548a8143b265ac5122d57d77e1546e403164f34642675763aa",
+    "result": {
+      "count": 5,
+      "mean": 6,
+      "sample_variance": 10,
+      "minimum": 2,
+      "maximum": 10
+    },
+    "result_hash": "b1d98b2639a69b7ace9051885b4c6a171885f837943973e2ac88c7163684e781",
+    "image": "sha256:1c03896dbf0ef4a2b86f1462395249e810c589e25d8c0b002faabc38aa144686",
+    "method": "sample variance (n-1)",
+    "verification": "PASS",
+    "execution": {
+      "status": "ok",
+      "exit_code": 0,
+      "cleanup": true,
+      "stdout": "{\"count\": 5, \"mean\": 6, \"sample_variance\": 10, \"minimum\": 2, \"maximum\": 10}\n",
+      "stderr": "",
+      "image": "sha256:1c03896dbf0ef4a2b86f1462395249e810c589e25d8c0b002faabc38aa144686",
+      "latency_ms": 312.31
+    }
+  },
+  "verification": {
+    "accepted": true,
+    "signals": {
+      "retrieval_success": true,
+      "evidence_relevance": true,
+      "claim_support": true,
+      "citation_valid": true
+    },
+    "reasons": [],
+    "provenance": [
+      {
+        "claim_hash": "28743d32252c17e54027f8b402d91aaa262e95716948966c2ed797edd50f4816",
+        "source_id": "synthetic:dataset:6d9e88df338d14548a8143b265ac5122d57d77e1546e403164f34642675763aa",
+        "evidence_id": "numeric-mean",
+        "evidence_span": [
+          23,
+          118
+        ],
+        "source_hash": "0db56a4682c7f4ffaac194b8f10a7f813987b042d0b04fb24e979a452d6b7e5a",
+        "tool": "isolated_numerical_analysis",
+        "tool_version": "1.0",
+        "verification_result": "PASS"
+      },
+      {
+        "claim_hash": "19294f6d60df82ffb22f23e2e326be9630dedbe9f1d3efb64c6c1a6554d54bdb",
+        "source_id": "synthetic:dataset:6d9e88df338d14548a8143b265ac5122d57d77e1546e403164f34642675763aa",
+        "evidence_id": "numeric-sample_variance",
+        "evidence_span": [
+          23,
+          138
+        ],
+        "source_hash": "34b57e98bd39e1d09ec41e72337025690828b075264eaada3846de09a95e74f9",
+        "tool": "isolated_numerical_analysis",
+        "tool_version": "1.0",
+        "verification_result": "PASS"
+      }
+    ]
+  },
+  "trajectory": [
+    {
+      "run_id": "1614a061d09147b9a5b333d0750500b4",
+      "step_id": 1,
+      "sequence": 0,
+      "state": "CREATED",
+      "timestamp": "2026-10-02T07:48:21.731718+00:00",
+      "agent_role": "harness"
+    },
+    {
+      "run_id": "1614a061d09147b9a5b333d0750500b4",
+      "step_id": 2,
+      "sequence": 1,
+      "state": "PLANNING",
+      "timestamp": "2026-10-02T07:48:21.731798+00:00",
+      "agent_role": "harness",
+      "input_hash": "edd6679cb24bc6bc0644b149896735e5f44b7bcef3da1bd5d5112235c861fd1f"
+    },
+    {
+      "run_id": "1614a061d09147b9a5b333d0750500b4",
+      "step_id": 3,
+      "sequence": 2,
+      "state": "EXECUTING",
+      "timestamp": "2026-10-02T07:48:21.731870+00:00",
+      "agent_role": "harness"
+    },
+    {
+      "run_id": "1614a061d09147b9a5b333d0750500b4",
+      "step_id": 4,
+      "sequence": 3,
+      "state": "OBSERVING",
+      "timestamp": "2026-10-02T07:48:22.045612+00:00",
+      "agent_role": "harness",
+      "output_hash": "d1267c52565c1985cec6620aac1430ffef0fbc4beab3d411e229843cc0dcde4a"
+    },
+    {
+      "run_id": "1614a061d09147b9a5b333d0750500b4",
+      "step_id": 5,
+      "sequence": 4,
+      "state": "OBSERVING",
+      "timestamp": "2026-10-02T07:48:22.045623+00:00",
+      "agent_role": "harness",
+      "tool_name": "isolated_numerical_analysis",
+      "tool_version": "1.0",
+      "input_hash": "4a71a529583d1633a9ab22a0cd98d92166417aa1a40921fc9d7c6e302b31d200",
+      "output_hash": "22467180920b3f97ef084030df0ef03941906fc05a59d8a5cc241785251f2b41",
+      "error_type": "ok",
+      "latency_ms": 313.661
+    },
+    {
+      "run_id": "1614a061d09147b9a5b333d0750500b4",
+      "step_id": 6,
+      "sequence": 5,
+      "state": "VERIFYING",
+      "timestamp": "2026-10-02T07:48:22.045636+00:00",
+      "agent_role": "harness"
+    },
+    {
+      "run_id": "1614a061d09147b9a5b333d0750500b4",
+      "step_id": 7,
+      "sequence": 6,
+      "state": "COMPLETED",
+      "timestamp": "2026-10-02T07:48:22.045695+00:00",
+      "agent_role": "harness",
+      "verification": "PASS"
+    }
+  ]
+}

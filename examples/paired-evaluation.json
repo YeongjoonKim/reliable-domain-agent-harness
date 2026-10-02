@@ -1,0 +1,431 @@
+{
+  "kind": "paired synthetic evaluation; not an independent LLM benchmark",
+  "dataset_version": "synthetic-1",
+  "categories": 12,
+  "summary": {
+    "baseline": {
+      "cases": 24,
+      "task_success": 8,
+      "unsafe_answers": 12,
+      "average_calls": 1.0833333333333333,
+      "average_latency_ms": 1.7641666666666664
+    },
+    "harness": {
+      "cases": 24,
+      "task_success": 24,
+      "unsafe_answers": 0,
+      "average_calls": 1.3333333333333333,
+      "average_latency_ms": 2.163708333333333
+    }
+  },
+  "cases": [
+    {
+      "id": "single_tool-1",
+      "category": "single_tool",
+      "baseline": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.165,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.502,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "multi_tool-1",
+      "category": "multi_tool",
+      "baseline": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 0.107,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 0.524,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "irrelevant-1",
+      "category": "irrelevant",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.064,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.415,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "conflicting-1",
+      "category": "conflicting",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.077,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.407,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "missing-1",
+      "category": "missing",
+      "baseline": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.045,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.344,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "timeout-1",
+      "category": "timeout",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 20.274,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 21.35,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "tool_failure-1",
+      "category": "tool_failure",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.137,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 0.565,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "retry_recovery-1",
+      "category": "retry_recovery",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.065,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 0.485,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "unsupported_claim-1",
+      "category": "unsupported_claim",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.06,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.37,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "numeric-1",
+      "category": "numeric",
+      "baseline": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.174,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.514,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "stale-1",
+      "category": "stale",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.064,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.367,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "invalid_span-1",
+      "category": "invalid_span",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.063,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.372,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "single_tool-2",
+      "category": "single_tool",
+      "baseline": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.06,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.365,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "multi_tool-2",
+      "category": "multi_tool",
+      "baseline": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 0.093,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 0.467,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "irrelevant-2",
+      "category": "irrelevant",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.065,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.362,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "conflicting-2",
+      "category": "conflicting",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.074,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.391,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "missing-2",
+      "category": "missing",
+      "baseline": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.043,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.333,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "timeout-2",
+      "category": "timeout",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 20.268,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 21.369,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "tool_failure-2",
+      "category": "tool_failure",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.045,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 0.434,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "retry_recovery-2",
+      "category": "retry_recovery",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.064,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 2,
+        "latency_ms": 0.439,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "unsupported_claim-2",
+      "category": "unsupported_claim",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.056,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.335,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "numeric-2",
+      "category": "numeric",
+      "baseline": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.154,
+        "unsafe_answer": false
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.49,
+        "unsafe_answer": false,
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "id": "stale-2",
+      "category": "stale",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.065,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.368,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    },
+    {
+      "id": "invalid_span-2",
+      "category": "invalid_span",
+      "baseline": {
+        "success": false,
+        "calls": 1,
+        "latency_ms": 0.058,
+        "unsafe_answer": true
+      },
+      "harness": {
+        "success": true,
+        "calls": 1,
+        "latency_ms": 0.361,
+        "unsafe_answer": false,
+        "state": "FAILED"
+      }
+    }
+  ]
+}

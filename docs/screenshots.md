@@ -1,5 +1,7 @@
 # Implementation Screenshot Gallery
 
+아래 UI는 촬영 시점의 관리/설명 화면이며 새 공개 코어의 실행 화면이 아닙니다. 새 코어의 실제 복구·격리·재현 산출물은 [Public Core](public-core.md)에서 별도로 제공합니다.
+
 ## Actual management functions · 2026-10-02
 
 | Harness 단계 | 실제 관리자 기능 | 화면 |

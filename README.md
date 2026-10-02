@@ -1,8 +1,59 @@
 # Reliable Domain Agent Harness & Verification
 
-### 질문 이해·검색·근거·검증·평가를 연결하는 Domain-bounded Agent Runtime
+### Bounded Runtime · Evidence Verification · Recovery · Configuration/Evidence Replay
 
 [![CI](https://github.com/YeongjoonKim/reliable-domain-agent-harness/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/YeongjoonKim/reliable-domain-agent-harness/actions/workflows/ci.yml)
+
+## Problem & Executable Architecture
+
+검색 결과가 있다는 것과 질문에 답할 근거가 있다는 것은 다릅니다.
+도구의 성공 종료도 결과의 정확성을 보증하지 않습니다.
+이 저장소는 이러한 실패를 관찰·거부·복구하는 **독립 공개 참조 구현**입니다.
+
+```text
+Information Need → Explicit Plan → Registry / Tools → Observation
+                                                      ↓
+Result ← Accept ← Relevance / Claim / Span Verification
+                         ↓ reject
+                  Reflect → Bounded Retry / Abstain
+
+Cross-cutting: Trajectory · Provenance · Sandbox · Replay · Evaluation
+```
+
+| Public implementation status | Code / boundary |
+|---|---|
+| IMPLEMENTED — runtime, state machine, registry | [Runtime](src/harness/runtime.py), [states](src/harness/state_machine.py), [registry](src/harness/registry.py); permissions, schemas, deadline, retry/call budgets |
+| IMPLEMENTED — evidence verification | [Verifier](src/harness/verifier.py); relevance, support, freshness, conflict, exact span/hash; structured synthetic facts, not general NLP entailment |
+| IMPLEMENTED — provenance and replay | Claim-level accepted spans; hash-oriented trajectory; [configuration/evidence replay](src/harness/replay.py), zero external calls |
+| IMPLEMENTED — isolated scientific slice | [Docker runner](src/harness/sandbox.py), [independent numerical check](src/harness/scientific.py); actual local integration run |
+| PARTIAL — MCP | [Real stdio server](src/harness/mcp_adapter.py) with initialize/list/call round-trip; limited protocol subset, no HTTP or interoperability certification |
+| FUTURE — autonomous research | LLM planner, natural-language entailment, multi-agent, learned self-improvement and RL are not implemented by this public core |
+
+### Representative Failure → Recovery
+
+질문이 가상의 작물 재배면적을 요구하는데 같은 작물의 관수 간격 문서가 검색됩니다.
+검색은 성공했지만 정보 요구가 달라 거부합니다. 대체 정형 조회에서 면적 근거를 찾은 후에만
+인용 구간과 값을 검증하고 완료합니다. [실제 공개 실행 JSON](examples/recovery.json).
+
+`VERIFYING → REFLECTING → RETRYING → EXECUTING → VERIFYING → COMPLETED`
+
+### Reproduce
+
+Python 3.10+; default commands require no GPU, model credentials or Docker.
+
+```sh
+python3 -m unittest discover -s tests -v
+python3 -m src.harness.demo
+python3 -m src.harness.evaluation
+```
+
+57 public test methods include unit, integration, regression and a 24-scenario conformance
+loop. The loop and paired evaluation reuse the same synthetic cases: **not independent evidence**.
+In the recorded [24-case paired evaluation](examples/paired-evaluation.json), baseline task success
+is 8/24 and Harness success is 24/24; mean tool calls increase from 1.083 to 1.333.
+These are hand-authored control-flow cases, **not agricultural accuracy or an LLM benchmark**.
+The baseline uses the same candidate generator/tools but no verification or retries.
+[Metric definitions, limitations and Docker instructions](docs/public-core.md).
 
 ## Actual Engineering Experience
 
@@ -99,14 +150,16 @@
 
 ## Actual Runtime / Public Reference / Lightweight Demo
 
-아래 기존 도식의 구현 상태는 **공개 실행 예제 기준**입니다. 실제 플랫폼은 위 단계별 화면과 대응표로 설명합니다.
+아래 기존 도식은 **초기 lightweight demo의 범위**를 보존한 것입니다.
+새 코어의 현재 구현 상태는 README 상단 및 [코어 문서](docs/public-core.md)를 기준으로 합니다.
+실제 플랫폼은 위 단계별 화면과 대응표로 설명합니다.
 
 ![Public reference system architecture](docs/architecture/01_system_architecture.svg)
 
 | 구분 | 범위 |
 |---|---|
 | Actual Engineering Experience | LLM 질문 이해, 다중 검색, 맥락·메모리, evidence gate, 검증/repair, SSE, 운영 관리 |
-| Public Reference Implementation | 계약·예산·결과 상태·근거 대응·검증을 독립 코드로 재구성 |
+| Public Reference Implementation | src/harness의 독립 상태 머신·registry·검증·격리·재현 구현 |
 | Public Lightweight Demo | 구조화 요청 + 두 합성 도구 + session/subject 메모리 + 템플릿 답변 |
 
 공개 예제의 흐름은 Validate → Plan → Deduplicate → Execute → Assemble → Verify → Respond입니다.
@@ -125,14 +178,18 @@ python3 -m unittest discover -s tests -v
 python3 scripts/check_repository.py
 ```
 
-23개 공개 테스트와 5개 exporter probe는 계약·실패 처리·snapshot을 검증합니다.
+기존 23개 테스트와 5개 exporter probe는 초기 데모의 계약·실패 처리·snapshot을 보존합니다.
+새 코어를 포함한 현재 전체 테스트 수는 위 Reproduce 절에 표시합니다.
 운영 회귀 이력과 공개 테스트 수는 서로 다른 평가입니다.
 [설계 결정](docs/design-decisions.md) · [평가 범위](docs/evaluation.md).
 
 ## Scope & Limitations
 
 실제 서비스의 typed task executor는 기존 상담 경로와의 통합이 **PARTIAL**입니다.
-MCP는 prototype이고 완전한 claim-level provenance / replay, Scientific Agent 확장은 후속 과제입니다.
+별도 Scientific Harness의 선택 회귀 suite는 2026-10-02 재실행에서 **229 passed**였습니다.
+이는 비공개 코드의 선택 테스트이며 공개 CI 테스트나 성능 benchmark가 아닙니다.
+그중 20개 합성 제어 시나리오는 harness conformance로 분류합니다.
+공개 코어의 claim provenance / configuration replay / scientific slice는 위 코드로 별도 구현했습니다.
 공개 코드는 자연어 LLM·운영 DB·개인 메모리·외부 connector를 포함하지 않는 독립 reference입니다.
 스크린샷의 구현 상태, 실제 실행 이력, 모델 품질 측정은 별도로 해석해야 합니다.
 

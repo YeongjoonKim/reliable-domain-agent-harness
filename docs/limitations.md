@@ -1,5 +1,12 @@
 # Scope & Limitations
 
-공개 실행 코드는 구조화 요청·두 합성 도구·프로세스 메모리·정형 근거 검증을 다룹니다. 자연어 LLM·운영 DB·영속 사용자 메모리는 실제 플랫폼의 별도 구현입니다. session 문자열은 인증 수단이 아닙니다.
+새 공개 코어는 명시적 계획, 정형 근거 검증, 제한된 복구, 주장별 출처, configuration/evidence replay,
+선택형 Docker 수치 분석과 최소 MCP stdio를 구현합니다. [계약과 제한](public-core.md).
 
-실제 typed executor의 상담 통합, claim-level provenance, 완전한 replay는 PARTIAL입니다. MCP는 prototype이고 Scientific / Multi-Agent / Agent RL은 후속 범위입니다. [실제 구현 대응](actual-engineering.md)을 참고하세요.
+자연어 LLM 플래너·일반 텍스트 의미 검증·운영 connector·영속 개인 메모리·multi-agent·학습형 개선·RL은
+공개 코어에 없습니다. 합성 평가는 독립 모델 성능 benchmark가 아닙니다. Docker는 악의적 다중 사용자
+환경의 완전한 보안 경계가 아니며 MCP도 인증된 완성형 구현이 아닙니다.
+
+초기 lightweight demo의 두 fixture·메모리·화면은 호환성 예제로 보존합니다. session 문자열은 인증이
+아닙니다. 실제 서비스 경험과 별도 비공개 Scientific Harness는 [실제 구현 대응](actual-engineering.md)으로
+구분하며 공개 코드에서 운영 기능을 추정하지 않습니다.
