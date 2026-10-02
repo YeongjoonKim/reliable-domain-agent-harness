@@ -10,9 +10,9 @@
 구조화 DB·Vector·KG·웹·Vision의 근거를 조합해 답변을 생성·검증하는 시스템을 개발했습니다.
 관리자는 실행 Trace, 품질 이슈, 회귀 평가, 정책 승인으로 실패 원인과 개선 결과를 확인합니다.
 
-![System architecture](docs/architecture/01_system_architecture.svg)
+질문·맥락 → 검색 계획 → 도구 실행 → 근거 결합 → 답변·검증 → SSE → Trace·회귀 평가.
 
-이 Reference Architecture에 실제 구현을 대응시킨 [단계별 Evidence Map](docs/actual-engineering.md)을 제공합니다.
+각 단계의 실제 구현을 대응시킨 [Evidence Map](docs/actual-engineering.md)을 제공합니다.
 아래는 **실제 플랫폼의 구현 경험**이며, 저장소의 독립 Python 예제와 범위를 구분했습니다.
 
 ## System Strengths
@@ -98,6 +98,10 @@
 이미지 모델과 상담 연결은 [Multimodal](https://github.com/YeongjoonKim/multimodal-domain-ai)에서 다룹니다.
 
 ## Actual Runtime / Public Reference / Lightweight Demo
+
+아래 기존 도식의 구현 상태는 **공개 실행 예제 기준**입니다. 실제 플랫폼은 위 단계별 화면과 대응표로 설명합니다.
+
+![Public reference system architecture](docs/architecture/01_system_architecture.svg)
 
 | 구분 | 범위 |
 |---|---|
