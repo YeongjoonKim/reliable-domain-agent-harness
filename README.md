@@ -1,14 +1,15 @@
 # Reliable Domain Agent Harness & Verification
 
-### Bounded Runtime · Evidence Verification · Recovery · Configuration/Evidence Replay
+### Bounded Agent Runtime · Verification · Evaluation · Traceability
 
 [![CI](https://github.com/YeongjoonKim/reliable-domain-agent-harness/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/YeongjoonKim/reliable-domain-agent-harness/actions/workflows/ci.yml)
 
-## Problem & Executable Architecture
+## 문제와 실행 아키텍처
 
 검색 결과가 있다는 것과 질문에 답할 근거가 있다는 것은 다릅니다.
-도구의 성공 종료도 결과의 정확성을 보증하지 않습니다.
-이 저장소는 이러한 실패를 관찰·거부·복구하는 **독립 공개 참조 구현**입니다.
+이 프로젝트는 질문의 정보 요구, 도구 실행 결과, 답변의 주장을 각각 검증하고
+실패를 추적·복구하는 Agent Harness를 다룹니다.
+운영 시스템의 설계 경험과 **독립적으로 실행 가능한 공개 참조 구현**을 함께 제공합니다.
 
 ```text
 Information Need → Explicit Plan → Registry / Tools → Observation
@@ -20,42 +21,45 @@ Result ← Accept ← Relevance / Claim / Span Verification
 Cross-cutting: Trajectory · Provenance · Sandbox · Replay · Evaluation
 ```
 
-| Public implementation status | Code / boundary |
-|---|---|
-| IMPLEMENTED — runtime, state machine, registry | [Runtime](src/harness/runtime.py), [states](src/harness/state_machine.py), [registry](src/harness/registry.py); permissions, schemas, deadline, retry/call budgets |
-| IMPLEMENTED — evidence verification | [Verifier](src/harness/verifier.py); relevance, support, freshness, conflict, exact span/hash; structured synthetic facts, not general NLP entailment |
-| IMPLEMENTED — provenance and replay | Claim-level accepted spans; hash-oriented trajectory; [configuration/evidence replay](src/harness/replay.py), zero external calls |
-| IMPLEMENTED — isolated scientific slice | [Docker runner](src/harness/sandbox.py), [independent numerical check](src/harness/scientific.py); actual local integration run |
-| PARTIAL — MCP | [Real stdio server](src/harness/mcp_adapter.py) with initialize/list/call round-trip; limited protocol subset, no HTTP or interoperability certification |
-| FUTURE — autonomous research | LLM planner, natural-language entailment, multi-agent, learned self-improvement and RL are not implemented by this public core |
+## Key Engineering Facts
 
-### Representative Failure → Recovery
+| 항목 | 구성 및 구현 |
+|---|---|
+| Runtime | 상태 머신, 도구 권한·schema, deadline, 호출·재시도 예산으로 실행 제어 |
+| Planning | 운영 상담의 LLM 질문 이해·coverage plan·검색 라우팅; 공개 코어는 명시적 Plan 실행 |
+| Tool Layer | 구조화 DB·Vector·KG·웹·Vision을 Capability Catalog로 분류, 구현된 Typed Adapter로 실행 |
+| Context / Memory | 최근 대화·TurnState·장기 기억을 Context Pack으로 구성 |
+| Evidence | 질문 적합성·근거 충분성·등록정보의 적용 범위를 분리 |
+| Verification | 운영 답변 검증·repair; 공개 코어의 정형 claim·시점·충돌·source span/hash 검증 |
+| Evaluation | 품질 이슈→회귀 케이스→정책 검토; 공개 합성 시나리오의 검증·복구 비교 |
+| Observability | 운영 timing·검색량·검증·LLM usage; 공개 claim provenance·trace |
+| Public Harness Core | Python 실행·검증 코어, Docker 격리 계산, configuration/evidence replay |
+| MCP | stdio 기반 initialize / tools/list / tools/call 구현 |
+| Current Boundary | 새 Typed Executor의 상담 통합은 부분 적용; 공개 코어는 정형 근거·합성 도구 범위 |
+
+[운영 구현 대응표](docs/actual-engineering.md) · [Public Core와 소스](docs/public-core.md) ·
+[상세 시스템 구성](docs/system-facts.md).
+
+## 시스템 설계의 강점
+
+| 설계 | 구현 효과 |
+|---|---|
+| Task / Context → Search Contract | 원문·이력·메모리에서 대상과 요구를 정리해 검색 범위를 계획 |
+| Capability-based Retrieval | 도구가 지원하는 데이터·필터를 기준으로 실행 영역 선택 |
+| Evidence-aware Generation | 검색 성공과 답변에 충분한 근거 확보를 구분 |
+| Verification / Repair | 검증 결과를 답변 보정·품질 이슈 기록에 연결 |
+| Human-governed Feedback | 실패 사례를 회귀 평가와 정책 검토로 연결 |
+| Execution Observability | 단계별 시간·검색량·검증 상태·사용량을 관리자에서 추적 |
+
+### 대표 사례: 잘못된 검색에서 복구까지
 
 질문이 가상의 작물 재배면적을 요구하는데 같은 작물의 관수 간격 문서가 검색됩니다.
 검색은 성공했지만 정보 요구가 달라 거부합니다. 대체 정형 조회에서 면적 근거를 찾은 후에만
-인용 구간과 값을 검증하고 완료합니다. [실제 공개 실행 JSON](examples/recovery.json).
+인용 구간과 값을 검증하고 완료합니다. [공개 실행 JSON](examples/recovery.json).
 
 `VERIFYING → REFLECTING → RETRYING → EXECUTING → VERIFYING → COMPLETED`
 
-### Reproduce
-
-Python 3.10+; default commands require no GPU, model credentials or Docker.
-
-```sh
-python3 -m unittest discover -s tests -v
-python3 -m src.harness.demo
-python3 -m src.harness.evaluation
-```
-
-57 public test methods include unit, integration, regression and a 24-scenario conformance
-loop. The loop and paired evaluation reuse the same synthetic cases: **not independent evidence**.
-In the recorded [24-case paired evaluation](examples/paired-evaluation.json), baseline task success
-is 8/24 and Harness success is 24/24; mean tool calls increase from 1.083 to 1.333.
-These are hand-authored control-flow cases, **not agricultural accuracy or an LLM benchmark**.
-The baseline uses the same candidate generator/tools but no verification or retries.
-[Metric definitions, limitations and Docker instructions](docs/public-core.md).
-
-## Actual Engineering Experience
+## 실제 구현 경험
 
 농업 도메인 상담에서 질문·대화 맥락을 검색 계획으로 연결하고,
 구조화 DB·Vector·KG·웹·Vision의 근거를 조합해 답변을 생성·검증하는 시스템을 개발했습니다.
@@ -63,102 +67,80 @@ The baseline uses the same candidate generator/tools but no verification or retr
 
 질문·맥락 → 검색 계획 → 도구 실행 → 근거 결합 → 답변·검증 → SSE → Trace·회귀 평가.
 
-각 단계의 실제 구현을 대응시킨 [Evidence Map](docs/actual-engineering.md)을 제공합니다.
-아래는 **실제 플랫폼의 구현 경험**이며, 저장소의 독립 Python 예제와 범위를 구분했습니다.
+## 구현 화면
 
-## System Strengths
-
-| Decision | 실제 구현과 이유 |
-|---|---|
-| Task / Context → Search Contract | 원문·이력·메모리에서 대상과 요구를 정리해 검색 범위를 계획 |
-| Capability-based Retrieval | 도구가 지원하는 데이터·필터를 기준으로 실행 영역 선택 |
-| Evidence-aware Generation | 검색 성공과 답변에 충분한 근거 확보를 구분 |
-| Verification / Repair | 검증 결과를 답변 보정·품질 이슈 기록에 연결 |
-| Human-governed Feedback | 실제 실패 사례를 회귀 평가와 정책 검토로 연결 |
-| Execution Observability | 단계별 시간·검색량·검증 상태·사용량을 관리자에서 추적 |
-
-## Implementation Evidence
-
-설명 전용 Harness 메뉴와 **실제 운영 관리 기능**을 함께 보여줍니다.
-2026-10-02 새 촬영본은 읽기 전용 API와 현재 UI를 격리된 검증 브라우저에서 연결했습니다.
-2026-09-30 Harness 캡처는 동일 기능의 설명·관찰 화면으로 별도 표시합니다.
+관리자 UI와 읽기 전용 데이터를 기준으로 구현 화면을 구성했습니다.
+Architecture Engineering View에서 설계 책임을, 요청 추적과 회귀 평가에서 실행 이력을 확인할 수 있습니다.
 
 ### 1. Request Architecture
 
-**Purpose** — 사용자 입력부터 최종 응답·관찰까지 실행 책임을 확인합니다.
+**목적** — 사용자 입력부터 최종 응답·관찰까지 실행 책임을 확인합니다.
 
-![Actual request architecture admin](docs/screenshots/admin-request-flow.png)
+![질문부터 응답까지 관리자 아키텍처 화면](docs/screenshots/admin-request-flow.png)
 
-**What this demonstrates** — 실제 Architecture 관리자 메뉴의 질문 이해, 검색, 생성, 검증, SSE, Trace 연결.
-**Architecture relation** — Entry → Interpretation → Retrieval → Generation → Verification → Response.
+**이 화면이 보여주는 것** — Architecture 관리자 메뉴의 질문 이해, 검색, 생성, 검증, SSE, Trace 연결.
+**아키텍처 연결** — Entry → Interpretation → Retrieval → Generation → Verification → Response.
 
 ### 2. Planning & Tool Integration
 
-**Purpose** — 검색 계획과 사용 가능한 데이터 도구의 관계를 검토합니다.
+**목적** — 검색 계획과 사용 가능한 데이터 도구의 관계를 검토합니다.
 
 ![Operational Harness runtime and tools](docs/screenshots/admin-tools.png)
 
-**What this demonstrates** — 실제 capability catalog와 실행 경로 설명. 캡처 기준 45 sources / 26 capabilities.
-명시 typed adapter는 14 implemented / 12 unconnected로 구분됩니다.
-**Architecture relation** — Planning → Capability Registry → Tool Execution.
+**이 화면이 보여주는 것** — Capability Catalog와 Typed Adapter의 연결 상태를 구분해 Tool 실행 범위를 관리합니다.
+**아키텍처 연결** — Planning → Capability Registry → Tool Execution.
 
 ### 3. Context & Memory
 
-**Purpose** — 질문 해석에 전달되는 맥락과 메모리 계층을 점검합니다.
+**목적** — 질문 해석에 전달되는 맥락과 메모리 계층을 점검합니다.
 
 ![Operational context and memory engineering view](docs/screenshots/admin-memory.png)
 
-**What this demonstrates** — 현재 코드의 대화 맥락·장기 기억·Context Pack 연결을 설명하는 Engineering View.
-개인 메모리 원문을 열람하는 화면과 구분됩니다.
-**Architecture relation** — Conversation / Memory → Interpretation / Context Pack.
+**이 화면이 보여주는 것** — 대화 맥락·장기 기억·Context Pack의 구성과 전달 경로를 설명하는 Engineering View.
+**아키텍처 연결** — Conversation / Memory → Interpretation / Context Pack.
 
 ### 4. Evidence & Verification
 
-**Purpose** — 검색 결과의 존재와 근거 충족·최종 답변 검증을 구분합니다.
+**목적** — 검색 결과의 존재와 근거 충족·최종 답변 검증을 구분합니다.
 
-![Actual stored verification and repair outcome](docs/screenshots/admin-verification-result.png)
+![저장된 근거 검증과 Repair 결과](docs/screenshots/admin-verification-result.png)
 
-**What this demonstrates** — 실제 요청에 저장된 RAG 지표·검증 통과·Repair 미시도 상태.
-표시된 의도 신뢰도는 내부 추정값이며 해석 정확도와 구분합니다.
+**이 화면이 보여주는 것** — 요청에 저장된 RAG 지표와 검증 결과. 검증을 통과해 Repair가 필요하지 않았던 실행 상태입니다.
 [검증 계층 설명 화면](docs/screenshots/admin-verification.png)은 별도로 제공합니다.
-**Architecture relation** — Evidence → Answer → Verification / Repair → Quality Issue.
+**아키텍처 연결** — Evidence → Answer → Verification / Repair → Quality Issue.
 
 ### 5. Execution Trace
 
-**Purpose** — 실제 요청에서 어느 단계에 시간이 소요됐는지 확인합니다.
+**목적** — 요청에서 어느 단계에 시간이 소요됐는지 확인합니다.
 
-![Actual request trace stage timings](docs/screenshots/admin-trace-timing.png)
+![요청 Trace의 단계별 실행 시간](docs/screenshots/admin-trace-timing.png)
 
-**What this demonstrates** — 요청 추적 관리자의 저장된 search·intent·question understanding·RAG 단계 시간.
-개인 질문·답변 원문은 크롭으로 제외했습니다.
-**Architecture relation** — Runtime stages → Trace storage → Diagnosis.
-이는 한 요청의 기록이며 전체 성능 평균이나 병렬 waterfall은 아닙니다.
+**이 화면이 보여주는 것** — 요청 추적 관리자의 search·intent·question understanding·RAG 단계 시간.
+**아키텍처 연결** — Runtime stages → Trace storage → Diagnosis.
 
 ### 6. Regression & Approval Gate
 
-**Purpose** — 실제 품질 문제를 평가 케이스로 관리하고 정책 후보를 검토합니다.
+**목적** — 품질 문제를 평가 케이스로 관리하고 정책 후보를 검토합니다.
 
-![Actual regression management and execution history](docs/screenshots/admin-regression.png)
+![회귀 케이스 관리와 실행 이력](docs/screenshots/admin-regression.png)
 
-**What this demonstrates** — 회귀 케이스, 위험도·상태, 기준선/정책별 실행 이력과 성공·실패 상태.
-새 평가나 승인을 실행하지 않고 보존된 이력을 조회했습니다.
-**Architecture relation** — Quality Issue → Regression → Human Approval.
+**이 화면이 보여주는 것** — 회귀 케이스, 위험도·상태, 기준선/정책별 실행 이력과 성공·실패 상태.
+**아키텍처 연결** — Quality Issue → Regression → Human Approval.
 
 추가 상세 화면은 [Screenshot Gallery](docs/screenshots.md)에 있습니다.
 수집·KREI·보고서 상세는 [Reporting](https://github.com/YeongjoonKim/ai-domain-intelligence-reporting),
 이미지 모델과 상담 연결은 [Multimodal](https://github.com/YeongjoonKim/multimodal-domain-ai)에서 다룹니다.
 
-## Actual Runtime / Public Reference / Lightweight Demo
+## 공개 구현 범위
 
-아래 기존 도식은 **초기 lightweight demo의 범위**를 보존한 것입니다.
-새 코어의 현재 구현 상태는 README 상단 및 [코어 문서](docs/public-core.md)를 기준으로 합니다.
-실제 플랫폼은 위 단계별 화면과 대응표로 설명합니다.
+아래 도식은 초기 공개 Reference Implementation의 실행 구조를 보여줍니다.
+상단의 Bounded Runtime 코어와 초기 경량 데모의 대응 관계는 [코어 문서](docs/public-core.md)에 정리했습니다.
 
 ![Public reference system architecture](docs/architecture/01_system_architecture.svg)
 
 | 구분 | 범위 |
 |---|---|
-| Actual Engineering Experience | LLM 질문 이해, 다중 검색, 맥락·메모리, evidence gate, 검증/repair, SSE, 운영 관리 |
+| 운영 시스템 | LLM 질문 이해, 다중 검색, 맥락·메모리, evidence gate, 검증/repair, SSE, 운영 관리 |
 | Public Reference Implementation | src/harness의 독립 상태 머신·registry·검증·격리·재현 구현 |
 | Public Lightweight Demo | 구조화 요청 + 두 합성 도구 + session/subject 메모리 + 템플릿 답변 |
 
@@ -167,31 +149,31 @@ The baseline uses the same candidate generator/tools but no verification or retr
 [실행 artifact](examples/execution.json) · [Runtime source](src/sample_agent.py) ·
 [공개 API 계약](docs/api-design.md).
 
-## Reproduce & Evaluation
+## 실행 및 검증
 
 Python 3.10+ 표준 라이브러리로 GPU·인증키 없이 실행합니다.
 
 ```sh
+python3 -m src.harness.demo
+python3 -m src.harness.evaluation
 python3 -m src.sample_agent
 python3 -m src.export_evidence
 python3 -m unittest discover -s tests -v
 python3 scripts/check_repository.py
 ```
 
-기존 23개 테스트와 5개 exporter probe는 초기 데모의 계약·실패 처리·snapshot을 보존합니다.
-새 코어를 포함한 현재 전체 테스트 수는 위 Reproduce 절에 표시합니다.
-운영 회귀 이력과 공개 테스트 수는 서로 다른 평가입니다.
-[설계 결정](docs/design-decisions.md) · [평가 범위](docs/evaluation.md).
+공개 테스트는 실행 계약·근거 검증·복구·snapshot을 검사합니다.
+[합성 비교 평가](examples/paired-evaluation.json)는 동일 입력에서 검증·재시도의 효과와 도구 호출 비용을 비교합니다.
+운영 회귀 이력과 공개 테스트는 서로 다른 평가 범위로 관리합니다.
+[평가 범위와 수치](docs/evaluation.md) · [Docker 실행 안내](docs/public-core.md#sandbox-and-scientific-slice) ·
+[설계 결정](docs/design-decisions.md).
 
-## Scope & Limitations
+## 현재 범위와 한계
 
-실제 서비스의 typed task executor는 기존 상담 경로와의 통합이 **PARTIAL**입니다.
-별도 Scientific Harness의 선택 회귀 suite는 2026-10-02 재실행에서 **229 passed**였습니다.
-이는 비공개 코드의 선택 테스트이며 공개 CI 테스트나 성능 benchmark가 아닙니다.
-그중 20개 합성 제어 시나리오는 harness conformance로 분류합니다.
-공개 코어의 claim provenance / configuration replay / scientific slice는 위 코드로 별도 구현했습니다.
-공개 코드는 자연어 LLM·운영 DB·개인 메모리·외부 connector를 포함하지 않는 독립 reference입니다.
-스크린샷의 구현 상태, 실제 실행 이력, 모델 품질 측정은 별도로 해석해야 합니다.
+공개 코어는 정형 근거와 합성 도구를 사용하는 독립 구현이며, 자연어 LLM planner와 자유 서술 의미 검증은 후속 과제입니다.
+Replay는 configuration/evidence 재검증, MCP는 stdio 프로토콜의 일부 범위를 제공합니다.
+Docker 실행은 자원·네트워크를 제한한 계산 도구 범위이며, 독립 도메인 평가와 다중 사용자 보안 검증은 별도로 필요합니다.
+운영 상담의 새 Typed Executor 통합은 부분 적용 상태입니다.
 
 [System Facts](docs/system-facts.md) · [검증 기록](docs/validation.md) ·
 [공개 경계](PUBLICATION.md) · [License notice](LICENSE-NOTICE.md) · [Security](SECURITY.md).

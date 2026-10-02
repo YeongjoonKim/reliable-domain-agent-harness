@@ -2,6 +2,14 @@
 
 2026-10-02 추가 검증: 전체 공개 57 tests passed, 별도 실제 Docker 격리/수치 분석과 MCP stdio 왕복 통과. [실행 범위](public-core.md). 아래 기록은 기존 데모 검증 이력입니다.
 
+## README에서 분리한 검증 범위
+
+- 별도 private Scientific Harness 선택 회귀는 229 passed이며, 이 중 20개는 합성 제어 시나리오입니다. 공개 CI와 합산하지 않습니다.
+- Verification 캡처의 요청은 검증을 통과했고 repair는 실행되지 않았습니다. 의도 신뢰도는 내부 추정값입니다.
+- Trace는 한 요청의 저장된 단계 시간입니다. 전체 평균 latency나 병렬 waterfall로 해석하지 않습니다.
+- Architecture·Trace·회귀 화면은 2026-10-02, 일부 Harness Engineering View는 2026-09-30 캡처입니다.
+- 계정·개인 질문/답변 원문은 공개 범위에서 제외했습니다. 메모리 화면은 개인 원문이 아닌 구성 설명입니다.
+
 ## Actual Engineering Review · 2026-10-02
 
 공개 예제 검증과 별도로 실제 구현·설정·읽기 전용 API·관리자 화면을 재검토했습니다.
