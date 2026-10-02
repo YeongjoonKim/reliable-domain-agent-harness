@@ -32,8 +32,8 @@ Cross-cutting: Trajectory · Provenance · Sandbox · Replay · Evaluation
 | Evidence | 질문 적합성·근거 충분성·등록정보의 적용 범위를 분리 |
 | Verification | 운영 답변 검증·repair; 공개 코어의 정형 claim·시점·충돌·source span/hash 검증 |
 | Evaluation | 품질 이슈→회귀 케이스→정책 검토; 공개 합성 시나리오의 검증·복구 비교 |
-| Observability | 운영 단계별 시간·검색량·검증 상태·LLM usage; 공개 코어의 claim provenance·trace |
-| Public Harness Core | Python 상태 머신·registry·verifier, Docker 격리 계산, configuration/evidence replay |
+| Observability | 운영 timing·검색량·검증·LLM usage; 공개 claim provenance·trace |
+| Public Harness Core | Python 실행·검증 코어, Docker 격리 계산, configuration/evidence replay |
 | MCP | stdio 기반 initialize / tools/list / tools/call 구현 |
 | Current Boundary | 새 Typed Executor의 상담 통합은 부분 적용; 공개 코어는 정형 근거·합성 도구 범위 |
 
