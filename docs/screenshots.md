@@ -1,5 +1,17 @@
 # Implementation Screenshot Gallery
 
+## Actual management functions · 2026-10-02
+
+| Harness 단계 | 실제 관리자 기능 | 화면 |
+|---|---|---|
+| Interpretation → Response | Architecture의 질문 처리 흐름 | [보기](screenshots/admin-request-flow.png) |
+| Execution / Retrieval | 요청 추적의 실제 단계별 시간 | [보기](screenshots/admin-trace-timing.png) |
+| Verification / Repair | 요청별 저장된 근거 지표·검증 결과·repair 상태 | [보기](screenshots/admin-verification-result.png) |
+| Evaluation / Approval | 회귀 케이스·기준선·정책별 실행 이력 | [보기](screenshots/admin-regression.png) |
+
+각 화면의 역할·구현 요소·Architecture 연결은 [단계별 Evidence Map](actual-engineering.md)과 README에서 설명합니다.
+운영 인증을 변경하지 않는 격리된 읽기 전용 촬영이며 조회 외 작업을 실행하지 않았습니다.
+
 ## Operational evidence
 
 2026-09-30 관리자 캡처의 공개 승인된 크롭 사본입니다. 회사 표시·개인 식별 정보를 제외하고
@@ -7,7 +19,7 @@
 원본 13개 상태 중 Scientific Extension은 Reproducibility와 동일 이미지이므로 중복으로 넣지 않습니다.
 이미지 클릭 시 원본 크기의 **공개 사본**을 볼 수 있습니다.
 
-README의 다섯 화면:
+기존 Harness 설명·관찰 화면:
 
 | 화면 | 캡처 | 증명 범위 / 한계 |
 |---|---|---|
@@ -22,7 +34,7 @@ README의 다섯 화면:
 ![Operational reproducibility matrix](screenshots/admin-reproducibility.png)
 
 저장·부분·미저장 항목을 나눕니다. model revision, tool version, immutable memory snapshot,
-environment digest가 일관되게 저장되지 않아 replay 성공을 주장하지 않습니다.
+environment digest의 일관된 저장은 후속 replay 구현 과제입니다.
 Scientific Extension·Sandbox·Multi-Agent·Agent RL 카드는 FUTURE / PROPOSED입니다.
 연구적 가치는 완전한 재현에 필요한 누락 조건을 명시한 데 있습니다.
 
@@ -40,7 +52,7 @@ stale memory·정정·동시 갱신 문제를 후속 평가 대상으로 명시�
 
 검색 단계의 source metadata와 durable claim-to-evidence 연결은 다릅니다.
 해당 trace에 연결 artifact가 없다는 사실을 그대로 보존했습니다.
-완성된 provenance graph나 저장된 step I/O가 있는 것처럼 꾸미지 않습니다.
+claim graph와 step I/O의 영속 연결은 후속 구현 범위입니다.
 
 ### Engineering detail
 

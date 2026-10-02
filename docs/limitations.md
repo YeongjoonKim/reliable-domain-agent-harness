@@ -1,5 +1,5 @@
-# Limitation
+# Scope & Limitations
 
-LLM 해석, 외부 검색, 인증된 tenant memory, 영속 저장, 완전한 replay, 자동 배포는 없습니다. session 문자열은 인증이 아닙니다. 도구 오류를 제한된 상태로 표시하며 검증이 외부 사실의 진실성을 보장하지 않습니다.
+공개 실행 코드는 구조화 요청·두 합성 도구·프로세스 메모리·정형 근거 검증을 다룹니다. 자연어 LLM·운영 DB·영속 사용자 메모리는 실제 플랫폼의 별도 구현입니다. session 문자열은 인증 수단이 아닙니다.
 
-운영 관리자 크롭 사본과 공개 재구성 UI를 구별합니다. 전자는 승인된 과거 화면 증거이며 비공개 플랫폼을 여기서 실행할 수 있다는 뜻은 아닙니다. 후자는 정적 설명 카드와 실제 합성 실행 snapshot입니다. snapshot은 실시간 서비스 상태가 아닙니다. 시간 지표·토큰 사용량을 임의로 만들지 않습니다.
+실제 typed executor의 상담 통합, claim-level provenance, 완전한 replay는 PARTIAL입니다. MCP는 prototype이고 Scientific / Multi-Agent / Agent RL은 후속 범위입니다. [실제 구현 대응](actual-engineering.md)을 참고하세요.

@@ -1,22 +1,19 @@
-# System fact summary — generalized experience
+# System Fact Summary
 
-This is a high-level description of engineering experience, not an internal inventory.
-It deliberately omits scale, endpoint names, component classes, tables and deployment topology.
+2026-10-02 실제 소스·관리자 기능 재검토 기준. [단계별 구현 근거](actual-engineering.md).
 
-| Area | Experience context | Public reconstruction / limitation |
+| 영역 | Actual Engineering Experience | Public Reference / Demo |
 |---|---|---|
-| Runtime type | Bounded domain question-answering workflows | A single bounded structured-request pass |
-| Planner | Request interpretation and evidence-oriented planning | Explicit synthetic input; no live LLM interpretation |
-| Tool categories | Structured knowledge, retrieval, graph, external and visual tools | Two mock lookup categories; other connectors are design only |
-| Knowledge | Public domain information with differing authority and timing | Newly invented metrics and fixture references |
-| Context | Conversation context and memory integration | Session-and-subject scoped process memory only |
-| Model runtime | Model serving and experiment lifecycle integration | No running language or vision model dependency |
-| Verification | Evidence / constraint / response checks | Exact synthetic fact correspondence; no universal truth claim |
-| Evaluation | Regression evaluation and human-governed feedback | Unit tests; no production deployment automation |
-| Observability | Execution summaries and engineering views | Logical events, stable example hashes, separate static UI |
-| Multimodal tool | Visual candidates linked with structured knowledge | Design here; metadata-only sample in a separate candidate |
-| API categories | Agent, retrieval, vision, evaluation, report, admin, health responsibilities | Newly designed in-process Agent and Health contracts |
+| Interpretation | LLM 질문 이해·이력·TurnState·라우팅 | 구조화 입력 검증 |
+| Planning | coverage plan·검색 agent·answer planner | 유한 도구 계획 |
+| Tool categories | 구조화 DB·Vector·KG·웹·Vision | 두 합성 lookup |
+| Context / Memory | 최근 대화·장기 기억·Context Pack | session/subject 프로세스 메모리 |
+| Evidence | 근거 gate·도메인 자료·등록정보 연결 | exact subject/value/unit 검사 |
+| Verification | response verifier·repair·품질 이슈 | 정형 claim 계약 |
+| Evaluation | 회귀 worker·케이스·실행 이력·정책 승인 | 단위 테스트와 exporter probe |
+| Observability | 단계 시간·검증 상태·LLM usage | 논리 이벤트·artifact hash |
+| Model runtime | 로컬 모델 serving과 애플리케이션 | GPU 없이 실행 |
+| Report / Vision | 빌더·진단 도구의 상담 연결 | 별도 공개 저장소의 예제 |
 
-MY CONTRIBUTION refers to author-confirmed architecture/development work, not ownership
-of every platform asset. Public reconstruction is intentionally smaller and different.
-Neither regression counts nor connected image inference imply diagnostic accuracy.
+Typed executor의 상담 통합은 PARTIAL이며 MCP prototype·claim provenance/replay·Scientific 확장은 별도 범위입니다.
+실제 관리 기능의 화면과 Harness 설명 화면을 구분해 [갤러리](screenshots.md)에 표시합니다.
