@@ -1,5 +1,11 @@
 # Changelog — Agent Harness
 
+## 2026-10-02 — Technical portfolio polish
+
+- Key Engineering Facts를 아키텍처 직후 배치하고 운영 구현과 공개 코어의 역할을 요약했다.
+- 실행·검증 절을 통합하고 세부 집계·평가·캡처 조건을 상세 문서에 정리했다.
+- 화면 설명과 공통 제목을 한국어로 통일했다. 코드·화면·평가 artifact는 유지했다.
+
 ## 2026-10-02 — Portfolio hardening
 
 - 독립 실행 코어, 정보 요구별 근거 회귀, 재현, 실제 Docker 격리 검사와 MCP 왕복을 추가했다. 기존 데모는 보존했다.

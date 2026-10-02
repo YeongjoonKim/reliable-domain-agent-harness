@@ -19,3 +19,10 @@
 
 Typed executor의 상담 통합은 PARTIAL이며 MCP prototype·claim provenance/replay·Scientific 확장은 별도 범위입니다.
 실제 관리 기능의 화면과 Harness 설명 화면을 구분해 [갤러리](screenshots.md)에 표시합니다.
+
+## Catalog / Adapter 집계
+
+관리자 Tools 캡처 기준 소스는 45개, capability는 26개입니다.
+명시 Typed Adapter 연결은 implemented 14개 / unconnected 12개로 구분됩니다.
+등록된 catalog 항목, adapter 구현, 특정 요청에서 실행된 도구는 서로 다른 집계입니다.
+이 숫자는 화면 시점의 구성 정보이며 README에서는 실행 범위와 연결 상태 중심으로 설명합니다.
