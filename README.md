@@ -65,9 +65,11 @@
 
 **Purpose** — 검색 결과의 존재와 근거 충족·최종 답변 검증을 구분합니다.
 
-![Operational verification engineering view](docs/screenshots/admin-verification.png)
+![Actual stored verification and repair outcome](docs/screenshots/admin-verification-result.png)
 
-**What this demonstrates** — evidence gate, response verifier, repair와 품질 환류의 구현 대응.
+**What this demonstrates** — 실제 요청에 저장된 RAG 지표·검증 통과·Repair 미시도 상태.
+표시된 의도 신뢰도는 내부 추정값이며 해석 정확도와 구분합니다.
+[검증 계층 설명 화면](docs/screenshots/admin-verification.png)은 별도로 제공합니다.
 **Architecture relation** — Evidence → Answer → Verification / Repair → Quality Issue.
 
 ### 5. Execution Trace

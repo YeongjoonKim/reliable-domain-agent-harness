@@ -21,7 +21,8 @@
     "docs/screenshots/reproducibility.png": "6033c035df8c71fe91e6b2e18bc087bf1ac6a23de8b50969ee89e926ed8191cb",
     "docs/screenshots/tools.png": "062cd11ef6bbb7bc0cf3644efd4ed008abcf1805e145c36817796c01d34fb522",
     "docs/screenshots/trace.png": "0fbe4a5ed0e642058d8f7e8cfc13d4ae0e0c0403fec9b58755fcca295eaf729d",
-    "docs/screenshots/verification.png": "6c573dfcdc6fbd4c301b5d3ccf79725223fc6b77d6577a56f32e403d42a61886"
+    "docs/screenshots/verification.png": "6c573dfcdc6fbd4c301b5d3ccf79725223fc6b77d6577a56f32e403d42a61886",
+    "docs/screenshots/admin-verification-result.png": "08a527ce9b7d075f68d615cf268f34cc05634ad82a747d09df95125013af1e13"
   },
   "policy": "Owner-approved local opaque masking/crops. Actual engineering captures are separate from public synthetic examples. Originals preserved privately."
 }

@@ -6,6 +6,7 @@
 |---|---|---|
 | Interpretation → Response | Architecture의 질문 처리 흐름 | [보기](screenshots/admin-request-flow.png) |
 | Execution / Retrieval | 요청 추적의 실제 단계별 시간 | [보기](screenshots/admin-trace-timing.png) |
+| Verification / Repair | 요청별 저장된 근거 지표·검증 결과·repair 상태 | [보기](screenshots/admin-verification-result.png) |
 | Evaluation / Approval | 회귀 케이스·기준선·정책별 실행 이력 | [보기](screenshots/admin-regression.png) |
 
 각 화면의 역할·구현 요소·Architecture 연결은 [단계별 Evidence Map](actual-engineering.md)과 README에서 설명합니다.
