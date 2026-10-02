@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/YeongjoonKim/reliable-domain-agent-harness/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/YeongjoonKim/reliable-domain-agent-harness/actions/workflows/ci.yml)
 
-## 문제와 실행 아키텍처
+## 실행 아키텍처
 
 이 프로젝트는 질문의 정보 요구, 그에 따른 intent 분석, 도구 실행 결과, 답변의 주장을 각각 검증하고
 실패를 추적·복구하는 Agent Harness를 다룹니다.
