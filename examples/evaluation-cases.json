@@ -1,0 +1,1538 @@
+[
+  {
+    "id": "single_tool-1",
+    "category": "single_tool",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      42
+    ],
+    "mutation": null
+  },
+  {
+    "id": "multi_tool-1",
+    "category": "multi_tool",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      },
+      {
+        "subject": "glassleaf",
+        "metric": "moisture",
+        "unit": "points",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "moisture": [
+        {
+          "evidence_id": "moisture",
+          "source_id": "synthetic:moisture",
+          "subject": "glassleaf",
+          "metric": "moisture",
+          "value": 7,
+          "unit": "points",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"moisture\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"points\", \"value\": 7}\nEnd of observation.",
+          "source_hash": "78ac05090d6c2f92c508e14c89c666457f11a69c21722d9cab2878b9cff3e665",
+          "start": 23,
+          "end": 125
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        },
+        {
+          "tool": "structured_lookup",
+          "arguments": {
+            "key": "moisture"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      42,
+      7
+    ],
+    "mutation": null
+  },
+  {
+    "id": "irrelevant-1",
+    "category": "irrelevant",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "guide",
+          "source_id": "synthetic:guide",
+          "subject": "glassleaf",
+          "metric": "watering_interval",
+          "value": 3,
+          "unit": "days",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"watering_interval\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"days\", \"value\": 3}\nEnd of observation.",
+          "source_hash": "5a6ec8cf9d7225ee246b12bc7361dec10e7aa0e287743f1999c16954237ceb29",
+          "start": 23,
+          "end": 132
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": null
+  },
+  {
+    "id": "conflicting-1",
+    "category": "conflicting",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        },
+        {
+          "evidence_id": "conflict",
+          "source_id": "synthetic:conflict",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 52,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 52}\nEnd of observation.",
+          "source_hash": "152bea93d9690fabd3a439b7e2426b66cef2b5c66d4f3a88a3d68b69ba6d4162",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": null
+  },
+  {
+    "id": "missing-1",
+    "category": "missing",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": null
+  },
+  {
+    "id": "timeout-1",
+    "category": "timeout",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {
+      "initial": "timeout"
+    },
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ],
+      [
+        {
+          "tool": "structured_lookup",
+          "arguments": {
+            "key": "fallback"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      42
+    ],
+    "mutation": null
+  },
+  {
+    "id": "tool_failure-1",
+    "category": "tool_failure",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {
+      "initial": "error"
+    },
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ],
+      [
+        {
+          "tool": "structured_lookup",
+          "arguments": {
+            "key": "fallback"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      42
+    ],
+    "mutation": null
+  },
+  {
+    "id": "retry_recovery-1",
+    "category": "retry_recovery",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "guide",
+          "source_id": "synthetic:guide",
+          "subject": "glassleaf",
+          "metric": "watering_interval",
+          "value": 3,
+          "unit": "days",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"watering_interval\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"days\", \"value\": 3}\nEnd of observation.",
+          "source_hash": "5a6ec8cf9d7225ee246b12bc7361dec10e7aa0e287743f1999c16954237ceb29",
+          "start": 23,
+          "end": 132
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ],
+      [
+        {
+          "tool": "structured_lookup",
+          "arguments": {
+            "key": "fallback"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      42
+    ],
+    "mutation": null
+  },
+  {
+    "id": "unsupported_claim-1",
+    "category": "unsupported_claim",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": "value"
+  },
+  {
+    "id": "numeric-1",
+    "category": "numeric",
+    "needs": [
+      {
+        "subject": "dataset",
+        "metric": "mean",
+        "unit": "units",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "numerical_analysis",
+          "arguments": {
+            "values": [
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      ]
+    ],
+    "expected": [
+      2
+    ],
+    "mutation": null
+  },
+  {
+    "id": "stale-1",
+    "category": "stale",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "old",
+          "source_id": "synthetic:old",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2025-01-01",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2025-01-01\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "029fe614b9d6c98b778856a9befe5d5d11bfed926c4274984b94db2a2da7bbaf",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": null
+  },
+  {
+    "id": "invalid_span-1",
+    "category": "invalid_span",
+    "needs": [
+      {
+        "subject": "glassleaf",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "glassleaf",
+          "metric": "cultivated_area",
+          "value": 42,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+          "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+          "start": 23,
+          "end": 129
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": "span"
+  },
+  {
+    "id": "single_tool-2",
+    "category": "single_tool",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      19
+    ],
+    "mutation": null
+  },
+  {
+    "id": "multi_tool-2",
+    "category": "multi_tool",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      },
+      {
+        "subject": "silverroot",
+        "metric": "moisture",
+        "unit": "points",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "moisture": [
+        {
+          "evidence_id": "moisture",
+          "source_id": "synthetic:moisture",
+          "subject": "silverroot",
+          "metric": "moisture",
+          "value": 7,
+          "unit": "points",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"moisture\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"points\", \"value\": 7}\nEnd of observation.",
+          "source_hash": "b6a9df112ebcbc9d0e74ffc04cee6c7fa4fafe170d92867b42da4987c072a499",
+          "start": 23,
+          "end": 126
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        },
+        {
+          "tool": "structured_lookup",
+          "arguments": {
+            "key": "moisture"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      19,
+      7
+    ],
+    "mutation": null
+  },
+  {
+    "id": "irrelevant-2",
+    "category": "irrelevant",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "guide",
+          "source_id": "synthetic:guide",
+          "subject": "silverroot",
+          "metric": "watering_interval",
+          "value": 3,
+          "unit": "days",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"watering_interval\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"days\", \"value\": 3}\nEnd of observation.",
+          "source_hash": "7d63237586580d77f60b298cff63f4f2e463cf517cc5713336e01907255d2f92",
+          "start": 23,
+          "end": 133
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": null
+  },
+  {
+    "id": "conflicting-2",
+    "category": "conflicting",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        },
+        {
+          "evidence_id": "conflict",
+          "source_id": "synthetic:conflict",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 29,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 29}\nEnd of observation.",
+          "source_hash": "b2a6d18b8a4999a21ce3cd1ed862063e3dda7f6330cc5717409354dc2d39f244",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": null
+  },
+  {
+    "id": "missing-2",
+    "category": "missing",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": null
+  },
+  {
+    "id": "timeout-2",
+    "category": "timeout",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {
+      "initial": "timeout"
+    },
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ],
+      [
+        {
+          "tool": "structured_lookup",
+          "arguments": {
+            "key": "fallback"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      19
+    ],
+    "mutation": null
+  },
+  {
+    "id": "tool_failure-2",
+    "category": "tool_failure",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {
+      "initial": "error"
+    },
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ],
+      [
+        {
+          "tool": "structured_lookup",
+          "arguments": {
+            "key": "fallback"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      19
+    ],
+    "mutation": null
+  },
+  {
+    "id": "retry_recovery-2",
+    "category": "retry_recovery",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "guide",
+          "source_id": "synthetic:guide",
+          "subject": "silverroot",
+          "metric": "watering_interval",
+          "value": 3,
+          "unit": "days",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"watering_interval\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"days\", \"value\": 3}\nEnd of observation.",
+          "source_hash": "7d63237586580d77f60b298cff63f4f2e463cf517cc5713336e01907255d2f92",
+          "start": 23,
+          "end": 133
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ],
+      [
+        {
+          "tool": "structured_lookup",
+          "arguments": {
+            "key": "fallback"
+          }
+        }
+      ]
+    ],
+    "expected": [
+      19
+    ],
+    "mutation": null
+  },
+  {
+    "id": "unsupported_claim-2",
+    "category": "unsupported_claim",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": "value"
+  },
+  {
+    "id": "numeric-2",
+    "category": "numeric",
+    "needs": [
+      {
+        "subject": "dataset",
+        "metric": "mean",
+        "unit": "units",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "numerical_analysis",
+          "arguments": {
+            "values": [
+              2,
+              4,
+              6
+            ]
+          }
+        }
+      ]
+    ],
+    "expected": [
+      4
+    ],
+    "mutation": null
+  },
+  {
+    "id": "stale-2",
+    "category": "stale",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "old",
+          "source_id": "synthetic:old",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2025-01-01",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2025-01-01\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "354a82f323aa7d67d8335f93b7d610e71897495e1274cf1947837760bfd07c7c",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": null
+  },
+  {
+    "id": "invalid_span-2",
+    "category": "invalid_span",
+    "needs": [
+      {
+        "subject": "silverroot",
+        "metric": "cultivated_area",
+        "unit": "ha",
+        "as_of": "2026-10-01",
+        "max_age_days": 60
+      }
+    ],
+    "fixtures": {
+      "initial": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ],
+      "fallback": [
+        {
+          "evidence_id": "area",
+          "source_id": "synthetic:area",
+          "subject": "silverroot",
+          "metric": "cultivated_area",
+          "value": 19,
+          "unit": "ha",
+          "observed": "2026-09-20",
+          "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"silverroot\", \"unit\": \"ha\", \"value\": 19}\nEnd of observation.",
+          "source_hash": "4a1036eeca858031cbf65cc3fef07e40fdb79f5def056a0aea095982e0150cde",
+          "start": 23,
+          "end": 130
+        }
+      ]
+    },
+    "faults": {},
+    "plan": [
+      [
+        {
+          "tool": "document_lookup",
+          "arguments": {
+            "key": "initial"
+          }
+        }
+      ]
+    ],
+    "expected": null,
+    "mutation": "span"
+  }
+]
