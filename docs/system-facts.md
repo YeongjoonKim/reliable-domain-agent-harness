@@ -1,14 +1,14 @@
 # System Fact Summary
 
-아래 public 열은 초기 lightweight demo 범위입니다. 새 독립 코어의 registry·검증·격리·재현·MCP 구현은 [현재 Public Core](public-core.md)를 기준으로 합니다. 기존 상담 executor와 별도 Scientific Harness의 범위를 혼동하지 않습니다.
+아래 public 열은 초기 lightweight demo 범위입니다. 새 독립 코어의 registry·검증·격리·재현·MCP 구현은 [현재 Public Core](public-core.md)를 기준으로 합니다. 
 
 2026-10-02 실제 소스·관리자 기능 재검토 기준. [단계별 구현 근거](actual-engineering.md).
 
 | 영역 | Actual Engineering Experience | Public Reference / Demo |
 |---|---|---|
-| Interpretation | LLM 질문 이해·이력·TurnState·라우팅 | 구조화 입력 검증 |
+| Interpretation | LLM 질문 이해·이력·TurnState·라우팅 | 구조화 및 입력 검증 |
 | Planning | coverage plan·검색 agent·answer planner | 유한 도구 계획 |
-| Tool categories | 구조화 DB·Vector·KG·웹·Vision | 두 합성 lookup |
+| Tool categories | 구조화 DB·Vector·KG·웹·Vision | RAG 합성 lookup |
 | Context / Memory | 최근 대화·장기 기억·Context Pack | session/subject 프로세스 메모리 |
 | Evidence | 근거 gate·도메인 자료·등록정보 연결 | exact subject/value/unit 검사 |
 | Verification | response verifier·repair·품질 이슈 | 정형 claim 계약 |
