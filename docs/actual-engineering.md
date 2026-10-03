@@ -21,7 +21,7 @@
 | Trace | 단계별 timing, 품질 상태, LLM usage | 실제 요청 추적 + Harness Trace | CONNECTED |
 | Evaluation / Feedback | 회귀 worker, 품질 보정 worker, 정책 검토·승인 | 실제 회귀 평가 및 승인 게이트 | CONNECTED |
 | Report / Vision tools | report builder와 image diagnosis의 상담 연결 | 별도 Reporting / Multimodal evidence | CONNECTED |
-| MCP / Replay / Scientific | 기존 상담 통합은 부분적; 별도 Scientific Harness 및 Public Core에서 구현·검증 | 기존 상담: PARTIAL / Public Core: IMPLEMENTED 범위 별도 |
+| MCP / Replay / Scientific | 기존 상담 통합은 부분적; 별도 Scientific Harness 및 Public Core에서 구현·검증 | 기존 상담: PARTIAL / Public Core: IMPLEMENTED 범위 별도
 
 ## What the Screens Mean
 
