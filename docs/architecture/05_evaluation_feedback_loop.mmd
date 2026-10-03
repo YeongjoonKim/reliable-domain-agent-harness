@@ -1,12 +1,21 @@
-flowchart TD
-  n0_0["Failure observation · PROPOSED"]
-  n1_0["Remediation hypothesis · PROPOSED"]
-  n2_0["Regression tests · IMPLEMENTED"]
-  n3_0["Versioned candidate · PROPOSED"]
-  n4_0["Human review · PROPOSED"]
-  n5_0["Deployment decision · PROPOSED"]
-  n0_0 --> n1_0
-  n1_0 --> n2_0
-  n2_0 --> n3_0
-  n3_0 --> n4_0
-  n4_0 --> n5_0
+flowchart TB
+  subgraph lane0["PRODUCTION QUALITY WORKFLOW"]
+    direction LR
+    n0_0["Quality issue<br/>Trace / answer evidence<br/>Failure classification"]
+    n0_1["Correction proposal<br/>Bounded analysis<br/>Versioned policy draft"]
+    n0_2["Regression evaluation<br/>Cases / baseline<br/>Deterministic + model checks"]
+    n0_3["Human approval<br/>Review candidate policy<br/>Release monitoring"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["PUBLIC PAIRED EXPERIMENT"]
+    direction LR
+    n1_0["24 synthetic cases<br/>12 categories / 2 variants<br/>Shared candidate generator"]
+    n1_1["Baseline and Harness<br/>Same input / fixtures<br/>Verification / retry ablation"]
+    n1_2["Independent case oracle<br/>Task success / unsafe output<br/>Actual tool call counts"]
+    n1_3["Recorded result<br/>JSON artifacts<br/>Local measured latency"]
+    n1_0 --> n1_1
+    n1_1 --> n1_2
+    n1_2 --> n1_3
+  end

@@ -1,37 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="965" viewBox="0 0 1160 965" role="img" aria-labelledby="title desc">
-<title id="title">Logical runtime pattern</title><desc id="desc">Independently reconstructed generic architecture. Implemented, partial and proposed nodes are explicitly distinguished. This is not a production system map.</desc>
-<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#8a9aab"/></marker></defs>
-<rect width="1160" height="965" fill="#f3f6fa"/>
-<text x="40" y="48" font-family="sans-serif" font-size="25" font-weight="700" fill="#15304c">Logical runtime pattern</text>
-<text x="40" y="82" font-family="sans-serif" font-size="15" fill="#506177">Reconstructed Public Showcase · generic reference, not production topology</text>
-<path d="M580 222 L580 254" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L580 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 472 L401 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 472 L759 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M401 597 L580 629" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M759 597 L580 629" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 722 L580 754" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="410" y="135" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="580" y="161" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Presentation</text>
-<text x="580" y="208" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="410" y="260" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="580" y="286" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">API boundary</text>
-<text x="580" y="333" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="410" y="385" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="580" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Agent runtime</text>
-<text x="580" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="231" y="510" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="401" y="536" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Model service</text>
-<text x="401" y="583" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="589" y="510" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="759" y="536" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Tool services</text>
-<text x="759" y="583" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="410" y="635" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="580" y="661" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Data interfaces</text>
-<text x="580" y="708" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="410" y="760" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="580" y="786" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">No production servers / addresses /</text>
-<text x="580" y="807" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">topology</text>
-<text x="580" y="833" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<text x="40" y="941" font-family="sans-serif" font-size="13" fill="#506177">Working = this sample only. Mock = synthetic substitute. Design / proposed = not implemented here.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="620" viewBox="0 0 1440 620" role="img" aria-labelledby="title desc">
+<title id="title">Admin control plane and host execution</title>
+<desc id="desc">Implemented service-control path · distinct from agent-code sandboxing. API self-restart has a separate handler. Training watchers use separate queues; signing is not claimed for them.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#53808d"/></marker></defs>
+<rect width="1440" height="620" rx="18" fill="#f3f6fa"/>
+<g font-family="Arial, sans-serif">
+<text x="40" y="52" font-size="32" font-weight="700" fill="#142b43">Admin control plane and host execution</text>
+<text x="40" y="87" font-size="19" fill="#536477">Implemented service-control path · distinct from agent-code sandboxing</text>
+<text x="40" y="131" font-size="17" font-weight="700" fill="#18796e">CONTROL REQUEST</text>
+<g data-node="n0_0"><rect x="40.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="59.0" y="185" font-size="21" font-weight="700" fill="#17314b">Administrator</text>
+<text x="59.0" y="218" font-size="18" fill="#4a6075">Service or batch action</text>
+<text x="59.0" y="242" font-size="18" fill="#4a6075">Super-admin API gate</text>
+</g>
+<path d="M358.0 220 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_1"><rect x="388.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="407.0" y="185" font-size="21" font-weight="700" fill="#17314b">Admin API</text>
+<text x="407.0" y="218" font-size="18" fill="#4a6075">Allowlisted target</text>
+<text x="407.0" y="242" font-size="18" fill="#4a6075">Audit accepted request</text>
+</g>
+<path d="M706.0 220 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_2"><rect x="736.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="755.0" y="185" font-size="21" font-weight="700" fill="#17314b">Signed request file</text>
+<text x="755.0" y="218" font-size="18" fill="#4a6075">HMAC-SHA256 / expiry</text>
+<text x="755.0" y="242" font-size="18" fill="#4a6075">Request ID / strict fields</text>
+</g>
+<path d="M1054.0 220 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_3"><rect x="1084.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="1103.0" y="185" font-size="21" font-weight="700" fill="#17314b">Host worker</text>
+<text x="1103.0" y="218" font-size="18" fill="#4a6075">Verify / defer / reject</text>
+<text x="1103.0" y="242" font-size="18" fill="#4a6075">Fixed command arguments</text>
+</g>
+<text x="40" y="346" font-size="17" font-weight="700" fill="#375c98">EXECUTION AND OBSERVATION</text>
+<g data-node="n1_0"><rect x="40.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="59.0" y="400" font-size="21" font-weight="700" fill="#17314b">Host Docker operation</text>
+<text x="59.0" y="433" font-size="18" fill="#4a6075">Allowed service restart</text>
+<text x="59.0" y="457" font-size="18" fill="#4a6075">Fixed batch runner</text>
+</g>
+<g data-node="n1_1"><rect x="388.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="407.0" y="400" font-size="21" font-weight="700" fill="#17314b">Result + archive</text>
+<text x="407.0" y="433" font-size="18" fill="#4a6075">Return status / code</text>
+<text x="407.0" y="457" font-size="18" fill="#4a6075">Processed request record</text>
+</g>
+<g data-node="n1_2"><rect x="736.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="755.0" y="400" font-size="21" font-weight="700" fill="#17314b">Worker heartbeat</text>
+<text x="755.0" y="433" font-size="18" fill="#4a6075">Liveness and metrics</text>
+<text x="755.0" y="457" font-size="18" fill="#4a6075">Read by status API</text>
+</g>
+<g data-node="n1_3"><rect x="1084.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="1103.0" y="400" font-size="21" font-weight="700" fill="#17314b">Management UI</text>
+<text x="1103.0" y="433" font-size="18" fill="#4a6075">Service state / batch steps</text>
+<text x="1103.0" y="457" font-size="18" fill="#4a6075">Read-only evidence capture</text>
+</g>
+<text x="40" y="574" font-size="18" fill="#536477">API self-restart has a separate handler. Training watchers use separate queues; signing is not claimed for them.</text>
+</g>
 </svg>

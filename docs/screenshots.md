@@ -86,3 +86,12 @@ Executed Python snapshot 영역은 [exporter](../src/export_evidence.py)의
 공개 UI는 1100px 폭으로 촬영했습니다. 모든 공개 PNG는
 [manifest](screenshots/manifest.json)의 SHA-256과 비교하며 숨은 텍스트 metadata를 거부합니다.
 PNG 검사는 이미지 내용의 개인정보 탐지를 대신하지 않으므로 공개 사본을 별도로 시각 검토했습니다.
+
+## Execution management · 2026-10-03
+
+- [서비스 상태·서명 실행기](screenshots/service-control.png)
+- [저장된 Scientific run·replay](screenshots/scientific-runs.png)
+- [선택 근거·판정·모델 usage·재현 설정](screenshots/scientific-evidence.png)
+
+현재 UI를 격리된 조회 전용 브라우저에서 촬영했습니다. 모델·서비스·데이터 변경 동작은 실행하지 않았습니다.
+상태·수치·실패 표시는 유지하고 공개에 불필요한 식별자를 일반화했습니다. 시간대는 Asia/Seoul입니다.

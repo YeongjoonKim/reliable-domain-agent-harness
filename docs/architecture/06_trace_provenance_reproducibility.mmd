@@ -1,24 +1,21 @@
-flowchart TD
-  n0_0["Execution · IMPLEMENTED"]
-  n1_0["Trace: what happened? · IMPLEMENTED"]
-  n1_1["Evidence: what supports? · PARTIAL"]
-  n1_2["Replay: same conditions? · PROPOSED"]
-  n2_0["Logical event order · IMPLEMENTED"]
-  n2_1["Claim-to-fixture link · IMPLEMENTED"]
-  n2_2["Frozen manifest / tools · PROPOSED"]
-  n3_0["No production replay guarantee · PROPOSED"]
-  n0_0 --> n1_0
-  n0_0 --> n1_1
-  n0_0 --> n1_2
-  n1_0 --> n2_0
-  n1_0 --> n2_1
-  n1_0 --> n2_2
-  n1_1 --> n2_0
-  n1_1 --> n2_1
-  n1_1 --> n2_2
-  n1_2 --> n2_0
-  n1_2 --> n2_1
-  n1_2 --> n2_2
-  n2_0 --> n3_0
-  n2_1 --> n3_0
-  n2_2 --> n3_0
+flowchart TB
+  subgraph lane0["RECORD AN EXECUTION"]
+    direction LR
+    n0_0["Need + Plan<br/>Effective configuration<br/>Declared tool versions"]
+    n0_1["Execute + observe<br/>Ordered step events<br/>Input / output digests"]
+    n0_2["Verify support<br/>Claim to evidence span<br/>Source / tool / verdict"]
+    n0_3["Export replay bundle<br/>Configuration + observations<br/>Synthetic bodies included"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["REPLAY THE STORED OBSERVATION"]
+    direction LR
+    n1_0["Load saved bundle<br/>Configuration digest<br/>Observation integrity"]
+    n1_1["Check dependencies<br/>Expected tool versions<br/>Stored evidence hashes"]
+    n1_2["Rerun verifier<br/>Same need and observations<br/>Zero external tool calls"]
+    n1_3["Compare result<br/>Status / claims / evidence<br/>Mismatch is surfaced"]
+    n1_0 --> n1_1
+    n1_1 --> n1_2
+    n1_2 --> n1_3
+  end

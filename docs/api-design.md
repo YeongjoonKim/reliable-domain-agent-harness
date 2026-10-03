@@ -1,16 +1,15 @@
-# Public API Design
+# Implemented API and protocol interfaces
 
 회사 endpoint를 옮긴 문서가 아니라 새로 정의한 공개 계약입니다.
 
-| API Domain | Responsibility | Main Input | Main Output | Status |
-|---|---|---|---|---|
-| Agent API | 요청 실행 | session, subject, needs, mode | status, claims, sources, missing, events | IMPLEMENTED / in-process |
-| Retrieval API | 요구별 근거 회수 | subject, metric | fact / empty / timeout / error | PARTIAL / mock |
-| Vision API | 시각 후보 수신 | image / metadata | candidates, uncertainty | PROPOSED |
-| Evaluation API | 회귀 품질 검사 | cases, expected constraints | checks, failures | PARTIAL / Python tests only |
-| Admin / Engineering API | 실행 관찰 | 공개 snapshot | 정적 UI | PARTIAL / no HTTP |
-| Reporting API | 근거 보고 | observations, period | insights, source references | PROPOSED here / separate sample |
-| Health / Runtime API | 실행 모드 | 없음 | offline_mock, production_connected | IMPLEMENTED / in-process |
+| Interface | Implementation | Input / output | Execution |
+|---|---|---|---|
+| Public Core | src/harness/runtime.py | Need / Plan → result / trajectory / provenance | 독립 Python Runtime |
+| MCP stdio subset | src/harness/mcp_adapter.py | initialize, ping, tools/list, tools/call | 실제 child process 표준 입출력 |
+| Numerical tool | src/harness/scientific.py | 정형 숫자 → 계산·근거 | registry를 통한 계산 |
+| Local demo dispatch | src/sample_agent.py | session / subject / needs / mode → status / claims / events | in-process 호출 |
+| Local health contract | src/sample_agent.py | offline_mock, production_connected=false | in-process 조회 |
+| Management evidence | 관리자 UI와 읽기 전용 캡처 | 서비스 상태 / run / checkpoint / 배치 | [별도 운영 구현](execution-control.md) |
 
 ## 실행되는 demo contract
 
@@ -31,3 +30,13 @@ session과 subject에 저장된 검증본을 재사용하며 새 sources를 만�
 tenant authorization, 요청 크기 제한, rate limit, transport cancellation, trace 보관과
 개인정보 retention은 운영 transport를 붙이기 전에 설계해야 합니다.
 실행되는 Trace 조회·평가 HTTP endpoint는 없습니다.
+
+## MCP and execution
+
+`python3 -m src.harness.mcp_adapter`는 표준 입력의 JSON-RPC를 읽고 표준 출력에 응답합니다.
+등록된 수치 도구의 permission·schema·timeout 경계를 사용합니다.
+[프로토콜 범위와 실행 검증](public-core.md#minimal-real-mcp) 및
+[인터페이스 도식](architecture/08_api_architecture.svg)을 함께 제공합니다.
+
+실제 관리자 API는 서비스 제어·배치·모델 관리·Scientific 실행을 별도 권한으로 연결합니다.
+[공개 화면과 제어 책임](execution-control.md)은 독립 Python 예제의 transport 기능과 구별됩니다.

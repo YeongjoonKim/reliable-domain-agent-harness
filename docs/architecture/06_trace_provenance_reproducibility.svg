@@ -1,47 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="715" viewBox="0 0 1160 715" role="img" aria-labelledby="title desc">
-<title id="title">Three different evidence questions</title><desc id="desc">Independently reconstructed generic architecture. Implemented, partial and proposed nodes are explicitly distinguished. This is not a production system map.</desc>
-<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#8a9aab"/></marker></defs>
-<rect width="1160" height="715" fill="#f3f6fa"/>
-<text x="40" y="48" font-family="sans-serif" font-size="25" font-weight="700" fill="#15304c">Three different evidence questions</text>
-<text x="40" y="82" font-family="sans-serif" font-size="15" fill="#506177">Reconstructed Public Showcase · generic reference, not production topology</text>
-<path d="M580 222 L222 254" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 222 L580 254" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 222 L938 254" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M222 347 L222 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M222 347 L580 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M222 347 L938 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L222 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L580 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L938 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M938 347 L222 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M938 347 L580 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M938 347 L938 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M222 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M938 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="410" y="135" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="161" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Execution</text>
-<text x="580" y="208" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="52" y="260" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="222" y="286" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Trace: what happened?</text>
-<text x="222" y="333" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="260" width="340" height="87" rx="10" fill="#e9e2fa" stroke="#aebfce"/>
-<text x="580" y="286" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Evidence: what supports?</text>
-<text x="580" y="333" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PARTIAL</text>
-<rect x="768" y="260" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="938" y="286" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Replay: same conditions?</text>
-<text x="938" y="333" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="52" y="385" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="222" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Logical event order</text>
-<text x="222" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="385" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Claim-to-fixture link</text>
-<text x="580" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="768" y="385" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="938" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Frozen manifest / tools</text>
-<text x="938" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="410" y="510" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="580" y="536" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">No production replay guarantee</text>
-<text x="580" y="583" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<text x="40" y="691" font-family="sans-serif" font-size="13" fill="#506177">Working = this sample only. Mock = synthetic substitute. Design / proposed = not implemented here.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="620" viewBox="0 0 1440 620" role="img" aria-labelledby="title desc">
+<title id="title">Trace, provenance and frozen replay</title>
+<desc id="desc">Public Core · configuration/evidence replay. Replay rechecks saved configuration and evidence; it does not regenerate a stochastic LLM response.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#53808d"/></marker></defs>
+<rect width="1440" height="620" rx="18" fill="#f3f6fa"/>
+<g font-family="Arial, sans-serif">
+<text x="40" y="52" font-size="32" font-weight="700" fill="#142b43">Trace, provenance and frozen replay</text>
+<text x="40" y="87" font-size="19" fill="#536477">Public Core · configuration/evidence replay</text>
+<text x="40" y="131" font-size="17" font-weight="700" fill="#18796e">RECORD AN EXECUTION</text>
+<g data-node="n0_0"><rect x="40.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="59.0" y="185" font-size="21" font-weight="700" fill="#17314b">Need + Plan</text>
+<text x="59.0" y="218" font-size="18" fill="#4a6075">Effective configuration</text>
+<text x="59.0" y="242" font-size="18" fill="#4a6075">Declared tool versions</text>
+</g>
+<path d="M358.0 220 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_1"><rect x="388.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="407.0" y="185" font-size="21" font-weight="700" fill="#17314b">Execute + observe</text>
+<text x="407.0" y="218" font-size="18" fill="#4a6075">Ordered step events</text>
+<text x="407.0" y="242" font-size="18" fill="#4a6075">Input / output digests</text>
+</g>
+<path d="M706.0 220 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_2"><rect x="736.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="755.0" y="185" font-size="21" font-weight="700" fill="#17314b">Verify support</text>
+<text x="755.0" y="218" font-size="18" fill="#4a6075">Claim to evidence span</text>
+<text x="755.0" y="242" font-size="18" fill="#4a6075">Source / tool / verdict</text>
+</g>
+<path d="M1054.0 220 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_3"><rect x="1084.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="1103.0" y="185" font-size="21" font-weight="700" fill="#17314b">Export replay bundle</text>
+<text x="1103.0" y="218" font-size="18" fill="#4a6075">Configuration + observations</text>
+<text x="1103.0" y="242" font-size="18" fill="#4a6075">Synthetic bodies included</text>
+</g>
+<text x="40" y="346" font-size="17" font-weight="700" fill="#375c98">REPLAY THE STORED OBSERVATION</text>
+<g data-node="n1_0"><rect x="40.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="59.0" y="400" font-size="21" font-weight="700" fill="#17314b">Load saved bundle</text>
+<text x="59.0" y="433" font-size="18" fill="#4a6075">Configuration digest</text>
+<text x="59.0" y="457" font-size="18" fill="#4a6075">Observation integrity</text>
+</g>
+<path d="M358.0 435 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_1"><rect x="388.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="407.0" y="400" font-size="21" font-weight="700" fill="#17314b">Check dependencies</text>
+<text x="407.0" y="433" font-size="18" fill="#4a6075">Expected tool versions</text>
+<text x="407.0" y="457" font-size="18" fill="#4a6075">Stored evidence hashes</text>
+</g>
+<path d="M706.0 435 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_2"><rect x="736.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="755.0" y="400" font-size="21" font-weight="700" fill="#17314b">Rerun verifier</text>
+<text x="755.0" y="433" font-size="18" fill="#4a6075">Same need and observations</text>
+<text x="755.0" y="457" font-size="18" fill="#4a6075">Zero external tool calls</text>
+</g>
+<path d="M1054.0 435 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_3"><rect x="1084.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="1103.0" y="400" font-size="21" font-weight="700" fill="#17314b">Compare result</text>
+<text x="1103.0" y="433" font-size="18" fill="#4a6075">Status / claims / evidence</text>
+<text x="1103.0" y="457" font-size="18" fill="#4a6075">Mismatch is surfaced</text>
+</g>
+<text x="40" y="574" font-size="18" fill="#536477">Replay rechecks saved configuration and evidence; it does not regenerate a stochastic LLM response.</text>
+</g>
 </svg>

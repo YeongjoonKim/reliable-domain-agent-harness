@@ -1,12 +1,21 @@
-flowchart TD
-  n0_0["Image / metadata · PARTIAL"]
-  n1_0["Vision candidate · PARTIAL"]
-  n2_0["Uncertainty gate · PROPOSED"]
-  n3_0["Structured knowledge · PARTIAL"]
-  n4_0["Evidence · IMPLEMENTED"]
-  n5_0["Response / abstention · PROPOSED"]
-  n0_0 --> n1_0
-  n1_0 --> n2_0
-  n2_0 --> n3_0
-  n3_0 --> n4_0
-  n4_0 --> n5_0
+flowchart TB
+  subgraph lane0["MODEL SERVICE"]
+    direction LR
+    n0_0["Image + question<br/>Attach to request / turn<br/>Optional crop context"]
+    n0_1["CPU inference API<br/>Disease and pest models<br/>Parallel independent calls"]
+    n0_2["Candidate processing<br/>Scores / crop / labels<br/>Ambiguous / empty / error"]
+    n0_3["Taxonomy alignment<br/>Crop and disease names<br/>Structured observations"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["EVIDENCE AND DELIVERY"]
+    direction LR
+    n1_0["Official data lookup<br/>Crop / disease conditions<br/>Registration evidence"]
+    n1_1["Consultation context<br/>Image observation<br/>Retrieved official rows"]
+    n1_2["Answer verification<br/>Grounded explanation<br/>Domain value checks"]
+    n1_3["SSE to message<br/>Diagnosis card<br/>Answer and source context"]
+    n1_0 --> n1_1
+    n1_1 --> n1_2
+    n1_2 --> n1_3
+  end

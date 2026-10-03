@@ -1,42 +1,95 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="840" viewBox="0 0 1160 840" role="img" aria-labelledby="title desc">
-<title id="title">Public sample API boundaries</title><desc id="desc">Independently reconstructed generic architecture. Implemented, partial and proposed nodes are explicitly distinguished. This is not a production system map.</desc>
-<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#8a9aab"/></marker></defs>
-<rect width="1160" height="840" fill="#f3f6fa"/>
-<text x="40" y="48" font-family="sans-serif" font-size="25" font-weight="700" fill="#15304c">Public sample API boundaries</text>
-<text x="40" y="82" font-family="sans-serif" font-size="15" fill="#506177">Reconstructed Public Showcase · generic reference, not production topology</text>
-<path d="M580 222 L580 254" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L168.25 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L442.75 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L717.25 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L991.75 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M168.25 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M442.75 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M717.25 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M991.75 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 597 L580 629" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="410" y="135" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="161" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Local caller</text>
-<text x="580" y="208" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="260" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="286" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">In-process dispatcher</text>
-<text x="580" y="333" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="40" y="385" width="256.5" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="168.25" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Agent request</text>
-<text x="168.25" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="314.5" y="385" width="256.5" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="442.75" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Evidence search</text>
-<text x="442.75" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="589" y="385" width="256.5" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="717.25" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Vision request</text>
-<text x="717.25" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="863.5" y="385" width="256.5" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="991.75" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Evaluation request</text>
-<text x="991.75" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="410" y="510" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="536" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Runtime / tools</text>
-<text x="580" y="583" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="635" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="661" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Safe result envelope</text>
-<text x="580" y="708" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<text x="40" y="816" font-family="sans-serif" font-size="13" fill="#506177">Working = this sample only. Mock = synthetic substitute. Design / proposed = not implemented here.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="835" viewBox="0 0 1440 835" role="img" aria-labelledby="title desc">
+<title id="title">Implemented API and protocol boundaries</title>
+<desc id="desc">Local demo interfaces and production entry points are distinct. The MCP lane is a real stdio subset; local in-process dispatch is a separate interface.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#53808d"/></marker></defs>
+<rect width="1440" height="835" rx="18" fill="#f3f6fa"/>
+<g font-family="Arial, sans-serif">
+<text x="40" y="52" font-size="32" font-weight="700" fill="#142b43">Implemented API and protocol boundaries</text>
+<text x="40" y="87" font-size="19" fill="#536477">Local demo interfaces and production entry points are distinct</text>
+<text x="40" y="131" font-size="17" font-weight="700" fill="#18796e">PRODUCTION MANAGEMENT</text>
+<g data-node="n0_0"><rect x="40.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="59.0" y="185" font-size="21" font-weight="700" fill="#17314b">Admin browser</text>
+<text x="59.0" y="218" font-size="18" fill="#4a6075">Permission-aware menus</text>
+<text x="59.0" y="242" font-size="18" fill="#4a6075">Status / review / control</text>
+</g>
+<path d="M358.0 220 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_1"><rect x="388.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="407.0" y="185" font-size="21" font-weight="700" fill="#17314b">Authenticated API</text>
+<text x="407.0" y="218" font-size="18" fill="#4a6075">Role and action checks</text>
+<text x="407.0" y="242" font-size="18" fill="#4a6075">Audit request acceptance</text>
+</g>
+<path d="M706.0 220 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_2"><rect x="736.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="755.0" y="185" font-size="21" font-weight="700" fill="#17314b">Bounded backend</text>
+<text x="755.0" y="218" font-size="18" fill="#4a6075">Service operation queue</text>
+<text x="755.0" y="242" font-size="18" fill="#4a6075">Data / training adapters</text>
+</g>
+<path d="M1054.0 220 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_3"><rect x="1084.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="1103.0" y="185" font-size="21" font-weight="700" fill="#17314b">Observation API</text>
+<text x="1103.0" y="218" font-size="18" fill="#4a6075">Run status / heartbeat</text>
+<text x="1103.0" y="242" font-size="18" fill="#4a6075">Results / metrics</text>
+</g>
+<text x="40" y="346" font-size="17" font-weight="700" fill="#375c98">PUBLIC LOCAL API</text>
+<g data-node="n1_0"><rect x="40.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="59.0" y="400" font-size="21" font-weight="700" fill="#17314b">Local Python caller</text>
+<text x="59.0" y="433" font-size="18" fill="#4a6075">Structured request</text>
+<text x="59.0" y="457" font-size="18" fill="#4a6075">No network credentials</text>
+</g>
+<path d="M358.0 435 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_1"><rect x="388.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="407.0" y="400" font-size="21" font-weight="700" fill="#17314b">In-process dispatcher</text>
+<text x="407.0" y="433" font-size="18" fill="#4a6075">Validate request fields</text>
+<text x="407.0" y="457" font-size="18" fill="#4a6075">Supported operation</text>
+</g>
+<path d="M706.0 435 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_2"><rect x="736.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="755.0" y="400" font-size="21" font-weight="700" fill="#17314b">Lightweight agent</text>
+<text x="755.0" y="433" font-size="18" fill="#4a6075">Synthetic tools</text>
+<text x="755.0" y="457" font-size="18" fill="#4a6075">Scoped memory / checks</text>
+</g>
+<path d="M1054.0 435 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_3"><rect x="1084.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="1103.0" y="400" font-size="21" font-weight="700" fill="#17314b">Result envelope</text>
+<text x="1103.0" y="433" font-size="18" fill="#4a6075">Answer / citations</text>
+<text x="1103.0" y="457" font-size="18" fill="#4a6075">Status / trace</text>
+</g>
+<text x="40" y="561" font-size="17" font-weight="700" fill="#7a5899">PUBLIC MCP STDIO</text>
+<g data-node="n2_0"><rect x="40.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
+<text x="59.0" y="615" font-size="21" font-weight="700" fill="#17314b">Child-process client</text>
+<text x="59.0" y="648" font-size="18" fill="#4a6075">Newline JSON-RPC</text>
+<text x="59.0" y="672" font-size="18" fill="#4a6075">Protocol initialization</text>
+</g>
+<path d="M358.0 650 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n2_1"><rect x="388.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
+<text x="407.0" y="615" font-size="21" font-weight="700" fill="#17314b">MCP subset</text>
+<text x="407.0" y="648" font-size="18" fill="#4a6075">initialize / ping</text>
+<text x="407.0" y="672" font-size="18" fill="#4a6075">tools/list / tools/call</text>
+</g>
+<path d="M706.0 650 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n2_2"><rect x="736.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
+<text x="755.0" y="615" font-size="21" font-weight="700" fill="#17314b">Registry call</text>
+<text x="755.0" y="648" font-size="18" fill="#4a6075">Permission and schema</text>
+<text x="755.0" y="672" font-size="18" fill="#4a6075">Registered numerical tool</text>
+</g>
+<path d="M1054.0 650 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n2_3"><rect x="1084.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
+<text x="1103.0" y="615" font-size="21" font-weight="700" fill="#17314b">Protocol result</text>
+<text x="1103.0" y="648" font-size="18" fill="#4a6075">Structured tool result</text>
+<text x="1103.0" y="672" font-size="18" fill="#4a6075">Protocol errors</text>
+</g>
+<text x="40" y="789" font-size="18" fill="#536477">The MCP lane is a real stdio subset; local in-process dispatch is a separate interface.</text>
+</g>
 </svg>

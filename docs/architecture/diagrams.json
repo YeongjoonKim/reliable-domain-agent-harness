@@ -1,0 +1,822 @@
+[
+  {
+    "file": "01_system_architecture",
+    "title": "Agent systems: three implementation paths",
+    "scope": "Implemented responsibilities reviewed 2026-10-03",
+    "lanes": [
+      {
+        "title": "PRODUCTION CONSULTATION",
+        "nodes": [
+          {
+            "title": "Request + context",
+            "lines": [
+              "User / session scope",
+              "Recent turns + memory"
+            ]
+          },
+          {
+            "title": "LLM plan + retrieval",
+            "lines": [
+              "Existing SQL / vector / KG",
+              "Web and Vision routes"
+            ]
+          },
+          {
+            "title": "Answer + verification",
+            "lines": [
+              "Evidence gate / repair",
+              "Domain response checks"
+            ]
+          },
+          {
+            "title": "SSE + operations",
+            "lines": [
+              "Response and trace",
+              "Quality / regression review"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "SCIENTIFIC ADMIN RUNTIME",
+        "nodes": [
+          {
+            "title": "Goal + limits",
+            "lines": [
+              "Separate admin entry",
+              "Explicit run ownership"
+            ]
+          },
+          {
+            "title": "Plan + registered tools",
+            "lines": [
+              "Model-generated plan",
+              "Bounded execution / retry"
+            ]
+          },
+          {
+            "title": "Evidence span review",
+            "lines": [
+              "Model selects span IDs",
+              "Server checks exact text"
+            ]
+          },
+          {
+            "title": "Persist + replay",
+            "lines": [
+              "Steps / evidence / hashes",
+              "Frozen observations"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "INDEPENDENT PUBLIC CORE",
+        "nodes": [
+          {
+            "title": "Explicit Need + Plan",
+            "lines": [
+              "Synthetic input / fixtures",
+              "Declared fallback attempts"
+            ]
+          },
+          {
+            "title": "Typed Registry",
+            "lines": [
+              "Schema / permission",
+              "Timeout / call budget"
+            ]
+          },
+          {
+            "title": "Claim verification",
+            "lines": [
+              "Scope / unit / freshness",
+              "Exact span / source hash"
+            ]
+          },
+          {
+            "title": "Result + evaluation",
+            "lines": [
+              "Trace and frozen replay",
+              "Paired synthetic cases"
+            ]
+          }
+        ],
+        "serial": true
+      }
+    ],
+    "note": "Separate entry points and evidence scopes; the public core runs independently of the private services."
+  },
+  {
+    "file": "02_agent_runtime_flow",
+    "title": "Bounded execution and recovery",
+    "scope": "Public Core · src/harness/runtime.py",
+    "lanes": [
+      {
+        "title": "EXECUTION ATTEMPT",
+        "nodes": [
+          {
+            "title": "Validate Need / Plan",
+            "lines": [
+              "Subject / metric / unit",
+              "Time and call limits"
+            ]
+          },
+          {
+            "title": "Registry dispatch",
+            "lines": [
+              "Permission / schema",
+              "Concurrent tool calls"
+            ]
+          },
+          {
+            "title": "Observe results",
+            "lines": [
+              "Evidence / tool errors",
+              "Versioned observations"
+            ]
+          },
+          {
+            "title": "Verify claims",
+            "lines": [
+              "Need relevance",
+              "Span / hash / value"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "DECISION AT THE ATTEMPT BOUNDARY",
+        "nodes": [
+          {
+            "title": "Accept",
+            "lines": [
+              "All requested claims pass",
+              "Return supported result"
+            ]
+          },
+          {
+            "title": "Reflect + retry",
+            "lines": [
+              "Rejected / failed attempt",
+              "Use declared next attempt"
+            ]
+          },
+          {
+            "title": "Abstain",
+            "lines": [
+              "No supported result",
+              "Budget / attempts exhausted"
+            ]
+          },
+          {
+            "title": "Cancel",
+            "lines": [
+              "Cancellation recorded",
+              "Tool deadline / cleanup"
+            ]
+          }
+        ],
+        "serial": false
+      }
+    ],
+    "note": "Retry uses predeclared alternatives within the original budget. No hidden planner or learning update."
+  },
+  {
+    "file": "03_tool_architecture",
+    "title": "Tool interfaces and execution responsibility",
+    "scope": "Each lane has its own registry or routing implementation",
+    "lanes": [
+      {
+        "title": "PRODUCTION RETRIEVAL ROUTES",
+        "nodes": [
+          {
+            "title": "Request / routing",
+            "lines": [
+              "LLM interpretation",
+              "Scoped search policy"
+            ]
+          },
+          {
+            "title": "Capability selection",
+            "lines": [
+              "Source / filter metadata",
+              "Typed adapters by scope"
+            ]
+          },
+          {
+            "title": "Tool services",
+            "lines": [
+              "SQL / vector / KG / web",
+              "Vision inference service"
+            ]
+          },
+          {
+            "title": "Evidence assembly",
+            "lines": [
+              "Source and time metadata",
+              "Context for the answer"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "SCIENTIFIC ADMIN TOOLS",
+        "nodes": [
+          {
+            "title": "Validated plan",
+            "lines": [
+              "Tool / argument contract",
+              "Run limits"
+            ]
+          },
+          {
+            "title": "Registry checks",
+            "lines": [
+              "Permission and schema",
+              "Version and timeout"
+            ]
+          },
+          {
+            "title": "Domain adapters",
+            "lines": [
+              "Official SQL statistics",
+              "Public vector / literature"
+            ]
+          },
+          {
+            "title": "Observation records",
+            "lines": [
+              "Tool result / status",
+              "Evidence and step hashes"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "PUBLIC CORE",
+        "nodes": [
+          {
+            "title": "Local call or MCP",
+            "lines": [
+              "JSON-RPC stdio subset",
+              "initialize / list / call"
+            ]
+          },
+          {
+            "title": "Typed Registry",
+            "lines": [
+              "Supported schema subset",
+              "Permission / timeout"
+            ]
+          },
+          {
+            "title": "Independent tools",
+            "lines": [
+              "Two synthetic lookups",
+              "Numerical statistics tool"
+            ]
+          },
+          {
+            "title": "Tool envelope",
+            "lines": [
+              "Evidence or error",
+              "Version / latency"
+            ]
+          }
+        ],
+        "serial": true
+      }
+    ],
+    "note": "The isolated numerical variant uses explicit registration and a locally approved Docker image."
+  },
+  {
+    "file": "04_verification_architecture",
+    "title": "Verification: scope, meaning and citation",
+    "scope": "Three implemented verification contexts",
+    "lanes": [
+      {
+        "title": "PRODUCTION CONSULTATION",
+        "nodes": [
+          {
+            "title": "Retrieved material",
+            "lines": [
+              "Official rows / documents",
+              "Source / time / crop"
+            ]
+          },
+          {
+            "title": "Evidence gate",
+            "lines": [
+              "Scope and domain rules",
+              "Preserve official values"
+            ]
+          },
+          {
+            "title": "Response verifier",
+            "lines": [
+              "Answer and constraints",
+              "Violation / repair checks"
+            ]
+          },
+          {
+            "title": "Checked response",
+            "lines": [
+              "Repair and recheck",
+              "Trace / quality issue"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "SCIENTIFIC ADMIN RUNTIME",
+        "nodes": [
+          {
+            "title": "Goal + observations",
+            "lines": [
+              "Run criteria",
+              "Retrieved excerpts"
+            ]
+          },
+          {
+            "title": "Model review",
+            "lines": [
+              "Criterion coverage",
+              "Choose evidence/span IDs"
+            ]
+          },
+          {
+            "title": "Server validation",
+            "lines": [
+              "Known IDs / exact quote",
+              "Original text alignment"
+            ]
+          },
+          {
+            "title": "Selected excerpts",
+            "lines": [
+              "Accepted evidence only",
+              "Stored model verdict"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "PUBLIC CORE",
+        "nodes": [
+          {
+            "title": "Need + evidence",
+            "lines": [
+              "Typed synthetic records",
+              "Date / subject / metric"
+            ]
+          },
+          {
+            "title": "Structured claim",
+            "lines": [
+              "Value / unit / scope",
+              "Conflict and freshness"
+            ]
+          },
+          {
+            "title": "Citation validation",
+            "lines": [
+              "Exact source span",
+              "Source and claim hash"
+            ]
+          },
+          {
+            "title": "Accept or abstain",
+            "lines": [
+              "All required claims",
+              "Provenance verdict"
+            ]
+          }
+        ],
+        "serial": true
+      }
+    ],
+    "note": "Model relevance judgments, deterministic contract checks and exact citation matching are distinct evidence."
+  },
+  {
+    "file": "05_evaluation_feedback_loop",
+    "title": "Human-governed quality and evaluation",
+    "scope": "Operational feedback and public experiments have separate result sets",
+    "lanes": [
+      {
+        "title": "PRODUCTION QUALITY WORKFLOW",
+        "nodes": [
+          {
+            "title": "Quality issue",
+            "lines": [
+              "Trace / answer evidence",
+              "Failure classification"
+            ]
+          },
+          {
+            "title": "Correction proposal",
+            "lines": [
+              "Bounded analysis",
+              "Versioned policy draft"
+            ]
+          },
+          {
+            "title": "Regression evaluation",
+            "lines": [
+              "Cases / baseline",
+              "Deterministic + model checks"
+            ]
+          },
+          {
+            "title": "Human approval",
+            "lines": [
+              "Review candidate policy",
+              "Release monitoring"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "PUBLIC PAIRED EXPERIMENT",
+        "nodes": [
+          {
+            "title": "24 synthetic cases",
+            "lines": [
+              "12 categories / 2 variants",
+              "Shared candidate generator"
+            ]
+          },
+          {
+            "title": "Baseline and Harness",
+            "lines": [
+              "Same input / fixtures",
+              "Verification / retry ablation"
+            ]
+          },
+          {
+            "title": "Independent case oracle",
+            "lines": [
+              "Task success / unsafe output",
+              "Actual tool call counts"
+            ]
+          },
+          {
+            "title": "Recorded result",
+            "lines": [
+              "JSON artifacts",
+              "Local measured latency"
+            ]
+          }
+        ],
+        "serial": true
+      }
+    ],
+    "note": "Policy approval is not automatic deployment. The paired experiment measures the public synthetic task set."
+  },
+  {
+    "file": "06_trace_provenance_reproducibility",
+    "title": "Trace, provenance and frozen replay",
+    "scope": "Public Core · configuration/evidence replay",
+    "lanes": [
+      {
+        "title": "RECORD AN EXECUTION",
+        "nodes": [
+          {
+            "title": "Need + Plan",
+            "lines": [
+              "Effective configuration",
+              "Declared tool versions"
+            ]
+          },
+          {
+            "title": "Execute + observe",
+            "lines": [
+              "Ordered step events",
+              "Input / output digests"
+            ]
+          },
+          {
+            "title": "Verify support",
+            "lines": [
+              "Claim to evidence span",
+              "Source / tool / verdict"
+            ]
+          },
+          {
+            "title": "Export replay bundle",
+            "lines": [
+              "Configuration + observations",
+              "Synthetic bodies included"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "REPLAY THE STORED OBSERVATION",
+        "nodes": [
+          {
+            "title": "Load saved bundle",
+            "lines": [
+              "Configuration digest",
+              "Observation integrity"
+            ]
+          },
+          {
+            "title": "Check dependencies",
+            "lines": [
+              "Expected tool versions",
+              "Stored evidence hashes"
+            ]
+          },
+          {
+            "title": "Rerun verifier",
+            "lines": [
+              "Same need and observations",
+              "Zero external tool calls"
+            ]
+          },
+          {
+            "title": "Compare result",
+            "lines": [
+              "Status / claims / evidence",
+              "Mismatch is surfaced"
+            ]
+          }
+        ],
+        "serial": true
+      }
+    ],
+    "note": "Replay rechecks saved configuration and evidence; it does not regenerate a stochastic LLM response."
+  },
+  {
+    "file": "07_multimodal_tool_flow",
+    "title": "Vision as a domain tool",
+    "scope": "Implemented production consultation route",
+    "lanes": [
+      {
+        "title": "MODEL SERVICE",
+        "nodes": [
+          {
+            "title": "Image + question",
+            "lines": [
+              "Attach to request / turn",
+              "Optional crop context"
+            ]
+          },
+          {
+            "title": "CPU inference API",
+            "lines": [
+              "Disease and pest models",
+              "Parallel independent calls"
+            ]
+          },
+          {
+            "title": "Candidate processing",
+            "lines": [
+              "Scores / crop / labels",
+              "Ambiguous / empty / error"
+            ]
+          },
+          {
+            "title": "Taxonomy alignment",
+            "lines": [
+              "Crop and disease names",
+              "Structured observations"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "EVIDENCE AND DELIVERY",
+        "nodes": [
+          {
+            "title": "Official data lookup",
+            "lines": [
+              "Crop / disease conditions",
+              "Registration evidence"
+            ]
+          },
+          {
+            "title": "Consultation context",
+            "lines": [
+              "Image observation",
+              "Retrieved official rows"
+            ]
+          },
+          {
+            "title": "Answer verification",
+            "lines": [
+              "Grounded explanation",
+              "Domain value checks"
+            ]
+          },
+          {
+            "title": "SSE to message",
+            "lines": [
+              "Diagnosis card",
+              "Answer and source context"
+            ]
+          }
+        ],
+        "serial": true
+      }
+    ],
+    "note": "Model confidence is a candidate score. Registration and usage values come from domain evidence."
+  },
+  {
+    "file": "08_api_architecture",
+    "title": "Implemented API and protocol boundaries",
+    "scope": "Local demo interfaces and production entry points are distinct",
+    "lanes": [
+      {
+        "title": "PRODUCTION MANAGEMENT",
+        "nodes": [
+          {
+            "title": "Admin browser",
+            "lines": [
+              "Permission-aware menus",
+              "Status / review / control"
+            ]
+          },
+          {
+            "title": "Authenticated API",
+            "lines": [
+              "Role and action checks",
+              "Audit request acceptance"
+            ]
+          },
+          {
+            "title": "Bounded backend",
+            "lines": [
+              "Service operation queue",
+              "Data / training adapters"
+            ]
+          },
+          {
+            "title": "Observation API",
+            "lines": [
+              "Run status / heartbeat",
+              "Results / metrics"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "PUBLIC LOCAL API",
+        "nodes": [
+          {
+            "title": "Local Python caller",
+            "lines": [
+              "Structured request",
+              "No network credentials"
+            ]
+          },
+          {
+            "title": "In-process dispatcher",
+            "lines": [
+              "Validate request fields",
+              "Supported operation"
+            ]
+          },
+          {
+            "title": "Lightweight agent",
+            "lines": [
+              "Synthetic tools",
+              "Scoped memory / checks"
+            ]
+          },
+          {
+            "title": "Result envelope",
+            "lines": [
+              "Answer / citations",
+              "Status / trace"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "PUBLIC MCP STDIO",
+        "nodes": [
+          {
+            "title": "Child-process client",
+            "lines": [
+              "Newline JSON-RPC",
+              "Protocol initialization"
+            ]
+          },
+          {
+            "title": "MCP subset",
+            "lines": [
+              "initialize / ping",
+              "tools/list / tools/call"
+            ]
+          },
+          {
+            "title": "Registry call",
+            "lines": [
+              "Permission and schema",
+              "Registered numerical tool"
+            ]
+          },
+          {
+            "title": "Protocol result",
+            "lines": [
+              "Structured tool result",
+              "Protocol errors"
+            ]
+          }
+        ],
+        "serial": true
+      }
+    ],
+    "note": "The MCP lane is a real stdio subset; local in-process dispatch is a separate interface."
+  },
+  {
+    "file": "09_runtime_infrastructure",
+    "title": "Admin control plane and host execution",
+    "scope": "Implemented service-control path · distinct from agent-code sandboxing",
+    "lanes": [
+      {
+        "title": "CONTROL REQUEST",
+        "nodes": [
+          {
+            "title": "Administrator",
+            "lines": [
+              "Service or batch action",
+              "Super-admin API gate"
+            ]
+          },
+          {
+            "title": "Admin API",
+            "lines": [
+              "Allowlisted target",
+              "Audit accepted request"
+            ]
+          },
+          {
+            "title": "Signed request file",
+            "lines": [
+              "HMAC-SHA256 / expiry",
+              "Request ID / strict fields"
+            ]
+          },
+          {
+            "title": "Host worker",
+            "lines": [
+              "Verify / defer / reject",
+              "Fixed command arguments"
+            ]
+          }
+        ],
+        "serial": true
+      },
+      {
+        "title": "EXECUTION AND OBSERVATION",
+        "nodes": [
+          {
+            "title": "Host Docker operation",
+            "lines": [
+              "Allowed service restart",
+              "Fixed batch runner"
+            ]
+          },
+          {
+            "title": "Result + archive",
+            "lines": [
+              "Return status / code",
+              "Processed request record"
+            ]
+          },
+          {
+            "title": "Worker heartbeat",
+            "lines": [
+              "Liveness and metrics",
+              "Read by status API"
+            ]
+          },
+          {
+            "title": "Management UI",
+            "lines": [
+              "Service state / batch steps",
+              "Read-only evidence capture"
+            ]
+          }
+        ],
+        "serial": false
+      }
+    ],
+    "note": "API self-restart has a separate handler. Training watchers use separate queues; signing is not claimed for them."
+  }
+]

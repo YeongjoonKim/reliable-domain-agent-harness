@@ -21,6 +21,12 @@ Result ← Accept ← Relevance / Claim / Span Verification
 Cross-cutting: Trajectory · Provenance · Sandbox · Replay · Evaluation
 ```
 
+![운영 상담, Scientific 관리자 실행, 공개 코어의 현재 구성](docs/architecture/01_system_architecture.svg)
+
+[실행 제어와 관리자 화면](docs/execution-control.md) ·
+[실제 Scientific 실행·근거](docs/scientific-execution.md) ·
+[공개 코어 실행 방법](#실행-및-검증).
+
 ## Key Engineering Facts
 
 | 항목 | 구성 및 구현 |
@@ -33,6 +39,7 @@ Cross-cutting: Trajectory · Provenance · Sandbox · Replay · Evaluation
 | Verification | 운영 답변 검증·repair; 별도 Scientific 의미 검토; 공개 코어의 정형 claim·exact span/hash 검증 |
 | Evaluation | 품질 이슈→회귀 케이스→정책 검토; 공개 합성 시나리오의 검증·복구 비교 |
 | Observability | 운영 timing·검색량·검증·LLM usage; 공개 claim provenance·trace |
+| Execution Control | 관리자 API의 권한·허용 목록, 서명 요청과 호스트 워커, 서비스·배치 상태 관측 |
 | Public Harness Core | Python 실행·검증 코어, Docker 격리 계산, configuration/evidence replay |
 | MCP | stdio 기반 initialize / tools/list / tools/call 구현 |
 | Current Boundary | 새 Typed Executor의 상담 통합은 부분 적용; 공개 코어는 정형 근거·합성 도구 범위 |
@@ -107,6 +114,24 @@ Capability Catalog에 등록된 데이터와 실제 Typed Adapter가 연결된 �
 수집·KREI·보고서 상세는 [Reporting](https://github.com/YeongjoonKim/ai-domain-intelligence-reporting),
 이미지 모델과 상담 연결은 [Multimodal](https://github.com/YeongjoonKim/multimodal-domain-ai)에서 다룹니다.
 
+## 관리자 API와 컨테이너 실행 제어
+
+관리자 API가 실행 요청을 검증하고, 별도 호스트 워커가 허용된 서비스·배치 작업을 수행합니다.
+서비스 제어 요청의 서명·유효기간·허용 목록을 검사하고 감사 기록·결과·heartbeat를 남깁니다.
+웹 API 컨테이너에 Docker socket을 부여하지 않고 제어 요청과 호스트 실행 권한을 분리했습니다.
+
+![서비스 상태와 서명 실행기](docs/screenshots/service-control.png)
+
+조회 전용 촬영이므로 재기동 버튼은 비활성입니다. 상태 조회와 실제 제어 구현을 구분해
+[실행 구조·관리자 메뉴·검증 근거](docs/execution-control.md)에 정리했습니다.
+Agent의 계산을 격리하는 Docker Sandbox는 별도의 실행 경로입니다.
+
+## Scientific 실행과 근거 추적
+
+별도 관리자 Runtime의 저장된 run에서 계약 통과·모델 근거 검토·frozen replay를 구분합니다.
+선택 근거와 인용 구간, 모델 사용량, 코드·입출력 hash를 실행별로 조회합니다.
+[실제 run 이력과 provenance 화면](docs/scientific-execution.md)에서 확인할 수 있습니다.
+
 ## 독립 실행형 Public Core
 
 `src/harness`는 상태 머신·Tool Registry·근거 검증·제한된 복구를 구현합니다.
@@ -117,10 +142,10 @@ Agent의 Python 계산·실행은 자원과 네트워크가 제한된 **Docker S
 timeout·출력 제한·종료 상태·cleanup을 추적합니다. 명시한 로컬 image ID만 사용하고
 호스트 실행으로 대체하지 않습니다. MCP는 stdio의 initialize·tools/list·tools/call을 지원합니다.
 
-아래 도식은 초기 공개 Reference Implementation의 실행 구조를 보여줍니다.
-상단의 Bounded Runtime 코어와 초기 경량 데모의 대응 관계는 [코어 문서](docs/public-core.md)에 정리했습니다.
-
-![Public reference system architecture](docs/architecture/01_system_architecture.svg)
+공개 코어의 [제한 실행·복구 흐름](docs/architecture/02_agent_runtime_flow.svg),
+[검증 계층](docs/architecture/04_verification_architecture.svg),
+[provenance·replay](docs/architecture/06_trace_provenance_reproducibility.svg)를 현재 코드와 연결했습니다.
+기존 경량 데모와의 대응 관계는 [코어 문서](docs/public-core.md)에 정리했습니다.
 
 | 구분 | 범위 |
 |---|---|

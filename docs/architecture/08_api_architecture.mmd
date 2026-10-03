@@ -1,19 +1,31 @@
-flowchart TD
-  n0_0["Local caller · IMPLEMENTED"]
-  n1_0["In-process dispatcher · IMPLEMENTED"]
-  n2_0["Agent request · IMPLEMENTED"]
-  n2_1["Evidence search · PROPOSED"]
-  n2_2["Vision request · PROPOSED"]
-  n2_3["Evaluation request · PROPOSED"]
-  n3_0["Runtime / tools · IMPLEMENTED"]
-  n4_0["Safe result envelope · IMPLEMENTED"]
-  n0_0 --> n1_0
-  n1_0 --> n2_0
-  n1_0 --> n2_1
-  n1_0 --> n2_2
-  n1_0 --> n2_3
-  n2_0 --> n3_0
-  n2_1 --> n3_0
-  n2_2 --> n3_0
-  n2_3 --> n3_0
-  n3_0 --> n4_0
+flowchart TB
+  subgraph lane0["PRODUCTION MANAGEMENT"]
+    direction LR
+    n0_0["Admin browser<br/>Permission-aware menus<br/>Status / review / control"]
+    n0_1["Authenticated API<br/>Role and action checks<br/>Audit request acceptance"]
+    n0_2["Bounded backend<br/>Service operation queue<br/>Data / training adapters"]
+    n0_3["Observation API<br/>Run status / heartbeat<br/>Results / metrics"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["PUBLIC LOCAL API"]
+    direction LR
+    n1_0["Local Python caller<br/>Structured request<br/>No network credentials"]
+    n1_1["In-process dispatcher<br/>Validate request fields<br/>Supported operation"]
+    n1_2["Lightweight agent<br/>Synthetic tools<br/>Scoped memory / checks"]
+    n1_3["Result envelope<br/>Answer / citations<br/>Status / trace"]
+    n1_0 --> n1_1
+    n1_1 --> n1_2
+    n1_2 --> n1_3
+  end
+  subgraph lane2["PUBLIC MCP STDIO"]
+    direction LR
+    n2_0["Child-process client<br/>Newline JSON-RPC<br/>Protocol initialization"]
+    n2_1["MCP subset<br/>initialize / ping<br/>tools/list / tools/call"]
+    n2_2["Registry call<br/>Permission and schema<br/>Registered numerical tool"]
+    n2_3["Protocol result<br/>Structured tool result<br/>Protocol errors"]
+    n2_0 --> n2_1
+    n2_1 --> n2_2
+    n2_2 --> n2_3
+  end
