@@ -1,6 +1,6 @@
 # Architecture ↔ Implementation Evidence
 
-추가 확인(2026-10-02): 별도 비공개 Scientific Harness의 goal/claim 기반 의미 검토, 서버 선택 span, Docker 격리, configuration/evidence replay 경로를 검토했고 선택 회귀 suite 229개가 통과했습니다. 20개 합성 제어 사례는 conformance이며 성능 benchmark가 아닙니다. 아래 표는 기존 상담·관리 화면의 범위입니다. 새 공개 코어는 이를 복사하지 않고 독립 작성했으며 [Public Core](public-core.md)로 구분합니다.
+추가 확인(2026-10-02): 별도 비공개 Scientific Harness의 goal/claim 기반 의미 검토, 서버 선택 span(실제로 claim을 뒷받침하는 정확한 문장/구간), Docker 격리(Agent가 계산이나 Python 실행을 할때 독립적 컨테이너 격리), configuration/evidence replay 재실행 가능 경로를 검토했고 선택 회귀 suite 229개가 통과했습니다. 20개 합성 제어 사례는 conformance이며 성능 benchmark는 아닙니다. 아래 표는 기존 상담·관리 화면의 범위입니다. 새 공개 코어는 이를 복사하지 않고 독립 작성했으며 [Public Core](public-core.md)로 구분합니다.
 
 검토일: 2026-10-02. 현재 코드와 component catalog, 실제 운영 관리자 UI를 함께 확인했습니다.
 기존 Reference Architecture는 유지하고 아래 대응표로 실제 구현과 연결합니다.
@@ -25,7 +25,7 @@
 
 ## What the Screens Mean
 
-Architecture와 Harness Engineering View는 코드 책임을 보여주는 설명 화면입니다.
+Architecture와 Harness Engineering View는 코드의 책임을 보여주는 설명 화면입니다.
 요청 추적은 저장된 개별 실행의 관측이며 회귀 평가는 실제 케이스·실행 이력의 관리 기능입니다.
 이 세 가지를 동일한 종류의 실행 증거로 취급하지 않습니다.
 
