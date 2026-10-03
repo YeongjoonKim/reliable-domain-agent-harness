@@ -28,7 +28,7 @@
 | Overview | [보기](screenshots/admin-overview.png) | 20개 컴포넌트 매핑; 요청별 trace 아님 |
 | Runtime & Tools | [보기](screenshots/admin-tools.png) | catalog·adapter 상태; 호출 성공률 아님 |
 | Verification | [보기](screenshots/admin-verification.png) | 검증 계층과 전달 한계; 보편적 사실 검증 아님 |
-| Evaluation | [보기](screenshots/admin-evaluation.png) | DB 이력과 인간 승인; 정확도 benchmark 아님 |
+| Evaluation | [보기](screenshots/admin-evaluation.png) | DB 이력과 Human 승인; 정확도 benchmark 아님 |
 | Trace | [보기](screenshots/admin-trace.png) | 비식별 duration·사용량; 완전한 waterfall 아님 |
 
 ### Reproducibility / Scientific Extension
@@ -63,7 +63,7 @@ claim graph와 step I/O의 영속 연결은 후속 구현 범위입니다.
 | Domain Planner | [보기](screenshots/admin-planner.png) | WHY/HOW/SOURCE·bounded review; 범용 연구 planner 미구현 |
 | Tool Executor | [보기](screenshots/admin-executor.png) | 독립 호출/공유 DB session의 병렬·직렬 경계; 전 adapter 통합 미보장 |
 | Verification / Repair | [보기](screenshots/admin-verification-detail.png) | repair·재검증·SSE 계약; 전면 verified-first 아님 |
-| Evaluation | [보기](screenshots/admin-evaluation-detail.png) | strict 판정·인간 gate; 대표 정확도와 judge 편향 평가 필요 |
+| Evaluation | [보기](screenshots/admin-evaluation-detail.png) | strict 판정·Human gate; 대표 정확도와 judge 편향 평가 필요 |
 
 상세 화면의 소스 경로는 캡처 당시 플랫폼 구성의 설명입니다. 공개 저장소의 파일 링크가 아닙니다.
 원본 운영 코드는 포함하지 않습니다.
