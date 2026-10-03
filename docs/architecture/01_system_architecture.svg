@@ -1,54 +1,95 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="1090" viewBox="0 0 1160 1090" role="img" aria-labelledby="title desc">
-<title id="title">Generic system architecture</title><desc id="desc">Independently reconstructed generic architecture. Implemented, partial and proposed nodes are explicitly distinguished. This is not a production system map.</desc>
-<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#8a9aab"/></marker></defs>
-<rect width="1160" height="1090" fill="#f3f6fa"/>
-<text x="40" y="48" font-family="sans-serif" font-size="25" font-weight="700" fill="#15304c">Generic system architecture</text>
-<text x="40" y="82" font-family="sans-serif" font-size="15" fill="#506177">Reconstructed Public Showcase · generic reference, not production topology</text>
-<path d="M401 222 L580 254" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M759 222 L580 254" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L401 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L759 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M401 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M759 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 597 L580 629" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 722 L401 754" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 722 L759 754" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M401 847 L401 879" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M401 847 L759 879" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M759 847 L401 879" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M759 847 L759 879" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="231" y="135" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="401" y="161" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Application</text>
-<text x="401" y="208" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="589" y="135" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="759" y="161" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Scoped context</text>
-<text x="759" y="208" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="410" y="260" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="286" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Request contract</text>
-<text x="580" y="333" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="231" y="385" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="401" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Task interpretation</text>
-<text x="401" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<rect x="589" y="385" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="759" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Bounded plan</text>
-<text x="759" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="510" width="340" height="87" rx="10" fill="#fff2d3" stroke="#aebfce"/>
-<text x="580" y="536" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Tool interfaces</text>
-<text x="580" y="583" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PARTIAL</text>
-<rect x="410" y="635" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="661" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Evidence assembly</text>
-<text x="580" y="708" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="231" y="760" width="340" height="87" rx="10" fill="#fff2d3" stroke="#aebfce"/>
-<text x="401" y="786" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Template / model seam</text>
-<text x="401" y="833" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PARTIAL</text>
-<rect x="589" y="760" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="759" y="786" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Constraint checks</text>
-<text x="759" y="833" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="231" y="885" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="401" y="911" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Response</text>
-<text x="401" y="958" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="589" y="885" width="340" height="87" rx="10" fill="#e9e2fa" stroke="#aebfce"/>
-<text x="759" y="911" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Trace / evaluation</text>
-<text x="759" y="958" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PARTIAL</text>
-<text x="40" y="1066" font-family="sans-serif" font-size="13" fill="#506177">Working = this sample only. Mock = synthetic substitute. Design / proposed = not implemented here.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="835" viewBox="0 0 1440 835" role="img" aria-labelledby="title desc">
+<title id="title">Agent systems: three implementation paths</title>
+<desc id="desc">Implemented responsibilities reviewed 2026-10-03. Separate entry points and evidence scopes; the public core runs independently of the private services.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#53808d"/></marker></defs>
+<rect width="1440" height="835" rx="18" fill="#f3f6fa"/>
+<g font-family="Arial, sans-serif">
+<text x="40" y="52" font-size="32" font-weight="700" fill="#142b43">Agent systems: three implementation paths</text>
+<text x="40" y="87" font-size="19" fill="#536477">Implemented responsibilities reviewed 2026-10-03</text>
+<text x="40" y="131" font-size="17" font-weight="700" fill="#18796e">PRODUCTION CONSULTATION</text>
+<g data-node="n0_0"><rect x="40.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="59.0" y="185" font-size="21" font-weight="700" fill="#17314b">Request + context</text>
+<text x="59.0" y="218" font-size="18" fill="#4a6075">User / session scope</text>
+<text x="59.0" y="242" font-size="18" fill="#4a6075">Recent turns + memory</text>
+</g>
+<path d="M358.0 220 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_1"><rect x="388.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="407.0" y="185" font-size="21" font-weight="700" fill="#17314b">LLM plan + retrieval</text>
+<text x="407.0" y="218" font-size="18" fill="#4a6075">Existing SQL / vector / KG</text>
+<text x="407.0" y="242" font-size="18" fill="#4a6075">Web and Vision routes</text>
+</g>
+<path d="M706.0 220 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_2"><rect x="736.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="755.0" y="185" font-size="21" font-weight="700" fill="#17314b">Answer + verification</text>
+<text x="755.0" y="218" font-size="18" fill="#4a6075">Evidence gate / repair</text>
+<text x="755.0" y="242" font-size="18" fill="#4a6075">Domain response checks</text>
+</g>
+<path d="M1054.0 220 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_3"><rect x="1084.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="1103.0" y="185" font-size="21" font-weight="700" fill="#17314b">SSE + operations</text>
+<text x="1103.0" y="218" font-size="18" fill="#4a6075">Response and trace</text>
+<text x="1103.0" y="242" font-size="18" fill="#4a6075">Quality / regression review</text>
+</g>
+<text x="40" y="346" font-size="17" font-weight="700" fill="#375c98">SCIENTIFIC ADMIN RUNTIME</text>
+<g data-node="n1_0"><rect x="40.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="59.0" y="400" font-size="21" font-weight="700" fill="#17314b">Goal + limits</text>
+<text x="59.0" y="433" font-size="18" fill="#4a6075">Separate admin entry</text>
+<text x="59.0" y="457" font-size="18" fill="#4a6075">Explicit run ownership</text>
+</g>
+<path d="M358.0 435 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_1"><rect x="388.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="407.0" y="400" font-size="21" font-weight="700" fill="#17314b">Plan + registered tools</text>
+<text x="407.0" y="433" font-size="18" fill="#4a6075">Model-generated plan</text>
+<text x="407.0" y="457" font-size="18" fill="#4a6075">Bounded execution / retry</text>
+</g>
+<path d="M706.0 435 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_2"><rect x="736.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="755.0" y="400" font-size="21" font-weight="700" fill="#17314b">Evidence span review</text>
+<text x="755.0" y="433" font-size="18" fill="#4a6075">Model selects span IDs</text>
+<text x="755.0" y="457" font-size="18" fill="#4a6075">Server checks exact text</text>
+</g>
+<path d="M1054.0 435 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n1_3"><rect x="1084.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="1103.0" y="400" font-size="21" font-weight="700" fill="#17314b">Persist + replay</text>
+<text x="1103.0" y="433" font-size="18" fill="#4a6075">Steps / evidence / hashes</text>
+<text x="1103.0" y="457" font-size="18" fill="#4a6075">Frozen observations</text>
+</g>
+<text x="40" y="561" font-size="17" font-weight="700" fill="#7a5899">INDEPENDENT PUBLIC CORE</text>
+<g data-node="n2_0"><rect x="40.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
+<text x="59.0" y="615" font-size="21" font-weight="700" fill="#17314b">Explicit Need + Plan</text>
+<text x="59.0" y="648" font-size="18" fill="#4a6075">Synthetic input / fixtures</text>
+<text x="59.0" y="672" font-size="18" fill="#4a6075">Declared fallback attempts</text>
+</g>
+<path d="M358.0 650 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n2_1"><rect x="388.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
+<text x="407.0" y="615" font-size="21" font-weight="700" fill="#17314b">Typed Registry</text>
+<text x="407.0" y="648" font-size="18" fill="#4a6075">Schema / permission</text>
+<text x="407.0" y="672" font-size="18" fill="#4a6075">Timeout / call budget</text>
+</g>
+<path d="M706.0 650 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n2_2"><rect x="736.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
+<text x="755.0" y="615" font-size="21" font-weight="700" fill="#17314b">Claim verification</text>
+<text x="755.0" y="648" font-size="18" fill="#4a6075">Scope / unit / freshness</text>
+<text x="755.0" y="672" font-size="18" fill="#4a6075">Exact span / source hash</text>
+</g>
+<path d="M1054.0 650 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n2_3"><rect x="1084.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
+<text x="1103.0" y="615" font-size="21" font-weight="700" fill="#17314b">Result + evaluation</text>
+<text x="1103.0" y="648" font-size="18" fill="#4a6075">Trace and frozen replay</text>
+<text x="1103.0" y="672" font-size="18" fill="#4a6075">Paired synthetic cases</text>
+</g>
+<text x="40" y="789" font-size="18" fill="#536477">Separate entry points and evidence scopes; the public core runs independently of the private services.</text>
+</g>
 </svg>

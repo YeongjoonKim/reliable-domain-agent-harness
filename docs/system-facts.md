@@ -1,29 +1,27 @@
-# System Fact Summary
+# System fact summary
 
-아래 public 열은 초기 lightweight demo 범위입니다. 새 독립 코어의 registry·검증·격리·재현·MCP 구현은 [현재 Public Core](public-core.md)를 기준으로 합니다.
+2026-10-03 코드·기존 실행 기록·읽기 전용 관리자 화면 대조 기준입니다.
+운영 상담, 별도 관리자 Scientific Runtime, 공개 Core의 실행·평가 범위를 구분합니다.
 
-2026-10-02 실제 소스·관리자 기능 재검토 기준. [단계별 구현 근거](actual-engineering.md).
+| 책임 | 운영 상담 / 관리 | Scientific 관리자 Runtime | 독립 Public Core |
+|---|---|---|---|
+| 입력·계획 | LLM 질문 이해·TurnState·coverage/search/answer plan | goal·limits·모델 계획 | 명시 Need·Plan·대체 시도 |
+| 도구 | 기존 SQL·Vector·KG·웹·Vision 경로 | 공식 SQL·공개 vector·학술 어댑터 | 합성 lookup·수치 계산 |
+| 문맥 | 최근 대화·장기 기억·Context Pack | goal 기반 별도 실행 | 명시 요청; 경량 데모의 session 메모리는 별도 |
+| 검증 | evidence gate·답변 verifier·repair | 모델 근거 판정·span ID·원문 검증 | 정형 claim·단위·시점·exact span/hash |
+| 기록 | 요청 timing·검색량·usage·품질 로그 | PostgreSQL run·step·evidence | trajectory·provenance·replay bundle |
+| 재현 | 요청 추적과 정책 이력 | 저장 관측·판정 재검증 | configuration/evidence replay |
+| 평가 | 품질 이슈→회귀 worker→사람 승인 | 합성 실행 계약·저장된 live 실행 | 24-case paired synthetic evaluation |
+| 실행 제어 | 관리자 권한·서명 서비스/배치 요청·호스트 워커 | 관리자 소유권·제한 실행 | tool 예산·Docker 계산 격리 |
+| MCP | 일반 도구 API와 구분 | 내부 형태 adapter | 실제 stdio subset |
 
-| 영역 | Actual Engineering Experience | Public Reference / Demo |
-|---|---|---|
-| Interpretation | LLM 질문 이해·이력·TurnState·라우팅 | 구조화 및 입력 검증 |
-| Planning | coverage plan·검색 agent·answer planner | 유한 도구 계획 |
-| Tool categories | 구조화 DB·Vector·KG·웹·Vision | 합성 문서·정형 lookup |
-| Context / Memory | 최근 대화·장기 기억·Context Pack | session/subject 프로세스 메모리 |
-| Evidence | 근거 gate·도메인 자료·등록정보 연결 | exact subject/value/unit 검사 |
-| Verification | response verifier·repair·품질 이슈 | 정형 claim 계약 |
-| Evaluation | 회귀 worker·케이스·실행 이력·정책 승인 | 단위 테스트와 exporter probe |
-| Observability | 단계 시간·검증 상태·LLM usage | 논리 이벤트·artifact hash |
-| Model runtime | 로컬 모델 serving과 애플리케이션 | GPU 없이 실행 |
-| Report / Vision | 빌더·진단 도구의 상담 연결 | 별도 공개 저장소의 예제 |
+[현재 아키텍처](architecture/01_system_architecture.svg) ·
+[운영 대응표](actual-engineering.md) · [실행 제어](execution-control.md) ·
+[Scientific 근거](scientific-execution.md) · [Public Core](public-core.md).
 
-Typed Executor의 운영 상담 통합은 PARTIAL입니다. 별도 Scientific Harness의 의미 검토와
-Public Core의 claim provenance·Replay·Docker·MCP 구현은 [구현별 설명](actual-engineering.md)에서 구분합니다.
-실제 관리 기능의 화면과 Harness 설명 화면을 구분해 [갤러리](screenshots.md)에 표시합니다.
+## Catalog and adapter counts
 
-## Catalog / Adapter 집계
-
-관리자 Tools 캡처 기준 소스는 45개, capability는 26개입니다.
-명시 Typed Adapter 연결은 implemented 14개 / unconnected 12개로 구분됩니다.
-등록된 catalog 항목, adapter 구현, 특정 요청에서 실행된 도구는 서로 다른 집계입니다.
-이 숫자는 화면 시점의 구성 정보이며 README에서는 실행 범위와 연결 상태 중심으로 설명합니다.
+기존 Tools 캡처는 소스 45개, capability 26개를 표시합니다.
+명시 Typed Adapter는 implemented 14개 / unconnected 12개로 집계됐습니다.
+이는 캡처 시점의 카탈로그·어댑터 구성이며 특정 요청의 실제 호출 수가 아닙니다.
+기존 상담의 모든 도구 경로가 새 Typed Executor로 이관됐다는 의미도 아닙니다.

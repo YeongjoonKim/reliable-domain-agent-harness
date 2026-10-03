@@ -1,22 +1,31 @@
-flowchart TD
-  n0_0["Runtime · IMPLEMENTED"]
-  n1_0["Typed tool boundary · IMPLEMENTED"]
-  n2_0["Structured data · PARTIAL"]
-  n2_1["Vector retrieval · PROPOSED"]
-  n2_2["Knowledge graph · PROPOSED"]
-  n2_3["External search · PROPOSED"]
-  n2_4["Vision · PROPOSED"]
-  n3_0["Evidence / empty / error · IMPLEMENTED"]
-  n4_0["Requirement coverage · IMPLEMENTED"]
-  n0_0 --> n1_0
-  n1_0 --> n2_0
-  n1_0 --> n2_1
-  n1_0 --> n2_2
-  n1_0 --> n2_3
-  n1_0 --> n2_4
-  n2_0 --> n3_0
-  n2_1 --> n3_0
-  n2_2 --> n3_0
-  n2_3 --> n3_0
-  n2_4 --> n3_0
-  n3_0 --> n4_0
+flowchart TB
+  subgraph lane0["PRODUCTION RETRIEVAL ROUTES"]
+    direction LR
+    n0_0["Request / routing<br/>LLM interpretation<br/>Scoped search policy"]
+    n0_1["Capability selection<br/>Source / filter metadata<br/>Typed adapters by scope"]
+    n0_2["Tool services<br/>SQL / vector / KG / web<br/>Vision inference service"]
+    n0_3["Evidence assembly<br/>Source and time metadata<br/>Context for the answer"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["SCIENTIFIC ADMIN TOOLS"]
+    direction LR
+    n1_0["Validated plan<br/>Tool / argument contract<br/>Run limits"]
+    n1_1["Registry checks<br/>Permission and schema<br/>Version and timeout"]
+    n1_2["Domain adapters<br/>Official SQL statistics<br/>Public vector / literature"]
+    n1_3["Observation records<br/>Tool result / status<br/>Evidence and step hashes"]
+    n1_0 --> n1_1
+    n1_1 --> n1_2
+    n1_2 --> n1_3
+  end
+  subgraph lane2["PUBLIC CORE"]
+    direction LR
+    n2_0["Local call or MCP<br/>JSON-RPC stdio subset<br/>initialize / list / call"]
+    n2_1["Typed Registry<br/>Supported schema subset<br/>Permission / timeout"]
+    n2_2["Independent tools<br/>Two synthetic lookups<br/>Numerical statistics tool"]
+    n2_3["Tool envelope<br/>Evidence or error<br/>Version / latency"]
+    n2_0 --> n2_1
+    n2_1 --> n2_2
+    n2_2 --> n2_3
+  end

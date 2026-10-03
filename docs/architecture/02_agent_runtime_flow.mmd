@@ -1,16 +1,18 @@
-flowchart TD
-  n0_0["Structured request · IMPLEMENTED"]
-  n1_0["Validate / plan · IMPLEMENTED"]
-  n2_0["Select unique calls · IMPLEMENTED"]
-  n3_0["Execute with deadline · IMPLEMENTED"]
-  n4_0["Observe outcomes · IMPLEMENTED"]
-  n5_0["Verify / review · IMPLEMENTED"]
-  n6_0["Respond or restrict · IMPLEMENTED"]
-  n6_1["Budgeted re-search · PROPOSED"]
-  n0_0 --> n1_0
-  n1_0 --> n2_0
-  n2_0 --> n3_0
-  n3_0 --> n4_0
-  n4_0 --> n5_0
-  n5_0 --> n6_0
-  n5_0 --> n6_1
+flowchart TB
+  subgraph lane0["EXECUTION ATTEMPT"]
+    direction LR
+    n0_0["Validate Need / Plan<br/>Subject / metric / unit<br/>Time and call limits"]
+    n0_1["Registry dispatch<br/>Permission / schema<br/>Concurrent tool calls"]
+    n0_2["Observe results<br/>Evidence / tool errors<br/>Versioned observations"]
+    n0_3["Verify claims<br/>Need relevance<br/>Span / hash / value"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["DECISION AT THE ATTEMPT BOUNDARY"]
+    direction LR
+    n1_0["Accept<br/>All requested claims pass<br/>Return supported result"]
+    n1_1["Reflect + retry<br/>Rejected / failed attempt<br/>Use declared next attempt"]
+    n1_2["Abstain<br/>No supported result<br/>Budget / attempts exhausted"]
+    n1_3["Cancel<br/>Cancellation recorded<br/>Tool deadline / cleanup"]
+  end

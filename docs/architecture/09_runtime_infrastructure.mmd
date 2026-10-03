@@ -1,15 +1,18 @@
-flowchart TD
-  n0_0["Presentation · PROPOSED"]
-  n1_0["API boundary · PROPOSED"]
-  n2_0["Agent runtime · PROPOSED"]
-  n3_0["Model service · PROPOSED"]
-  n3_1["Tool services · PROPOSED"]
-  n4_0["Data interfaces · PROPOSED"]
-  n5_0["No production servers / addresses / topology · PROPOSED"]
-  n0_0 --> n1_0
-  n1_0 --> n2_0
-  n2_0 --> n3_0
-  n2_0 --> n3_1
-  n3_0 --> n4_0
-  n3_1 --> n4_0
-  n4_0 --> n5_0
+flowchart TB
+  subgraph lane0["CONTROL REQUEST"]
+    direction LR
+    n0_0["Administrator<br/>Service or batch action<br/>Super-admin API gate"]
+    n0_1["Admin API<br/>Allowlisted target<br/>Audit accepted request"]
+    n0_2["Signed request file<br/>HMAC-SHA256 / expiry<br/>Request ID / strict fields"]
+    n0_3["Host worker<br/>Verify / defer / reject<br/>Fixed command arguments"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["EXECUTION AND OBSERVATION"]
+    direction LR
+    n1_0["Host Docker operation<br/>Allowed service restart<br/>Fixed batch runner"]
+    n1_1["Result + archive<br/>Return status / code<br/>Processed request record"]
+    n1_2["Worker heartbeat<br/>Liveness and metrics<br/>Read by status API"]
+    n1_3["Management UI<br/>Service state / batch steps<br/>Read-only evidence capture"]
+  end

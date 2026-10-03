@@ -1,39 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="1090" viewBox="0 0 1160 1090" role="img" aria-labelledby="title desc">
-<title id="title">Bounded execution flow</title><desc id="desc">Independently reconstructed generic architecture. Implemented, partial and proposed nodes are explicitly distinguished. This is not a production system map.</desc>
-<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#8a9aab"/></marker></defs>
-<rect width="1160" height="1090" fill="#f3f6fa"/>
-<text x="40" y="48" font-family="sans-serif" font-size="25" font-weight="700" fill="#15304c">Bounded execution flow</text>
-<text x="40" y="82" font-family="sans-serif" font-size="15" fill="#506177">Reconstructed Public Showcase · generic reference, not production topology</text>
-<path d="M580 222 L580 254" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 347 L580 379" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 472 L580 504" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 597 L580 629" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 722 L580 754" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 847 L401 879" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<path d="M580 847 L759 879" stroke="#8a9aab" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-<rect x="410" y="135" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="161" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Structured request</text>
-<text x="580" y="208" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="260" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="286" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Validate / plan</text>
-<text x="580" y="333" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="385" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="411" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Select unique calls</text>
-<text x="580" y="458" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="510" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="536" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Execute with deadline</text>
-<text x="580" y="583" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="635" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="661" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Observe outcomes</text>
-<text x="580" y="708" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="410" y="760" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="580" y="786" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Verify / review</text>
-<text x="580" y="833" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="231" y="885" width="340" height="87" rx="10" fill="#dff3e7" stroke="#aebfce"/>
-<text x="401" y="911" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Respond or restrict</text>
-<text x="401" y="958" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">IMPLEMENTED</text>
-<rect x="589" y="885" width="340" height="87" rx="10" fill="#e7edf5" stroke="#aebfce" stroke-dasharray="5 4"/>
-<text x="759" y="911" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#15304c">Budgeted re-search</text>
-<text x="759" y="958" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#4c6072">PROPOSED</text>
-<text x="40" y="1066" font-family="sans-serif" font-size="13" fill="#506177">Working = this sample only. Mock = synthetic substitute. Design / proposed = not implemented here.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="620" viewBox="0 0 1440 620" role="img" aria-labelledby="title desc">
+<title id="title">Bounded execution and recovery</title>
+<desc id="desc">Public Core · src/harness/runtime.py. Retry uses predeclared alternatives within the original budget. No hidden planner or learning update.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#53808d"/></marker></defs>
+<rect width="1440" height="620" rx="18" fill="#f3f6fa"/>
+<g font-family="Arial, sans-serif">
+<text x="40" y="52" font-size="32" font-weight="700" fill="#142b43">Bounded execution and recovery</text>
+<text x="40" y="87" font-size="19" fill="#536477">Public Core · src/harness/runtime.py</text>
+<text x="40" y="131" font-size="17" font-weight="700" fill="#18796e">EXECUTION ATTEMPT</text>
+<g data-node="n0_0"><rect x="40.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="59.0" y="185" font-size="21" font-weight="700" fill="#17314b">Validate Need / Plan</text>
+<text x="59.0" y="218" font-size="18" fill="#4a6075">Subject / metric / unit</text>
+<text x="59.0" y="242" font-size="18" fill="#4a6075">Time and call limits</text>
+</g>
+<path d="M358.0 220 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_1"><rect x="388.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="407.0" y="185" font-size="21" font-weight="700" fill="#17314b">Registry dispatch</text>
+<text x="407.0" y="218" font-size="18" fill="#4a6075">Permission / schema</text>
+<text x="407.0" y="242" font-size="18" fill="#4a6075">Concurrent tool calls</text>
+</g>
+<path d="M706.0 220 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_2"><rect x="736.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="755.0" y="185" font-size="21" font-weight="700" fill="#17314b">Observe results</text>
+<text x="755.0" y="218" font-size="18" fill="#4a6075">Evidence / tool errors</text>
+<text x="755.0" y="242" font-size="18" fill="#4a6075">Versioned observations</text>
+</g>
+<path d="M1054.0 220 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-node="n0_3"><rect x="1084.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
+<text x="1103.0" y="185" font-size="21" font-weight="700" fill="#17314b">Verify claims</text>
+<text x="1103.0" y="218" font-size="18" fill="#4a6075">Need relevance</text>
+<text x="1103.0" y="242" font-size="18" fill="#4a6075">Span / hash / value</text>
+</g>
+<text x="40" y="346" font-size="17" font-weight="700" fill="#375c98">DECISION AT THE ATTEMPT BOUNDARY</text>
+<g data-node="n1_0"><rect x="40.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="40.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="59.0" y="400" font-size="21" font-weight="700" fill="#17314b">Accept</text>
+<text x="59.0" y="433" font-size="18" fill="#4a6075">All requested claims pass</text>
+<text x="59.0" y="457" font-size="18" fill="#4a6075">Return supported result</text>
+</g>
+<g data-node="n1_1"><rect x="388.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="388.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="407.0" y="400" font-size="21" font-weight="700" fill="#17314b">Reflect + retry</text>
+<text x="407.0" y="433" font-size="18" fill="#4a6075">Rejected / failed attempt</text>
+<text x="407.0" y="457" font-size="18" fill="#4a6075">Use declared next attempt</text>
+</g>
+<g data-node="n1_2"><rect x="736.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="736.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="755.0" y="400" font-size="21" font-weight="700" fill="#17314b">Abstain</text>
+<text x="755.0" y="433" font-size="18" fill="#4a6075">No supported result</text>
+<text x="755.0" y="457" font-size="18" fill="#4a6075">Budget / attempts exhausted</text>
+</g>
+<g data-node="n1_3"><rect x="1084.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
+<rect x="1084.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
+<text x="1103.0" y="400" font-size="21" font-weight="700" fill="#17314b">Cancel</text>
+<text x="1103.0" y="433" font-size="18" fill="#4a6075">Cancellation recorded</text>
+<text x="1103.0" y="457" font-size="18" fill="#4a6075">Tool deadline / cleanup</text>
+</g>
+<text x="40" y="574" font-size="18" fill="#536477">Retry uses predeclared alternatives within the original budget. No hidden planner or learning update.</text>
+</g>
 </svg>

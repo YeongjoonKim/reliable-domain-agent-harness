@@ -1,16 +1,31 @@
-flowchart TD
-  n0_0["Retrieved candidates · PARTIAL"]
-  n1_0["Evidence scope check · IMPLEMENTED"]
-  n2_0["Value / unit check · IMPLEMENTED"]
-  n3_0["Template generation · IMPLEMENTED"]
-  n4_0["Claim correspondence · IMPLEMENTED"]
-  n5_0["Supported response · IMPLEMENTED"]
-  n5_1["Restricted response · IMPLEMENTED"]
-  n5_2["Model repair · PROPOSED"]
-  n0_0 --> n1_0
-  n1_0 --> n2_0
-  n2_0 --> n3_0
-  n3_0 --> n4_0
-  n4_0 --> n5_0
-  n4_0 --> n5_1
-  n4_0 --> n5_2
+flowchart TB
+  subgraph lane0["PRODUCTION CONSULTATION"]
+    direction LR
+    n0_0["Retrieved material<br/>Official rows / documents<br/>Source / time / crop"]
+    n0_1["Evidence gate<br/>Scope and domain rules<br/>Preserve official values"]
+    n0_2["Response verifier<br/>Answer and constraints<br/>Violation / repair checks"]
+    n0_3["Checked response<br/>Repair and recheck<br/>Trace / quality issue"]
+    n0_0 --> n0_1
+    n0_1 --> n0_2
+    n0_2 --> n0_3
+  end
+  subgraph lane1["SCIENTIFIC ADMIN RUNTIME"]
+    direction LR
+    n1_0["Goal + observations<br/>Run criteria<br/>Retrieved excerpts"]
+    n1_1["Model review<br/>Criterion coverage<br/>Choose evidence/span IDs"]
+    n1_2["Server validation<br/>Known IDs / exact quote<br/>Original text alignment"]
+    n1_3["Selected excerpts<br/>Accepted evidence only<br/>Stored model verdict"]
+    n1_0 --> n1_1
+    n1_1 --> n1_2
+    n1_2 --> n1_3
+  end
+  subgraph lane2["PUBLIC CORE"]
+    direction LR
+    n2_0["Need + evidence<br/>Typed synthetic records<br/>Date / subject / metric"]
+    n2_1["Structured claim<br/>Value / unit / scope<br/>Conflict and freshness"]
+    n2_2["Citation validation<br/>Exact source span<br/>Source and claim hash"]
+    n2_3["Accept or abstain<br/>All required claims<br/>Provenance verdict"]
+    n2_0 --> n2_1
+    n2_1 --> n2_2
+    n2_2 --> n2_3
+  end

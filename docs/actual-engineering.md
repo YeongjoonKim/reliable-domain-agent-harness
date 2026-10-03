@@ -3,6 +3,10 @@
 운영 상담, 별도 비공개 Scientific Harness, 독립 Public Core의 구현 범위를 구분합니다.
 아래 대응표는 2026-10-02 기준 운영 코드·component catalog·관리자 UI의 책임을 정리합니다.
 
+2026-10-03에는 [관리자 API·호스트 실행 제어](execution-control.md)와
+[실제 Scientific 실행·선택 근거·사용량](scientific-execution.md)을 추가 대조했습니다.
+현재 [아키텍처 모음](architecture/README.md)은 운영 상담·Scientific Runtime·Public Core를 각각 표시합니다.
+
 | Harness stage | 실제 구현 책임 | 근거 화면 | 범위 |
 |---|---|---|---|
 | Entry / Lifecycle | 인증·소유권·요청 예산·취소 | Request Architecture | CONNECTED |
