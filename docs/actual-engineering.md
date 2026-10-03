@@ -1,9 +1,7 @@
 # Existing Production Consultation Architecture ↔ Implementation Evidence
 
-추가 확인(2026-10-02): 별도 비공개 Scientific Harness의 goal/claim 기반 의미 검토, 서버 선택 span(실제로 claim을 뒷받침하는 정확한 문장/구간), Docker 격리(Agent가 계산이나 Python 실행을 할때 독립적 컨테이너 격리), configuration/evidence replay 재실행 가능 경로를 검토했고 선택 회귀 suite 229개가 통과했습니다. 20개 합성 제어 사례는 conformance이며 성능 benchmark는 아닙니다. 아래 표는 기존 상담·관리 화면의 범위입니다. 새 공개 코어는 이를 복사하지 않고 독립 작성했으며 [Public Core](public-core.md)로 구분합니다.
-
-검토일: 2026-10-02. 현재 코드와 component catalog, 실제 운영 관리자 UI를 함께 확인했습니다.
-기존 Reference Architecture는 유지하고 아래 대응표로 실제 구현과 연결합니다.
+운영 상담, 별도 비공개 Scientific Harness, 독립 Public Core의 구현 범위를 구분합니다.
+아래 대응표는 2026-10-02 기준 운영 코드·component catalog·관리자 UI의 책임을 정리합니다.
 
 | Harness stage | 실제 구현 책임 | 근거 화면 | 범위 |
 |---|---|---|---|
@@ -40,8 +38,35 @@ Architecture와 Harness Engineering View는 코드의 책임을 보여주는 설
 동시에 새로운 typed executor의 상담 경로 통합은 PARTIAL로 남아 있습니다.
 도구 목록에 등록된 항목, 명시 adapter 구현, 실제 요청에서 실행된 항목은 별도로 확인해야 합니다.
 
-전체 claim graph와 step I/O·환경 snapshot이 일관되게 저장되는 replay는 후속 과제입니다.
+운영 상담 전체에 claim graph와 step I/O·환경 snapshot을 일관되게 연결하는 Replay는 후속 과제입니다.
 단계 duration을 더한 값을 실제 end-to-end latency나 병렬 waterfall로 해석하지 않습니다.
+
+## Separate Scientific Harness
+
+비공개 `scientific_harness/semantic_review.py`는 원래 goal과 계획의 요구사항 각각을
+검색 근거에 대조합니다. 서버가 원문을 길이 제한 구간으로 나누면 LLM이 evidence ID·span ID를
+선택하고, 서버가 ID 유효성·인용 누락·원문 일치를 검사합니다. 모델이 인용문을 다시 생성하지 않도록 한 구조입니다.
+의미적 지지 여부는 모델의 판정이며 독립 정답으로 취급하지 않습니다.
+
+`runtime.py`는 이 검토 결과와 모델 호출 정보를 실행 기록에 연결합니다.
+Docker 계산 도구와 configuration/evidence replay도 별도로 구현돼 있으며,
+기존 상담 경로 전체의 전환 여부와는 구분합니다.
+2026-10-02 선택 회귀 suite는 229개 통과, 합성 제어 사례 20개는 conformance 확인 범위입니다.
+
+## Independent Public Core
+
+공개 코어는 운영 소스를 복사하지 않은 독립 구현입니다.
+[`verifier.py`](../src/harness/verifier.py)는 정형 claim의 대상·지표·단위·값·시점을 대조하고,
+claim과 연결된 exact evidence span과 source hash를 검증합니다.
+자유서술에서 최적의 구간을 찾는 LLM 의미 탐색은 포함하지 않습니다.
+
+[`sandbox.py`](../src/harness/sandbox.py)는 명시적 로컬 image ID, 네트워크 차단, 읽기 전용 파일시스템,
+non-root UID, capability 제거, CPU·memory/swap·pids 제한과 격리된 tmpfs를 적용합니다.
+실행 timeout·출력 제한·종료 상태·cleanup을 추적하며 호스트 실행 fallback은 없습니다.
+Docker의 공유 커널·daemon 권한 등 보안 경계는 [상세 문서](public-core.md#sandbox-and-scientific-slice)에 남깁니다.
+
+[`replay.py`](../src/harness/replay.py)는 설정·도구 버전·입출력 hash를 대조하고 저장된 근거로
+Verifier를 재실행합니다. 외부 도구 재호출이나 LLM 생성의 bit-identical 재현을 보장하는 기능은 아닙니다.
 
 ## Repository Ownership of the Story
 
