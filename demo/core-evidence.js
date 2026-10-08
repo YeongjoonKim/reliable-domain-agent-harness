@@ -1,0 +1,1926 @@
+window.CORE_EVIDENCE = {
+  "schema_version": 1,
+  "generated_at": "2026-10-08T04:27:42.180376+00:00",
+  "scope": {
+    "kind": "public synthetic core execution",
+    "disclosure": "Stored execution of the public Python Core; no live LLM, API, DB or full environment replay.",
+    "evaluation_disclosure": "Designed synthetic verification/recovery ablation; not an independent LLM benchmark.",
+    "ci_url": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/actions",
+    "source_files": {
+      "src/harness/evaluation.py": "b602ac7e0a757db761894f581ac9da490dd9ef5a43f113535f988af5f8da4c49",
+      "src/harness/models.py": "5b7ded66476ab40ede2fa4d1c0973cc88e0bbbc82711fa8a57b0f07b9d60030c",
+      "src/harness/planner.py": "f4a4203f66292a7f2e6b6eb4c42ac3515e4bf8c250733d0f17341a07edeedd93",
+      "src/harness/policies.py": "b9c7fd2718cf3475043885a49aaee76b8428d9bbc59ba451dc2eca89ce12448b",
+      "src/harness/reflection.py": "fc0ea25cbdef24cfe4c5548853ccaabfd26e4314be13fc71a69d8485df9487f0",
+      "src/harness/registry.py": "a30722b290b930b399d98745ab87bf1b3ee6aa425178432f10858245f2a6b2e7",
+      "src/harness/replay.py": "e875c8d5bb6626173002551e2c114c45c0c0e105a150bf48be3ff8158a2375fc",
+      "src/harness/runtime.py": "c512da61cc4f7a291d3b5a9c860df09ac092ca1d31d60f6fbda0250c0be8041a",
+      "src/harness/state_machine.py": "6d3efe3ec70ae933f86be72d0f8d55cdad8dc8e03676e8dc5ad332b9180602a7",
+      "src/harness/tools.py": "3e008a092d0495779bb085b0e7d1be20b5184ee1cb85618466715c98d0cf3f04",
+      "src/harness/trajectory.py": "09c98136bd0c46a1a4abee9d9579b9774dc2c11262e1a51bdb8a6132d3a33d39",
+      "src/harness/verifier.py": "67ea3670e6800ae0b0de54099ce9602b4a08991077776a72b5670e65a70d9b23",
+      "scripts/export_demo.py": "4a47186052aa27eb04956500ee8553eeefc7f33b235fff79d3a43ed83e80d3f6",
+      "tests/test_harness_integration.py": "82f58f191edbd0825c9519e1ff0e0c786ff4367a0cc89f44ee1463487e5bd225"
+    }
+  },
+  "evaluation": {
+    "kind": "paired synthetic evaluation; not an independent LLM benchmark",
+    "dataset_version": "synthetic-1",
+    "categories": 12,
+    "summary": {
+      "baseline": {
+        "cases": 24,
+        "task_success": 8,
+        "unsafe_answers": 12,
+        "average_calls": 1.0833333333333333,
+        "average_latency_ms": 1.7485833333333332
+      },
+      "harness": {
+        "cases": 24,
+        "task_success": 24,
+        "unsafe_answers": 0,
+        "average_calls": 1.3333333333333333,
+        "average_latency_ms": 2.146875
+      }
+    },
+    "cases": [
+      {
+        "id": "single_tool-1",
+        "category": "single_tool",
+        "baseline": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.079,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.417,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "multi_tool-1",
+        "category": "multi_tool",
+        "baseline": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 0.109,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 0.473,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "irrelevant-1",
+        "category": "irrelevant",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.062,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.37,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "conflicting-1",
+        "category": "conflicting",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.071,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.399,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "missing-1",
+        "category": "missing",
+        "baseline": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.044,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.331,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "timeout-1",
+        "category": "timeout",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 20.259,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 21.471,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "tool_failure-1",
+        "category": "tool_failure",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.05,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 0.453,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "retry_recovery-1",
+        "category": "retry_recovery",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.062,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 0.436,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "unsupported_claim-1",
+        "category": "unsupported_claim",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.054,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.333,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "numeric-1",
+        "category": "numeric",
+        "baseline": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.166,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.498,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "stale-1",
+        "category": "stale",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.062,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.361,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "invalid_span-1",
+        "category": "invalid_span",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.068,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.375,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "single_tool-2",
+        "category": "single_tool",
+        "baseline": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.061,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.386,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "multi_tool-2",
+        "category": "multi_tool",
+        "baseline": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 0.097,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 0.44,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "irrelevant-2",
+        "category": "irrelevant",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.056,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.343,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "conflicting-2",
+        "category": "conflicting",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.067,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.381,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "missing-2",
+        "category": "missing",
+        "baseline": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.045,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.328,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "timeout-2",
+        "category": "timeout",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 20.134,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 21.364,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "tool_failure-2",
+        "category": "tool_failure",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.047,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 0.448,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "retry_recovery-2",
+        "category": "retry_recovery",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.062,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 2,
+          "latency_ms": 0.446,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "unsupported_claim-2",
+        "category": "unsupported_claim",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.055,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.336,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "numeric-2",
+        "category": "numeric",
+        "baseline": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.144,
+          "unsafe_answer": false
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.463,
+          "unsafe_answer": false,
+          "state": "COMPLETED"
+        }
+      },
+      {
+        "id": "stale-2",
+        "category": "stale",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.059,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.341,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      },
+      {
+        "id": "invalid_span-2",
+        "category": "invalid_span",
+        "baseline": {
+          "success": false,
+          "calls": 1,
+          "latency_ms": 0.053,
+          "unsafe_answer": true
+        },
+        "harness": {
+          "success": true,
+          "calls": 1,
+          "latency_ms": 0.332,
+          "unsafe_answer": false,
+          "state": "FAILED"
+        }
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "valid_evidence",
+      "title": "Valid Evidence",
+      "description": "Exact supporting evidence is accepted.",
+      "case_id": "single_tool-1",
+      "run": {
+        "state": "COMPLETED",
+        "claims": [
+          {
+            "subject": "glassleaf",
+            "metric": "cultivated_area",
+            "value": 42,
+            "unit": "ha",
+            "evidence_id": "area",
+            "start": 23,
+            "end": 129
+          }
+        ],
+        "verification": {
+          "accepted": true,
+          "signals": {
+            "retrieval_success": true,
+            "evidence_relevance": true,
+            "claim_support": true,
+            "citation_valid": true
+          },
+          "reasons": [],
+          "provenance": [
+            {
+              "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+              "source_id": "synthetic:area",
+              "evidence_id": "area",
+              "evidence_span": [
+                23,
+                129
+              ],
+              "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+              "tool": "document_lookup",
+              "tool_version": "1.0",
+              "verification_result": "PASS"
+            }
+          ]
+        },
+        "calls": 1,
+        "latency_ms": 0.574,
+        "trajectory": [
+          {
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
+            "step_id": 1,
+            "sequence": 0,
+            "state": "CREATED",
+            "timestamp": "2026-10-08T04:27:42.176691+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
+            "step_id": 2,
+            "sequence": 1,
+            "state": "PLANNING",
+            "timestamp": "2026-10-08T04:27:42.176722+00:00",
+            "agent_role": "harness",
+            "input_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30"
+          },
+          {
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
+            "step_id": 3,
+            "sequence": 2,
+            "state": "EXECUTING",
+            "timestamp": "2026-10-08T04:27:42.176753+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
+            "step_id": 4,
+            "sequence": 3,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.176863+00:00",
+            "agent_role": "harness",
+            "output_hash": "2fa753222e9244d35b9b06d9f58920082982426efa0363768ede84cafffb7279"
+          },
+          {
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
+            "step_id": 5,
+            "sequence": 4,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.176867+00:00",
+            "agent_role": "harness",
+            "tool_name": "document_lookup",
+            "tool_version": "1.0",
+            "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+            "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
+            "error_type": "ok",
+            "latency_ms": 0.064
+          },
+          {
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
+            "step_id": 6,
+            "sequence": 5,
+            "state": "VERIFYING",
+            "timestamp": "2026-10-08T04:27:42.176874+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
+            "step_id": 7,
+            "sequence": 6,
+            "state": "COMPLETED",
+            "timestamp": "2026-10-08T04:27:42.176902+00:00",
+            "agent_role": "harness",
+            "verification": "PASS"
+          }
+        ],
+        "replay_bundle": {
+          "schema_version": 1,
+          "needs": [
+            {
+              "subject": "glassleaf",
+              "metric": "cultivated_area",
+              "unit": "ha",
+              "as_of": "2026-10-01",
+              "max_age_days": 60
+            }
+          ],
+          "plan": [
+            [
+              {
+                "tool": "document_lookup",
+                "arguments": {
+                  "key": "initial"
+                }
+              }
+            ]
+          ],
+          "plan_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30",
+          "policy": {
+            "max_steps": 6,
+            "max_retry": 2,
+            "timeout": 3.0,
+            "permissions": [
+              "read:synthetic",
+              "compute:trusted"
+            ],
+            "version": "public-policy-1"
+          },
+          "policy_hash": "6e2a9fd21aefdb49cd857520531d1ef70380259e24fee9329116c3ee38682e38",
+          "registry_hash": "31deb0711e7a6e01a99e08696cf21dcb2afe9d8834ae0093a83b78c169d47730",
+          "records": [
+            {
+              "attempt": 0,
+              "observations": [
+                {
+                  "tool": "document_lookup",
+                  "tool_version": "1.0",
+                  "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+                  "status": "ok",
+                  "evidence": [
+                    {
+                      "evidence_id": "area",
+                      "source_id": "synthetic:area",
+                      "subject": "glassleaf",
+                      "metric": "cultivated_area",
+                      "value": 42,
+                      "unit": "ha",
+                      "observed": "2026-09-20",
+                      "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+                      "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                      "start": 23,
+                      "end": 129
+                    }
+                  ],
+                  "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
+                  "latency_ms": 0.064
+                }
+              ],
+              "claims": [
+                {
+                  "subject": "glassleaf",
+                  "metric": "cultivated_area",
+                  "value": 42,
+                  "unit": "ha",
+                  "evidence_id": "area",
+                  "start": 23,
+                  "end": 129
+                }
+              ],
+              "verification": {
+                "accepted": true,
+                "signals": {
+                  "retrieval_success": true,
+                  "evidence_relevance": true,
+                  "claim_support": true,
+                  "citation_valid": true
+                },
+                "reasons": [],
+                "provenance": [
+                  {
+                    "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+                    "source_id": "synthetic:area",
+                    "evidence_id": "area",
+                    "evidence_span": [
+                      23,
+                      129
+                    ],
+                    "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                    "tool": "document_lookup",
+                    "tool_version": "1.0",
+                    "verification_result": "PASS"
+                  }
+                ]
+              }
+            }
+          ],
+          "integrity_hash": "4a30c4174603532baa35ce34ff8ef7d5967010191ee5e559a8bbef55c0624064"
+        }
+      },
+      "replay": {
+        "mode": "configuration/evidence replay",
+        "external_calls": 0,
+        "reports": [
+          {
+            "accepted": true,
+            "signals": {
+              "retrieval_success": true,
+              "evidence_relevance": true,
+              "claim_support": true,
+              "citation_valid": true
+            },
+            "reasons": [],
+            "provenance": [
+              {
+                "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+                "source_id": "synthetic:area",
+                "evidence_id": "area",
+                "evidence_span": [
+                  23,
+                  129
+                ],
+                "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                "tool": "document_lookup",
+                "tool_version": "1.0",
+                "verification_result": "PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "links": {
+        "source": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/src/harness/runtime.py",
+        "test": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/tests/test_harness_integration.py",
+        "execution": "./core-evidence.json"
+      }
+    },
+    {
+      "id": "retry_recovery",
+      "title": "Irrelevant Evidence \u2192 Recovery",
+      "description": "An irrelevant first result is rejected before a bounded alternative lookup succeeds.",
+      "case_id": "retry_recovery-1",
+      "run": {
+        "state": "COMPLETED",
+        "claims": [
+          {
+            "subject": "glassleaf",
+            "metric": "cultivated_area",
+            "value": 42,
+            "unit": "ha",
+            "evidence_id": "area",
+            "start": 23,
+            "end": 129
+          }
+        ],
+        "verification": {
+          "accepted": true,
+          "signals": {
+            "retrieval_success": true,
+            "evidence_relevance": true,
+            "claim_support": true,
+            "citation_valid": true
+          },
+          "reasons": [],
+          "provenance": [
+            {
+              "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+              "source_id": "synthetic:area",
+              "evidence_id": "area",
+              "evidence_span": [
+                23,
+                129
+              ],
+              "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+              "tool": "structured_lookup",
+              "tool_version": "1.0",
+              "verification_result": "PASS"
+            }
+          ]
+        },
+        "calls": 2,
+        "latency_ms": 0.515,
+        "trajectory": [
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 1,
+            "sequence": 0,
+            "state": "CREATED",
+            "timestamp": "2026-10-08T04:27:42.177671+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 2,
+            "sequence": 1,
+            "state": "PLANNING",
+            "timestamp": "2026-10-08T04:27:42.177682+00:00",
+            "agent_role": "harness",
+            "input_hash": "86cebd49b069ffd20b74294fe33b21757356460201f766bfcb867e58af9889e7"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 3,
+            "sequence": 2,
+            "state": "EXECUTING",
+            "timestamp": "2026-10-08T04:27:42.177705+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 4,
+            "sequence": 3,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.177780+00:00",
+            "agent_role": "harness",
+            "output_hash": "042fbd3fba90bf1041013c4056333fe16cef3e18043b7705da1e141c67c351cd"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 5,
+            "sequence": 4,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.177783+00:00",
+            "agent_role": "harness",
+            "tool_name": "document_lookup",
+            "tool_version": "1.0",
+            "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+            "output_hash": "0f61616a05a47b314fcc73d9aeef9cd2e3d249d565491f224c71505c67c0577b",
+            "error_type": "ok",
+            "latency_ms": 0.044
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 6,
+            "sequence": 5,
+            "state": "VERIFYING",
+            "timestamp": "2026-10-08T04:27:42.177790+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 7,
+            "sequence": 6,
+            "state": "REFLECTING",
+            "timestamp": "2026-10-08T04:27:42.177799+00:00",
+            "agent_role": "harness",
+            "verification": "REJECT",
+            "retry_reason": "irrelevant_evidence,missing_or_duplicate_claim"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 8,
+            "sequence": 7,
+            "state": "RETRYING",
+            "timestamp": "2026-10-08T04:27:42.177802+00:00",
+            "agent_role": "harness",
+            "retry_reason": "irrelevant_evidence,missing_or_duplicate_claim"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 9,
+            "sequence": 8,
+            "state": "EXECUTING",
+            "timestamp": "2026-10-08T04:27:42.177805+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 10,
+            "sequence": 9,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.177872+00:00",
+            "agent_role": "harness",
+            "output_hash": "5565bc8baebcbf267412c5b86483ea6e3f086a3bffffdd41ff0e877ccc5c7d7c"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 11,
+            "sequence": 10,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.177875+00:00",
+            "agent_role": "harness",
+            "tool_name": "structured_lookup",
+            "tool_version": "1.0",
+            "input_hash": "cfba6e19cb82a17f7ffe51322a6e0d2bd7e6bd0a2ed0040f75d99b95a0184c0d",
+            "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
+            "error_type": "ok",
+            "latency_ms": 0.041
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 12,
+            "sequence": 11,
+            "state": "VERIFYING",
+            "timestamp": "2026-10-08T04:27:42.177879+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 13,
+            "sequence": 12,
+            "state": "COMPLETED",
+            "timestamp": "2026-10-08T04:27:42.177898+00:00",
+            "agent_role": "harness",
+            "verification": "PASS"
+          }
+        ],
+        "replay_bundle": {
+          "schema_version": 1,
+          "needs": [
+            {
+              "subject": "glassleaf",
+              "metric": "cultivated_area",
+              "unit": "ha",
+              "as_of": "2026-10-01",
+              "max_age_days": 60
+            }
+          ],
+          "plan": [
+            [
+              {
+                "tool": "document_lookup",
+                "arguments": {
+                  "key": "initial"
+                }
+              }
+            ],
+            [
+              {
+                "tool": "structured_lookup",
+                "arguments": {
+                  "key": "fallback"
+                }
+              }
+            ]
+          ],
+          "plan_hash": "86cebd49b069ffd20b74294fe33b21757356460201f766bfcb867e58af9889e7",
+          "policy": {
+            "max_steps": 6,
+            "max_retry": 2,
+            "timeout": 3.0,
+            "permissions": [
+              "read:synthetic",
+              "compute:trusted"
+            ],
+            "version": "public-policy-1"
+          },
+          "policy_hash": "6e2a9fd21aefdb49cd857520531d1ef70380259e24fee9329116c3ee38682e38",
+          "registry_hash": "31deb0711e7a6e01a99e08696cf21dcb2afe9d8834ae0093a83b78c169d47730",
+          "records": [
+            {
+              "attempt": 0,
+              "observations": [
+                {
+                  "tool": "document_lookup",
+                  "tool_version": "1.0",
+                  "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+                  "status": "ok",
+                  "evidence": [
+                    {
+                      "evidence_id": "guide",
+                      "source_id": "synthetic:guide",
+                      "subject": "glassleaf",
+                      "metric": "watering_interval",
+                      "value": 3,
+                      "unit": "days",
+                      "observed": "2026-09-20",
+                      "body": "Synthetic observation.\n{\"metric\": \"watering_interval\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"days\", \"value\": 3}\nEnd of observation.",
+                      "source_hash": "5a6ec8cf9d7225ee246b12bc7361dec10e7aa0e287743f1999c16954237ceb29",
+                      "start": 23,
+                      "end": 132
+                    }
+                  ],
+                  "output_hash": "0f61616a05a47b314fcc73d9aeef9cd2e3d249d565491f224c71505c67c0577b",
+                  "latency_ms": 0.044
+                }
+              ],
+              "claims": [
+                {
+                  "subject": "glassleaf",
+                  "metric": "watering_interval",
+                  "value": 3,
+                  "unit": "days",
+                  "evidence_id": "guide",
+                  "start": 23,
+                  "end": 132
+                }
+              ],
+              "verification": {
+                "accepted": false,
+                "signals": {
+                  "retrieval_success": true,
+                  "evidence_relevance": false,
+                  "claim_support": false,
+                  "citation_valid": false
+                },
+                "reasons": [
+                  "irrelevant_evidence",
+                  "missing_or_duplicate_claim"
+                ],
+                "provenance": []
+              }
+            },
+            {
+              "attempt": 1,
+              "observations": [
+                {
+                  "tool": "structured_lookup",
+                  "tool_version": "1.0",
+                  "input_hash": "cfba6e19cb82a17f7ffe51322a6e0d2bd7e6bd0a2ed0040f75d99b95a0184c0d",
+                  "status": "ok",
+                  "evidence": [
+                    {
+                      "evidence_id": "area",
+                      "source_id": "synthetic:area",
+                      "subject": "glassleaf",
+                      "metric": "cultivated_area",
+                      "value": 42,
+                      "unit": "ha",
+                      "observed": "2026-09-20",
+                      "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+                      "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                      "start": 23,
+                      "end": 129
+                    }
+                  ],
+                  "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
+                  "latency_ms": 0.041
+                }
+              ],
+              "claims": [
+                {
+                  "subject": "glassleaf",
+                  "metric": "cultivated_area",
+                  "value": 42,
+                  "unit": "ha",
+                  "evidence_id": "area",
+                  "start": 23,
+                  "end": 129
+                }
+              ],
+              "verification": {
+                "accepted": true,
+                "signals": {
+                  "retrieval_success": true,
+                  "evidence_relevance": true,
+                  "claim_support": true,
+                  "citation_valid": true
+                },
+                "reasons": [],
+                "provenance": [
+                  {
+                    "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+                    "source_id": "synthetic:area",
+                    "evidence_id": "area",
+                    "evidence_span": [
+                      23,
+                      129
+                    ],
+                    "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                    "tool": "structured_lookup",
+                    "tool_version": "1.0",
+                    "verification_result": "PASS"
+                  }
+                ]
+              }
+            }
+          ],
+          "integrity_hash": "edb565af09a5559dd69fd0ca34376c15258c82c4c606bb915a67c94dbea42d2e"
+        }
+      },
+      "replay": {
+        "mode": "configuration/evidence replay",
+        "external_calls": 0,
+        "reports": [
+          {
+            "accepted": false,
+            "signals": {
+              "retrieval_success": true,
+              "evidence_relevance": false,
+              "claim_support": false,
+              "citation_valid": false
+            },
+            "reasons": [
+              "irrelevant_evidence",
+              "missing_or_duplicate_claim"
+            ],
+            "provenance": []
+          },
+          {
+            "accepted": true,
+            "signals": {
+              "retrieval_success": true,
+              "evidence_relevance": true,
+              "claim_support": true,
+              "citation_valid": true
+            },
+            "reasons": [],
+            "provenance": [
+              {
+                "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+                "source_id": "synthetic:area",
+                "evidence_id": "area",
+                "evidence_span": [
+                  23,
+                  129
+                ],
+                "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                "tool": "structured_lookup",
+                "tool_version": "1.0",
+                "verification_result": "PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "links": {
+        "source": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/src/harness/reflection.py",
+        "test": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/tests/test_harness_integration.py",
+        "execution": "./core-evidence.json"
+      }
+    },
+    {
+      "id": "conflicting_evidence",
+      "title": "Conflicting Evidence",
+      "description": "Conflicting values at the same observation date cause safe abstention.",
+      "case_id": "conflicting-1",
+      "run": {
+        "state": "FAILED",
+        "claims": [],
+        "verification": {
+          "accepted": false,
+          "signals": {
+            "retrieval_success": true,
+            "evidence_relevance": true,
+            "claim_support": true,
+            "citation_valid": true
+          },
+          "reasons": [
+            "conflicting_evidence"
+          ],
+          "provenance": []
+        },
+        "calls": 1,
+        "latency_ms": 0.397,
+        "trajectory": [
+          {
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
+            "step_id": 1,
+            "sequence": 0,
+            "state": "CREATED",
+            "timestamp": "2026-10-08T04:27:42.178568+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
+            "step_id": 2,
+            "sequence": 1,
+            "state": "PLANNING",
+            "timestamp": "2026-10-08T04:27:42.178577+00:00",
+            "agent_role": "harness",
+            "input_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30"
+          },
+          {
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
+            "step_id": 3,
+            "sequence": 2,
+            "state": "EXECUTING",
+            "timestamp": "2026-10-08T04:27:42.178593+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
+            "step_id": 4,
+            "sequence": 3,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.178670+00:00",
+            "agent_role": "harness",
+            "output_hash": "6c91d016dd52a3bcac8dd55dedee51dc837275b6fc10dd55d98474db83e41ed9"
+          },
+          {
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
+            "step_id": 5,
+            "sequence": 4,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.178674+00:00",
+            "agent_role": "harness",
+            "tool_name": "document_lookup",
+            "tool_version": "1.0",
+            "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+            "output_hash": "80d2c962e221f2318143f7ef64047dff81fa13012047fe1bc3db335b156cae5b",
+            "error_type": "ok",
+            "latency_ms": 0.049
+          },
+          {
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
+            "step_id": 6,
+            "sequence": 5,
+            "state": "VERIFYING",
+            "timestamp": "2026-10-08T04:27:42.178679+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
+            "step_id": 7,
+            "sequence": 6,
+            "state": "REFLECTING",
+            "timestamp": "2026-10-08T04:27:42.178706+00:00",
+            "agent_role": "harness",
+            "verification": "REJECT",
+            "retry_reason": "conflicting_evidence"
+          },
+          {
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
+            "step_id": 8,
+            "sequence": 7,
+            "state": "FAILED",
+            "timestamp": "2026-10-08T04:27:42.178710+00:00",
+            "agent_role": "harness",
+            "error_type": "abstained"
+          }
+        ],
+        "replay_bundle": {
+          "schema_version": 1,
+          "needs": [
+            {
+              "subject": "glassleaf",
+              "metric": "cultivated_area",
+              "unit": "ha",
+              "as_of": "2026-10-01",
+              "max_age_days": 60
+            }
+          ],
+          "plan": [
+            [
+              {
+                "tool": "document_lookup",
+                "arguments": {
+                  "key": "initial"
+                }
+              }
+            ]
+          ],
+          "plan_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30",
+          "policy": {
+            "max_steps": 6,
+            "max_retry": 2,
+            "timeout": 3.0,
+            "permissions": [
+              "read:synthetic",
+              "compute:trusted"
+            ],
+            "version": "public-policy-1"
+          },
+          "policy_hash": "6e2a9fd21aefdb49cd857520531d1ef70380259e24fee9329116c3ee38682e38",
+          "registry_hash": "31deb0711e7a6e01a99e08696cf21dcb2afe9d8834ae0093a83b78c169d47730",
+          "records": [
+            {
+              "attempt": 0,
+              "observations": [
+                {
+                  "tool": "document_lookup",
+                  "tool_version": "1.0",
+                  "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+                  "status": "ok",
+                  "evidence": [
+                    {
+                      "evidence_id": "area",
+                      "source_id": "synthetic:area",
+                      "subject": "glassleaf",
+                      "metric": "cultivated_area",
+                      "value": 42,
+                      "unit": "ha",
+                      "observed": "2026-09-20",
+                      "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+                      "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                      "start": 23,
+                      "end": 129
+                    },
+                    {
+                      "evidence_id": "conflict",
+                      "source_id": "synthetic:conflict",
+                      "subject": "glassleaf",
+                      "metric": "cultivated_area",
+                      "value": 52,
+                      "unit": "ha",
+                      "observed": "2026-09-20",
+                      "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 52}\nEnd of observation.",
+                      "source_hash": "152bea93d9690fabd3a439b7e2426b66cef2b5c66d4f3a88a3d68b69ba6d4162",
+                      "start": 23,
+                      "end": 129
+                    }
+                  ],
+                  "output_hash": "80d2c962e221f2318143f7ef64047dff81fa13012047fe1bc3db335b156cae5b",
+                  "latency_ms": 0.049
+                }
+              ],
+              "claims": [
+                {
+                  "subject": "glassleaf",
+                  "metric": "cultivated_area",
+                  "value": 42,
+                  "unit": "ha",
+                  "evidence_id": "area",
+                  "start": 23,
+                  "end": 129
+                }
+              ],
+              "verification": {
+                "accepted": false,
+                "signals": {
+                  "retrieval_success": true,
+                  "evidence_relevance": true,
+                  "claim_support": true,
+                  "citation_valid": true
+                },
+                "reasons": [
+                  "conflicting_evidence"
+                ],
+                "provenance": []
+              }
+            }
+          ],
+          "integrity_hash": "1a3dade094402a7b3abbcd26ef54e38c35d849223fc7ecf492981065569fbc16"
+        }
+      },
+      "replay": {
+        "mode": "configuration/evidence replay",
+        "external_calls": 0,
+        "reports": [
+          {
+            "accepted": false,
+            "signals": {
+              "retrieval_success": true,
+              "evidence_relevance": true,
+              "claim_support": true,
+              "citation_valid": true
+            },
+            "reasons": [
+              "conflicting_evidence"
+            ],
+            "provenance": []
+          }
+        ]
+      },
+      "links": {
+        "source": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/src/harness/verifier.py",
+        "test": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/tests/test_harness_integration.py",
+        "execution": "./core-evidence.json"
+      }
+    },
+    {
+      "id": "invalid_citation_span",
+      "title": "Invalid Citation Span",
+      "description": "The actual case candidate mutates a citation span; the verifier rejects it.",
+      "case_id": "invalid_span-1",
+      "run": {
+        "state": "FAILED",
+        "claims": [],
+        "verification": {
+          "accepted": false,
+          "signals": {
+            "retrieval_success": true,
+            "evidence_relevance": true,
+            "claim_support": true,
+            "citation_valid": false
+          },
+          "reasons": [
+            "invalid_citation"
+          ],
+          "provenance": []
+        },
+        "calls": 1,
+        "latency_ms": 0.376,
+        "trajectory": [
+          {
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
+            "step_id": 1,
+            "sequence": 0,
+            "state": "CREATED",
+            "timestamp": "2026-10-08T04:27:42.179300+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
+            "step_id": 2,
+            "sequence": 1,
+            "state": "PLANNING",
+            "timestamp": "2026-10-08T04:27:42.179309+00:00",
+            "agent_role": "harness",
+            "input_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30"
+          },
+          {
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
+            "step_id": 3,
+            "sequence": 2,
+            "state": "EXECUTING",
+            "timestamp": "2026-10-08T04:27:42.179325+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
+            "step_id": 4,
+            "sequence": 3,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.179392+00:00",
+            "agent_role": "harness",
+            "output_hash": "af3f805aa6209ff150913ec79d498703680b86f1f91fc3a69f556fdebda54060"
+          },
+          {
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
+            "step_id": 5,
+            "sequence": 4,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.179397+00:00",
+            "agent_role": "harness",
+            "tool_name": "document_lookup",
+            "tool_version": "1.0",
+            "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+            "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
+            "error_type": "ok",
+            "latency_ms": 0.039
+          },
+          {
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
+            "step_id": 6,
+            "sequence": 5,
+            "state": "VERIFYING",
+            "timestamp": "2026-10-08T04:27:42.179405+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
+            "step_id": 7,
+            "sequence": 6,
+            "state": "REFLECTING",
+            "timestamp": "2026-10-08T04:27:42.179419+00:00",
+            "agent_role": "harness",
+            "verification": "REJECT",
+            "retry_reason": "invalid_citation"
+          },
+          {
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
+            "step_id": 8,
+            "sequence": 7,
+            "state": "FAILED",
+            "timestamp": "2026-10-08T04:27:42.179423+00:00",
+            "agent_role": "harness",
+            "error_type": "abstained"
+          }
+        ],
+        "replay_bundle": {
+          "schema_version": 1,
+          "needs": [
+            {
+              "subject": "glassleaf",
+              "metric": "cultivated_area",
+              "unit": "ha",
+              "as_of": "2026-10-01",
+              "max_age_days": 60
+            }
+          ],
+          "plan": [
+            [
+              {
+                "tool": "document_lookup",
+                "arguments": {
+                  "key": "initial"
+                }
+              }
+            ]
+          ],
+          "plan_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30",
+          "policy": {
+            "max_steps": 6,
+            "max_retry": 2,
+            "timeout": 3.0,
+            "permissions": [
+              "read:synthetic",
+              "compute:trusted"
+            ],
+            "version": "public-policy-1"
+          },
+          "policy_hash": "6e2a9fd21aefdb49cd857520531d1ef70380259e24fee9329116c3ee38682e38",
+          "registry_hash": "31deb0711e7a6e01a99e08696cf21dcb2afe9d8834ae0093a83b78c169d47730",
+          "records": [
+            {
+              "attempt": 0,
+              "observations": [
+                {
+                  "tool": "document_lookup",
+                  "tool_version": "1.0",
+                  "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+                  "status": "ok",
+                  "evidence": [
+                    {
+                      "evidence_id": "area",
+                      "source_id": "synthetic:area",
+                      "subject": "glassleaf",
+                      "metric": "cultivated_area",
+                      "value": 42,
+                      "unit": "ha",
+                      "observed": "2026-09-20",
+                      "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+                      "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                      "start": 23,
+                      "end": 129
+                    }
+                  ],
+                  "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
+                  "latency_ms": 0.039
+                }
+              ],
+              "claims": [
+                {
+                  "subject": "glassleaf",
+                  "metric": "cultivated_area",
+                  "value": 42,
+                  "unit": "ha",
+                  "evidence_id": "area",
+                  "start": 0,
+                  "end": 129
+                }
+              ],
+              "verification": {
+                "accepted": false,
+                "signals": {
+                  "retrieval_success": true,
+                  "evidence_relevance": true,
+                  "claim_support": true,
+                  "citation_valid": false
+                },
+                "reasons": [
+                  "invalid_citation"
+                ],
+                "provenance": []
+              }
+            }
+          ],
+          "integrity_hash": "c633197caa3d0dcd67270271ebaccd39de7e6df00756c3515dd054b67a682d4d"
+        }
+      },
+      "replay": {
+        "mode": "configuration/evidence replay",
+        "external_calls": 0,
+        "reports": [
+          {
+            "accepted": false,
+            "signals": {
+              "retrieval_success": true,
+              "evidence_relevance": true,
+              "claim_support": true,
+              "citation_valid": false
+            },
+            "reasons": [
+              "invalid_citation"
+            ],
+            "provenance": []
+          }
+        ]
+      },
+      "links": {
+        "source": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/src/harness/verifier.py",
+        "test": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/tests/test_harness_integration.py",
+        "execution": "./core-evidence.json"
+      }
+    },
+    {
+      "id": "configuration_evidence_replay",
+      "title": "Configuration / Evidence Replay",
+      "description": "The recovery run's original bundle is rechecked without executing tools; this is not a new run or full environment replay.",
+      "case_id": "retry_recovery-1",
+      "run": {
+        "state": "COMPLETED",
+        "claims": [
+          {
+            "subject": "glassleaf",
+            "metric": "cultivated_area",
+            "value": 42,
+            "unit": "ha",
+            "evidence_id": "area",
+            "start": 23,
+            "end": 129
+          }
+        ],
+        "verification": {
+          "accepted": true,
+          "signals": {
+            "retrieval_success": true,
+            "evidence_relevance": true,
+            "claim_support": true,
+            "citation_valid": true
+          },
+          "reasons": [],
+          "provenance": [
+            {
+              "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+              "source_id": "synthetic:area",
+              "evidence_id": "area",
+              "evidence_span": [
+                23,
+                129
+              ],
+              "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+              "tool": "structured_lookup",
+              "tool_version": "1.0",
+              "verification_result": "PASS"
+            }
+          ]
+        },
+        "calls": 2,
+        "latency_ms": 0.515,
+        "trajectory": [
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 1,
+            "sequence": 0,
+            "state": "CREATED",
+            "timestamp": "2026-10-08T04:27:42.177671+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 2,
+            "sequence": 1,
+            "state": "PLANNING",
+            "timestamp": "2026-10-08T04:27:42.177682+00:00",
+            "agent_role": "harness",
+            "input_hash": "86cebd49b069ffd20b74294fe33b21757356460201f766bfcb867e58af9889e7"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 3,
+            "sequence": 2,
+            "state": "EXECUTING",
+            "timestamp": "2026-10-08T04:27:42.177705+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 4,
+            "sequence": 3,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.177780+00:00",
+            "agent_role": "harness",
+            "output_hash": "042fbd3fba90bf1041013c4056333fe16cef3e18043b7705da1e141c67c351cd"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 5,
+            "sequence": 4,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.177783+00:00",
+            "agent_role": "harness",
+            "tool_name": "document_lookup",
+            "tool_version": "1.0",
+            "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+            "output_hash": "0f61616a05a47b314fcc73d9aeef9cd2e3d249d565491f224c71505c67c0577b",
+            "error_type": "ok",
+            "latency_ms": 0.044
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 6,
+            "sequence": 5,
+            "state": "VERIFYING",
+            "timestamp": "2026-10-08T04:27:42.177790+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 7,
+            "sequence": 6,
+            "state": "REFLECTING",
+            "timestamp": "2026-10-08T04:27:42.177799+00:00",
+            "agent_role": "harness",
+            "verification": "REJECT",
+            "retry_reason": "irrelevant_evidence,missing_or_duplicate_claim"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 8,
+            "sequence": 7,
+            "state": "RETRYING",
+            "timestamp": "2026-10-08T04:27:42.177802+00:00",
+            "agent_role": "harness",
+            "retry_reason": "irrelevant_evidence,missing_or_duplicate_claim"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 9,
+            "sequence": 8,
+            "state": "EXECUTING",
+            "timestamp": "2026-10-08T04:27:42.177805+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 10,
+            "sequence": 9,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.177872+00:00",
+            "agent_role": "harness",
+            "output_hash": "5565bc8baebcbf267412c5b86483ea6e3f086a3bffffdd41ff0e877ccc5c7d7c"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 11,
+            "sequence": 10,
+            "state": "OBSERVING",
+            "timestamp": "2026-10-08T04:27:42.177875+00:00",
+            "agent_role": "harness",
+            "tool_name": "structured_lookup",
+            "tool_version": "1.0",
+            "input_hash": "cfba6e19cb82a17f7ffe51322a6e0d2bd7e6bd0a2ed0040f75d99b95a0184c0d",
+            "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
+            "error_type": "ok",
+            "latency_ms": 0.041
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 12,
+            "sequence": 11,
+            "state": "VERIFYING",
+            "timestamp": "2026-10-08T04:27:42.177879+00:00",
+            "agent_role": "harness"
+          },
+          {
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
+            "step_id": 13,
+            "sequence": 12,
+            "state": "COMPLETED",
+            "timestamp": "2026-10-08T04:27:42.177898+00:00",
+            "agent_role": "harness",
+            "verification": "PASS"
+          }
+        ],
+        "replay_bundle": {
+          "schema_version": 1,
+          "needs": [
+            {
+              "subject": "glassleaf",
+              "metric": "cultivated_area",
+              "unit": "ha",
+              "as_of": "2026-10-01",
+              "max_age_days": 60
+            }
+          ],
+          "plan": [
+            [
+              {
+                "tool": "document_lookup",
+                "arguments": {
+                  "key": "initial"
+                }
+              }
+            ],
+            [
+              {
+                "tool": "structured_lookup",
+                "arguments": {
+                  "key": "fallback"
+                }
+              }
+            ]
+          ],
+          "plan_hash": "86cebd49b069ffd20b74294fe33b21757356460201f766bfcb867e58af9889e7",
+          "policy": {
+            "max_steps": 6,
+            "max_retry": 2,
+            "timeout": 3.0,
+            "permissions": [
+              "read:synthetic",
+              "compute:trusted"
+            ],
+            "version": "public-policy-1"
+          },
+          "policy_hash": "6e2a9fd21aefdb49cd857520531d1ef70380259e24fee9329116c3ee38682e38",
+          "registry_hash": "31deb0711e7a6e01a99e08696cf21dcb2afe9d8834ae0093a83b78c169d47730",
+          "records": [
+            {
+              "attempt": 0,
+              "observations": [
+                {
+                  "tool": "document_lookup",
+                  "tool_version": "1.0",
+                  "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
+                  "status": "ok",
+                  "evidence": [
+                    {
+                      "evidence_id": "guide",
+                      "source_id": "synthetic:guide",
+                      "subject": "glassleaf",
+                      "metric": "watering_interval",
+                      "value": 3,
+                      "unit": "days",
+                      "observed": "2026-09-20",
+                      "body": "Synthetic observation.\n{\"metric\": \"watering_interval\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"days\", \"value\": 3}\nEnd of observation.",
+                      "source_hash": "5a6ec8cf9d7225ee246b12bc7361dec10e7aa0e287743f1999c16954237ceb29",
+                      "start": 23,
+                      "end": 132
+                    }
+                  ],
+                  "output_hash": "0f61616a05a47b314fcc73d9aeef9cd2e3d249d565491f224c71505c67c0577b",
+                  "latency_ms": 0.044
+                }
+              ],
+              "claims": [
+                {
+                  "subject": "glassleaf",
+                  "metric": "watering_interval",
+                  "value": 3,
+                  "unit": "days",
+                  "evidence_id": "guide",
+                  "start": 23,
+                  "end": 132
+                }
+              ],
+              "verification": {
+                "accepted": false,
+                "signals": {
+                  "retrieval_success": true,
+                  "evidence_relevance": false,
+                  "claim_support": false,
+                  "citation_valid": false
+                },
+                "reasons": [
+                  "irrelevant_evidence",
+                  "missing_or_duplicate_claim"
+                ],
+                "provenance": []
+              }
+            },
+            {
+              "attempt": 1,
+              "observations": [
+                {
+                  "tool": "structured_lookup",
+                  "tool_version": "1.0",
+                  "input_hash": "cfba6e19cb82a17f7ffe51322a6e0d2bd7e6bd0a2ed0040f75d99b95a0184c0d",
+                  "status": "ok",
+                  "evidence": [
+                    {
+                      "evidence_id": "area",
+                      "source_id": "synthetic:area",
+                      "subject": "glassleaf",
+                      "metric": "cultivated_area",
+                      "value": 42,
+                      "unit": "ha",
+                      "observed": "2026-09-20",
+                      "body": "Synthetic observation.\n{\"metric\": \"cultivated_area\", \"observed\": \"2026-09-20\", \"subject\": \"glassleaf\", \"unit\": \"ha\", \"value\": 42}\nEnd of observation.",
+                      "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                      "start": 23,
+                      "end": 129
+                    }
+                  ],
+                  "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
+                  "latency_ms": 0.041
+                }
+              ],
+              "claims": [
+                {
+                  "subject": "glassleaf",
+                  "metric": "cultivated_area",
+                  "value": 42,
+                  "unit": "ha",
+                  "evidence_id": "area",
+                  "start": 23,
+                  "end": 129
+                }
+              ],
+              "verification": {
+                "accepted": true,
+                "signals": {
+                  "retrieval_success": true,
+                  "evidence_relevance": true,
+                  "claim_support": true,
+                  "citation_valid": true
+                },
+                "reasons": [],
+                "provenance": [
+                  {
+                    "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+                    "source_id": "synthetic:area",
+                    "evidence_id": "area",
+                    "evidence_span": [
+                      23,
+                      129
+                    ],
+                    "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                    "tool": "structured_lookup",
+                    "tool_version": "1.0",
+                    "verification_result": "PASS"
+                  }
+                ]
+              }
+            }
+          ],
+          "integrity_hash": "edb565af09a5559dd69fd0ca34376c15258c82c4c606bb915a67c94dbea42d2e"
+        }
+      },
+      "replay": {
+        "mode": "configuration/evidence replay",
+        "external_calls": 0,
+        "reports": [
+          {
+            "accepted": false,
+            "signals": {
+              "retrieval_success": true,
+              "evidence_relevance": false,
+              "claim_support": false,
+              "citation_valid": false
+            },
+            "reasons": [
+              "irrelevant_evidence",
+              "missing_or_duplicate_claim"
+            ],
+            "provenance": []
+          },
+          {
+            "accepted": true,
+            "signals": {
+              "retrieval_success": true,
+              "evidence_relevance": true,
+              "claim_support": true,
+              "citation_valid": true
+            },
+            "reasons": [],
+            "provenance": [
+              {
+                "claim_hash": "fa69e65fbe66019df8f608178ac5c8db042e881ca12e8b6c3b93eca1aa0cd27d",
+                "source_id": "synthetic:area",
+                "evidence_id": "area",
+                "evidence_span": [
+                  23,
+                  129
+                ],
+                "source_hash": "a7193ffaa08c8cdf777c130c345eebbefac3726591b577e81b9f402d49aa3e7c",
+                "tool": "structured_lookup",
+                "tool_version": "1.0",
+                "verification_result": "PASS"
+              }
+            ]
+          }
+        ]
+      },
+      "links": {
+        "source": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/src/harness/replay.py",
+        "test": "https://github.com/YeongjoonKim/reliable-domain-agent-harness/blob/main/tests/test_harness_integration.py",
+        "execution": "./core-evidence.json"
+      }
+    }
+  ]
+};

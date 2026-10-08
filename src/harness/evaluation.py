@@ -1,4 +1,5 @@
 """동일 후보 생성기를 사용하는 합성 기준선 대 하네스 비교 평가다."""
+import argparse
 import asyncio
 from dataclasses import asdict
 import json
@@ -111,14 +112,20 @@ async def evaluate():
                 dataset_version="synthetic-1", categories=len(CATEGORIES), summary=summary, cases=outcomes)
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--update-examples", action="store_true",
+                        help="explicitly replace the two tracked evaluation snapshots")
+    args = parser.parse_args(argv)
+    directory = Path("examples" if args.update_examples else "outputs")
+    directory.mkdir(parents=True, exist_ok=True)
     output = asyncio.run(evaluate())
-    destination = Path("examples/paired-evaluation.json")
-    destination.write_text(json.dumps(output, indent=2) + "\n")
+    destination = directory / "paired-evaluation.json"
+    destination.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
     fixture = [dict(id=case["id"], category=case["category"], needs=[asdict(n) for n in case["needs"]],
                     fixtures=case["fixtures"], faults=case["faults"], plan=case["plan"].to_dict(),
                     expected=case["expected"], mutation=case["mutation"]) for case in cases()]
-    Path("examples/evaluation-cases.json").write_text(json.dumps(fixture, indent=2) + "\n")
+    (directory / "evaluation-cases.json").write_text(json.dumps(fixture, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(output["summary"], indent=2))
 
 

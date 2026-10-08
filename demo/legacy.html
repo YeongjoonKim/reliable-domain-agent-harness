@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Reconstructed Public Demo — Evidence Workbench</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+<script src="demo.js" defer></script>
+<script src="evidence.js" defer></script>
+<script src="evidence-view.js" defer></script>
+</head>
+<body>
+<header>
+<p class="eyebrow">RECONSTRUCTED PUBLIC DEMO</p>
+<h1>Evidence Workbench</h1>
+<p class="lead">See the boundary between a tool result and a supported answer.</p>
+<p class="notice">Synthetic, static scenarios · No production connection · No measured performance</p>
+</header>
+<main>
+<section class="controls" aria-label="Demo scenario">
+<label for="scenario">Explore a failure boundary</label>
+<select id="scenario">
+<option value="complete">Complete evidence</option>
+<option value="partial">One tool times out</option>
+<option value="summary">Summary without search</option>
+</select>
+<span id="scenario-status" role="status"></span>
+</section>
+<div class="tabs" role="tablist" aria-label="Engineering views">
+<button role="tab" id="tab-overview" aria-controls="panel" aria-selected="true" data-view="overview">Overview</button>
+<button role="tab" id="tab-tools" aria-controls="panel" aria-selected="false" tabindex="-1" data-view="tools">Runtime &amp; tools</button>
+<button role="tab" id="tab-verification" aria-controls="panel" aria-selected="false" tabindex="-1" data-view="verification">Verification</button>
+<button role="tab" id="tab-evaluation" aria-controls="panel" aria-selected="false" tabindex="-1" data-view="evaluation">Evaluation</button>
+<button role="tab" id="tab-trace" aria-controls="panel" aria-selected="false" tabindex="-1" data-view="trace">Trace</button>
+<button role="tab" id="tab-reproducibility" aria-controls="panel" aria-selected="false" tabindex="-1" data-view="reproducibility">Reproducibility</button>
+</div>
+<section id="panel" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
+<div class="panel-heading"><p id="panel-kicker" class="eyebrow"></p><h2 id="panel-title"></h2><p id="panel-summary"></p></div>
+<div id="cards" class="cards"></div>
+<div class="detail"><h3 id="detail-title"></h3><ol id="steps"></ol></div>
+<section class="detail" aria-label="Executed snapshot"><h3>Executed Python snapshot</h3>
+<p>공개 Python 예제의 실제 실행 결과입니다. 합성 입력 기반의 저장된 snapshot이며 운영 기록이나 실시간 연결이 아닙니다.</p>
+<pre id="execution-evidence"></pre></section>
+</section>
+<aside><h2>What this does not show</h2>
+<p>No language model is running. No real image is diagnosed. Logical steps are authored examples, not a measured waterfall.
+The explanatory cards are static. The Executed Python snapshot panel displays saved output from the public runtime, not a live service.</p>
+<p><a href="../README.md">Read scope and limitations</a> · <a href="../docs/architecture/01_system_architecture.svg">Generic architecture</a></p>
+</aside>
+</main>
+<footer>Public reconstruction · Owner-approved publication · No company assets</footer>
+</body>
+</html>

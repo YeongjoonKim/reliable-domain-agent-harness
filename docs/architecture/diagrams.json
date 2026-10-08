@@ -1,9 +1,43 @@
 [
   {
     "file": "01_system_architecture",
-    "title": "Agent systems: three implementation paths",
-    "scope": "Implemented responsibilities reviewed 2026-10-03",
+    "title": "Execution, verification, recovery and replay",
+    "scope": "Independent Public Core · separate operational and Scientific evidence",
     "lanes": [
+      {
+        "title": "INDEPENDENT PUBLIC CORE",
+        "nodes": [
+          {
+            "title": "Explicit Need + Plan",
+            "lines": [
+              "Synthetic input / fixtures",
+              "Time and call limits"
+            ]
+          },
+          {
+            "title": "Registry + execution",
+            "lines": [
+              "Schema / permission / version",
+              "Bounded tool observations"
+            ]
+          },
+          {
+            "title": "Verify + recover",
+            "lines": [
+              "Need / value / exact span",
+              "Reject / declared retry / abstain"
+            ]
+          },
+          {
+            "title": "Provenance + replay",
+            "lines": [
+              "Claim / source / tool hashes",
+              "Reverify with zero external calls"
+            ]
+          }
+        ],
+        "serial": true
+      },
       {
         "title": "PRODUCTION CONSULTATION",
         "nodes": [
@@ -39,7 +73,7 @@
         "serial": true
       },
       {
-        "title": "SCIENTIFIC ADMIN RUNTIME",
+        "title": "SEPARATE SCIENTIFIC RUNTIME",
         "nodes": [
           {
             "title": "Goal + limits",
@@ -71,43 +105,9 @@
           }
         ],
         "serial": true
-      },
-      {
-        "title": "INDEPENDENT PUBLIC CORE",
-        "nodes": [
-          {
-            "title": "Explicit Need + Plan",
-            "lines": [
-              "Synthetic input / fixtures",
-              "Declared fallback attempts"
-            ]
-          },
-          {
-            "title": "Typed Registry",
-            "lines": [
-              "Schema / permission",
-              "Timeout / call budget"
-            ]
-          },
-          {
-            "title": "Claim verification",
-            "lines": [
-              "Scope / unit / freshness",
-              "Exact span / source hash"
-            ]
-          },
-          {
-            "title": "Result + evaluation",
-            "lines": [
-              "Trace and frozen replay",
-              "Paired synthetic cases"
-            ]
-          }
-        ],
-        "serial": true
       }
     ],
-    "note": "Separate entry points and evidence scopes; the public core runs independently of the private services."
+    "note": "The synthetic Public Core runs independently. Operational and separate Scientific evidence do not imply shared code or automatic service integration."
   },
   {
     "file": "02_agent_runtime_flow",
