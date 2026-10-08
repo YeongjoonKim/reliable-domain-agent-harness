@@ -1,6 +1,6 @@
 # Implemented API and protocol interfaces
 
-회사 endpoint를 옮긴 문서가 아니라 새로 정의한 공개 계약입니다.
+회사 endpoint를 문서는 아닙니다. 새로 정의한 공개 Contract입니다.
 
 | Interface | Implementation | Input / output | Execution |
 |---|---|---|---|
