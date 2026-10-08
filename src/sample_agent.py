@@ -106,7 +106,7 @@ class DemoRuntime:
         accepted = verify(claims, evidence, subject)
         covered = {f.metric for f in evidence}
         missing = [n for n in plan if n not in covered]
-        # 생성기는 의도적으로 단순 템플릿이다. 이 코드가 자연어 이해 모델은 아니다.
+        # 생성기는 의도적인 단순 템플릿이다. 이 코드는 자연어 이해 모델이 아니다.
         answer = "\n".join(f"{f.subject}: {f.metric} = {f.value} {f.unit} [{f.key}]"
                            for f in evidence) if accepted else ""
         if missing:
@@ -125,7 +125,7 @@ class DemoRuntime:
 
 
 async def dispatch(runtime, method, path, payload=None):
-    """네트워크 서버가 아닌 신규 공개 샘플 계약의 실행 가능한 라우터다."""
+    """네트워크 서버가 아닌 신규 공개 샘플 조건의 실행 가능한 라우터."""
     if (method, path) == ("POST", "/api/demo/agent/query"):
         try:
             return 200, await runtime.run(payload)
