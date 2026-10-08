@@ -47,15 +47,15 @@ Cross-cutting: Trajectory · Provenance · Sandbox · Replay · Evaluation
 [운영 구현 대응표](docs/actual-engineering.md) · [Public Core와 소스](docs/public-core.md) ·
 [상세 시스템 구성](docs/system-facts.md).
 
-## 대표 사례: 잘못된 검색과 복구
+## 사례: 잘못된 검색 시 복구
 
-질문이 가상의 작물 재배면적을 요구하는데 같은 작물의 관수 간격 문서가 검색됩니다.
+질문이 가상의 작물 재배면적을 요구하는데 동일 작물의 관수 관련 문서가 검색됩니다.
 검색은 성공했지만 정보 요구가 달라 거부하고 대체 정형 조회에서 면적 근거를 찾은 후에만
 인용 구간과 값을 검증하고 완료합니다. [공개 실행 JSON](examples/recovery.json).
 
 `VERIFYING → REFLECTING → RETRYING → EXECUTING → VERIFYING → COMPLETED`
 
-## 실제 구현 경험
+## 실제 구현
 
 농업 도메인 상담에서 질문·대화 맥락을 검색 계획으로 연결하고,
 구조화 DB·Vector·KG·웹·Vision의 근거를 조합해 답변을 생성·검증하는 시스템을 개발했습니다.
@@ -66,7 +66,7 @@ Cross-cutting: Trajectory · Provenance · Sandbox · Replay · Evaluation
 별도 **Scientific Harness**에서는 goal·요구별 의미 검토, Evidence Span 선택·검증,
 Docker 계산 실행, 저장된 설정·근거의 Replay를 구현했습니다.
 서버가 나눈 원문 구간에서 LLM이 ID를 선택하고 서버가 해당 인용을 검증합니다.
-기존 상담 전체가 이 새 실행기로 전환된 것은 아니며 [구현별 경계](docs/actual-engineering.md)를 구분합니다.
+기존 상담 전체가 구현된 것은 아니며 [구현별 경계](docs/actual-engineering.md)를 구분합니다.
 
 ### 운영 화면
 
