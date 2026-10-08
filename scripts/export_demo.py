@@ -10,6 +10,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 from pathlib import Path
 import sys
 from urllib.parse import urlsplit
@@ -207,9 +208,18 @@ def validate_artifact(artifact):
             check_latency(row["latency_ms"])
         expected = dict(cases=len(rows), task_success=sum(row["success"] for row in rows),
                         unsafe_answers=sum(row["unsafe_answer"] for row in rows),
-                        average_calls=sum(row["calls"] for row in rows) / len(rows),
-                        average_latency_ms=sum(row["latency_ms"] for row in rows) / len(rows))
-        require(evaluation["summary"][arm] == expected, "evaluation summary drift")
+                        average_calls=sum(row["calls"] for row in rows) / len(rows))
+        observed = evaluation["summary"][arm]
+        require(isinstance(observed, dict) and
+                digest({key: value for key, value in observed.items() if key != "average_latency_ms"}) ==
+                digest(expected), "evaluation summary drift")
+        average = observed.get("average_latency_ms")
+        # Python versions may accumulate identical raw float latencies with
+        # different final rounding. Only this derived execution-time mean gets
+        # a tolerance; the original rows and all non-latency fields stay exact.
+        require(type(average) in (int, float) and math.isfinite(average) and average >= 0 and
+                math.isclose(average, sum(row["latency_ms"] for row in rows) / len(rows),
+                             rel_tol=1e-12, abs_tol=1e-12), "evaluation summary drift")
     return artifact
 
 

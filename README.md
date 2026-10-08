@@ -43,7 +43,7 @@ Docker Sandbox는 기본 실행에 포함되지 않는 [별도 opt-in 검증](do
 
 | 증거 | 해석 범위 |
 |---|---|
-| 공개 테스트 76개 통과 | 2026-10-08 로컬 검증: 기존 57개 + 산출물·CLI·HTML 링크 회귀 19개. commit별 결과는 CI와 [검증 기록](docs/validation.md)에서 확인 |
+| 공개 테스트 79개 통과 | 2026-10-08 로컬 검증: 기존 57개 + 산출물·CLI·HTML 링크 회귀 22개. commit별 결과는 CI와 [검증 기록](docs/validation.md)에서 확인 |
 | 24개 synthetic conformance scenarios | 설계된 계약·실패·복구 분기 검사; 독립 도메인 benchmark 아님 |
 | Baseline 8/24 · Harness 24/24 | 저장된 [verification/recovery ablation](examples/paired-evaluation.json); 범용 LLM 정확도 수치 아님 |
 | 근거 거부·Bounded Retry·Exact Span | 실제 Runtime 실행, typed claim 검증과 정확한 인용·hash 검사 |

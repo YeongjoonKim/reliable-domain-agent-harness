@@ -1,6 +1,6 @@
 window.CORE_EVIDENCE = {
   "schema_version": 1,
-  "generated_at": "2026-10-08T04:17:59.467383+00:00",
+  "generated_at": "2026-10-08T04:27:42.180376+00:00",
   "scope": {
     "kind": "public synthetic core execution",
     "disclosure": "Stored execution of the public Python Core; no live LLM, API, DB or full environment replay.",
@@ -19,7 +19,7 @@ window.CORE_EVIDENCE = {
       "src/harness/tools.py": "3e008a092d0495779bb085b0e7d1be20b5184ee1cb85618466715c98d0cf3f04",
       "src/harness/trajectory.py": "09c98136bd0c46a1a4abee9d9579b9774dc2c11262e1a51bdb8a6132d3a33d39",
       "src/harness/verifier.py": "67ea3670e6800ae0b0de54099ce9602b4a08991077776a72b5670e65a70d9b23",
-      "scripts/export_demo.py": "95c7e7aa66651c0736a239e330f2084eafad963aa744b0d1b3a4b674f2bdd57e",
+      "scripts/export_demo.py": "4a47186052aa27eb04956500ee8553eeefc7f33b235fff79d3a43ed83e80d3f6",
       "tests/test_harness_integration.py": "82f58f191edbd0825c9519e1ff0e0c786ff4367a0cc89f44ee1463487e5bd225"
     }
   },
@@ -33,14 +33,14 @@ window.CORE_EVIDENCE = {
         "task_success": 8,
         "unsafe_answers": 12,
         "average_calls": 1.0833333333333333,
-        "average_latency_ms": 1.7544999999999995
+        "average_latency_ms": 1.7485833333333332
       },
       "harness": {
         "cases": 24,
         "task_success": 24,
         "unsafe_answers": 0,
         "average_calls": 1.3333333333333333,
-        "average_latency_ms": 2.138916666666667
+        "average_latency_ms": 2.146875
       }
     },
     "cases": [
@@ -50,13 +50,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.082,
+          "latency_ms": 0.079,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.425,
+          "latency_ms": 0.417,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -67,13 +67,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": true,
           "calls": 2,
-          "latency_ms": 0.106,
+          "latency_ms": 0.109,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 2,
-          "latency_ms": 0.47,
+          "latency_ms": 0.473,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -84,13 +84,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.063,
+          "latency_ms": 0.062,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.369,
+          "latency_ms": 0.37,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -101,13 +101,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.073,
+          "latency_ms": 0.071,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.39,
+          "latency_ms": 0.399,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -124,7 +124,7 @@ window.CORE_EVIDENCE = {
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.338,
+          "latency_ms": 0.331,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -135,13 +135,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 20.25,
+          "latency_ms": 20.259,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 2,
-          "latency_ms": 21.485,
+          "latency_ms": 21.471,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -152,13 +152,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.052,
+          "latency_ms": 0.05,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 2,
-          "latency_ms": 0.456,
+          "latency_ms": 0.453,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -169,13 +169,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.066,
+          "latency_ms": 0.062,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 2,
-          "latency_ms": 0.449,
+          "latency_ms": 0.436,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -186,13 +186,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.059,
+          "latency_ms": 0.054,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.336,
+          "latency_ms": 0.333,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -203,13 +203,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.202,
+          "latency_ms": 0.166,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.516,
+          "latency_ms": 0.498,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -220,13 +220,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.066,
+          "latency_ms": 0.062,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.351,
+          "latency_ms": 0.361,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -237,13 +237,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.063,
+          "latency_ms": 0.068,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.346,
+          "latency_ms": 0.375,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -260,7 +260,7 @@ window.CORE_EVIDENCE = {
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.364,
+          "latency_ms": 0.386,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -271,13 +271,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": true,
           "calls": 2,
-          "latency_ms": 0.095,
+          "latency_ms": 0.097,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 2,
-          "latency_ms": 0.43,
+          "latency_ms": 0.44,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -288,13 +288,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.059,
+          "latency_ms": 0.056,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.351,
+          "latency_ms": 0.343,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -305,13 +305,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.071,
+          "latency_ms": 0.067,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.367,
+          "latency_ms": 0.381,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -322,13 +322,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.041,
+          "latency_ms": 0.045,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.32,
+          "latency_ms": 0.328,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -339,13 +339,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 20.219,
+          "latency_ms": 20.134,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 2,
-          "latency_ms": 21.218,
+          "latency_ms": 21.364,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -356,13 +356,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.048,
+          "latency_ms": 0.047,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 2,
-          "latency_ms": 0.437,
+          "latency_ms": 0.448,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -379,7 +379,7 @@ window.CORE_EVIDENCE = {
         "harness": {
           "success": true,
           "calls": 2,
-          "latency_ms": 0.438,
+          "latency_ms": 0.446,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -390,13 +390,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.059,
+          "latency_ms": 0.055,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.339,
+          "latency_ms": 0.336,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -407,13 +407,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.153,
+          "latency_ms": 0.144,
           "unsafe_answer": false
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.462,
+          "latency_ms": 0.463,
           "unsafe_answer": false,
           "state": "COMPLETED"
         }
@@ -430,7 +430,7 @@ window.CORE_EVIDENCE = {
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.339,
+          "latency_ms": 0.341,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -441,13 +441,13 @@ window.CORE_EVIDENCE = {
         "baseline": {
           "success": false,
           "calls": 1,
-          "latency_ms": 0.055,
+          "latency_ms": 0.053,
           "unsafe_answer": true
         },
         "harness": {
           "success": true,
           "calls": 1,
-          "latency_ms": 0.338,
+          "latency_ms": 0.332,
           "unsafe_answer": false,
           "state": "FAILED"
         }
@@ -499,70 +499,70 @@ window.CORE_EVIDENCE = {
           ]
         },
         "calls": 1,
-        "latency_ms": 0.55,
+        "latency_ms": 0.574,
         "trajectory": [
           {
-            "run_id": "a21b327c85c8489da1d428b5242e9f7c",
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
             "step_id": 1,
             "sequence": 0,
             "state": "CREATED",
-            "timestamp": "2026-10-08T04:17:59.463503+00:00",
+            "timestamp": "2026-10-08T04:27:42.176691+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "a21b327c85c8489da1d428b5242e9f7c",
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
             "step_id": 2,
             "sequence": 1,
             "state": "PLANNING",
-            "timestamp": "2026-10-08T04:17:59.463522+00:00",
+            "timestamp": "2026-10-08T04:27:42.176722+00:00",
             "agent_role": "harness",
             "input_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30"
           },
           {
-            "run_id": "a21b327c85c8489da1d428b5242e9f7c",
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
             "step_id": 3,
             "sequence": 2,
             "state": "EXECUTING",
-            "timestamp": "2026-10-08T04:17:59.463548+00:00",
+            "timestamp": "2026-10-08T04:27:42.176753+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "a21b327c85c8489da1d428b5242e9f7c",
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
             "step_id": 4,
             "sequence": 3,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.463648+00:00",
+            "timestamp": "2026-10-08T04:27:42.176863+00:00",
             "agent_role": "harness",
-            "output_hash": "22a1a169a48db8d8b3399c35b8512aceb83cd5937ca6bc17c5c1134226c4e143"
+            "output_hash": "2fa753222e9244d35b9b06d9f58920082982426efa0363768ede84cafffb7279"
           },
           {
-            "run_id": "a21b327c85c8489da1d428b5242e9f7c",
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
             "step_id": 5,
             "sequence": 4,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.463652+00:00",
+            "timestamp": "2026-10-08T04:27:42.176867+00:00",
             "agent_role": "harness",
             "tool_name": "document_lookup",
             "tool_version": "1.0",
             "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
             "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
             "error_type": "ok",
-            "latency_ms": 0.06
+            "latency_ms": 0.064
           },
           {
-            "run_id": "a21b327c85c8489da1d428b5242e9f7c",
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
             "step_id": 6,
             "sequence": 5,
             "state": "VERIFYING",
-            "timestamp": "2026-10-08T04:17:59.463662+00:00",
+            "timestamp": "2026-10-08T04:27:42.176874+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "a21b327c85c8489da1d428b5242e9f7c",
+            "run_id": "93011bc626dc488fa7fb61e87bbb8d37",
             "step_id": 7,
             "sequence": 6,
             "state": "COMPLETED",
-            "timestamp": "2026-10-08T04:17:59.463690+00:00",
+            "timestamp": "2026-10-08T04:27:42.176902+00:00",
             "agent_role": "harness",
             "verification": "PASS"
           }
@@ -626,7 +626,7 @@ window.CORE_EVIDENCE = {
                     }
                   ],
                   "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
-                  "latency_ms": 0.06
+                  "latency_ms": 0.064
                 }
               ],
               "claims": [
@@ -667,7 +667,7 @@ window.CORE_EVIDENCE = {
               }
             }
           ],
-          "integrity_hash": "8395bcb5898ba17192263f9e2529e7ec109cb52c5c3e47cae5ad34d501158caf"
+          "integrity_hash": "4a30c4174603532baa35ce34ff8ef7d5967010191ee5e559a8bbef55c0624064"
         }
       },
       "replay": {
@@ -751,128 +751,128 @@ window.CORE_EVIDENCE = {
           ]
         },
         "calls": 2,
-        "latency_ms": 0.582,
+        "latency_ms": 0.515,
         "trajectory": [
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 1,
             "sequence": 0,
             "state": "CREATED",
-            "timestamp": "2026-10-08T04:17:59.464474+00:00",
+            "timestamp": "2026-10-08T04:27:42.177671+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 2,
             "sequence": 1,
             "state": "PLANNING",
-            "timestamp": "2026-10-08T04:17:59.464487+00:00",
+            "timestamp": "2026-10-08T04:27:42.177682+00:00",
             "agent_role": "harness",
             "input_hash": "86cebd49b069ffd20b74294fe33b21757356460201f766bfcb867e58af9889e7"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 3,
             "sequence": 2,
             "state": "EXECUTING",
-            "timestamp": "2026-10-08T04:17:59.464508+00:00",
+            "timestamp": "2026-10-08T04:27:42.177705+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 4,
             "sequence": 3,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.464590+00:00",
+            "timestamp": "2026-10-08T04:27:42.177780+00:00",
             "agent_role": "harness",
-            "output_hash": "b170c55a9fdd9454b34e120239e0ee6643661b48315f373c4d1a2e5cdeebd4a8"
+            "output_hash": "042fbd3fba90bf1041013c4056333fe16cef3e18043b7705da1e141c67c351cd"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 5,
             "sequence": 4,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.464594+00:00",
+            "timestamp": "2026-10-08T04:27:42.177783+00:00",
             "agent_role": "harness",
             "tool_name": "document_lookup",
             "tool_version": "1.0",
             "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
             "output_hash": "0f61616a05a47b314fcc73d9aeef9cd2e3d249d565491f224c71505c67c0577b",
             "error_type": "ok",
-            "latency_ms": 0.05
+            "latency_ms": 0.044
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 6,
             "sequence": 5,
             "state": "VERIFYING",
-            "timestamp": "2026-10-08T04:17:59.464600+00:00",
+            "timestamp": "2026-10-08T04:27:42.177790+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 7,
             "sequence": 6,
             "state": "REFLECTING",
-            "timestamp": "2026-10-08T04:17:59.464609+00:00",
+            "timestamp": "2026-10-08T04:27:42.177799+00:00",
             "agent_role": "harness",
             "verification": "REJECT",
             "retry_reason": "irrelevant_evidence,missing_or_duplicate_claim"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 8,
             "sequence": 7,
             "state": "RETRYING",
-            "timestamp": "2026-10-08T04:17:59.464613+00:00",
+            "timestamp": "2026-10-08T04:27:42.177802+00:00",
             "agent_role": "harness",
             "retry_reason": "irrelevant_evidence,missing_or_duplicate_claim"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 9,
             "sequence": 8,
             "state": "EXECUTING",
-            "timestamp": "2026-10-08T04:17:59.464616+00:00",
+            "timestamp": "2026-10-08T04:27:42.177805+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 10,
             "sequence": 9,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.464692+00:00",
+            "timestamp": "2026-10-08T04:27:42.177872+00:00",
             "agent_role": "harness",
-            "output_hash": "f333dbc66a74c73b463db6b99cbbb1c40ee381d1398756702f0fbc04267e0730"
+            "output_hash": "5565bc8baebcbf267412c5b86483ea6e3f086a3bffffdd41ff0e877ccc5c7d7c"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 11,
             "sequence": 10,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.464695+00:00",
+            "timestamp": "2026-10-08T04:27:42.177875+00:00",
             "agent_role": "harness",
             "tool_name": "structured_lookup",
             "tool_version": "1.0",
             "input_hash": "cfba6e19cb82a17f7ffe51322a6e0d2bd7e6bd0a2ed0040f75d99b95a0184c0d",
             "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
             "error_type": "ok",
-            "latency_ms": 0.047
+            "latency_ms": 0.041
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 12,
             "sequence": 11,
             "state": "VERIFYING",
-            "timestamp": "2026-10-08T04:17:59.464713+00:00",
+            "timestamp": "2026-10-08T04:27:42.177879+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 13,
             "sequence": 12,
             "state": "COMPLETED",
-            "timestamp": "2026-10-08T04:17:59.464735+00:00",
+            "timestamp": "2026-10-08T04:27:42.177898+00:00",
             "agent_role": "harness",
             "verification": "PASS"
           }
@@ -944,7 +944,7 @@ window.CORE_EVIDENCE = {
                     }
                   ],
                   "output_hash": "0f61616a05a47b314fcc73d9aeef9cd2e3d249d565491f224c71505c67c0577b",
-                  "latency_ms": 0.05
+                  "latency_ms": 0.044
                 }
               ],
               "claims": [
@@ -997,7 +997,7 @@ window.CORE_EVIDENCE = {
                     }
                   ],
                   "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
-                  "latency_ms": 0.047
+                  "latency_ms": 0.041
                 }
               ],
               "claims": [
@@ -1038,7 +1038,7 @@ window.CORE_EVIDENCE = {
               }
             }
           ],
-          "integrity_hash": "ebf871cb3a399ec0f84dce3f923fe75d634ebf3cd4c631aed959e57f0b2aa225"
+          "integrity_hash": "edb565af09a5559dd69fd0ca34376c15258c82c4c606bb915a67c94dbea42d2e"
         }
       },
       "replay": {
@@ -1114,80 +1114,80 @@ window.CORE_EVIDENCE = {
           "provenance": []
         },
         "calls": 1,
-        "latency_ms": 0.43,
+        "latency_ms": 0.397,
         "trajectory": [
           {
-            "run_id": "6579ca410b334918aade835288a78df2",
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
             "step_id": 1,
             "sequence": 0,
             "state": "CREATED",
-            "timestamp": "2026-10-08T04:17:59.465482+00:00",
+            "timestamp": "2026-10-08T04:27:42.178568+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "6579ca410b334918aade835288a78df2",
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
             "step_id": 2,
             "sequence": 1,
             "state": "PLANNING",
-            "timestamp": "2026-10-08T04:17:59.465493+00:00",
+            "timestamp": "2026-10-08T04:27:42.178577+00:00",
             "agent_role": "harness",
             "input_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30"
           },
           {
-            "run_id": "6579ca410b334918aade835288a78df2",
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
             "step_id": 3,
             "sequence": 2,
             "state": "EXECUTING",
-            "timestamp": "2026-10-08T04:17:59.465511+00:00",
+            "timestamp": "2026-10-08T04:27:42.178593+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "6579ca410b334918aade835288a78df2",
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
             "step_id": 4,
             "sequence": 3,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.465597+00:00",
+            "timestamp": "2026-10-08T04:27:42.178670+00:00",
             "agent_role": "harness",
-            "output_hash": "a7acf649645ea946c2feb3700a0bc026a10f7996fb9129b50f754804b0fa5e72"
+            "output_hash": "6c91d016dd52a3bcac8dd55dedee51dc837275b6fc10dd55d98474db83e41ed9"
           },
           {
-            "run_id": "6579ca410b334918aade835288a78df2",
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
             "step_id": 5,
             "sequence": 4,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.465601+00:00",
+            "timestamp": "2026-10-08T04:27:42.178674+00:00",
             "agent_role": "harness",
             "tool_name": "document_lookup",
             "tool_version": "1.0",
             "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
             "output_hash": "80d2c962e221f2318143f7ef64047dff81fa13012047fe1bc3db335b156cae5b",
             "error_type": "ok",
-            "latency_ms": 0.055
+            "latency_ms": 0.049
           },
           {
-            "run_id": "6579ca410b334918aade835288a78df2",
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
             "step_id": 6,
             "sequence": 5,
             "state": "VERIFYING",
-            "timestamp": "2026-10-08T04:17:59.465607+00:00",
+            "timestamp": "2026-10-08T04:27:42.178679+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "6579ca410b334918aade835288a78df2",
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
             "step_id": 7,
             "sequence": 6,
             "state": "REFLECTING",
-            "timestamp": "2026-10-08T04:17:59.465629+00:00",
+            "timestamp": "2026-10-08T04:27:42.178706+00:00",
             "agent_role": "harness",
             "verification": "REJECT",
             "retry_reason": "conflicting_evidence"
           },
           {
-            "run_id": "6579ca410b334918aade835288a78df2",
+            "run_id": "2f94e5353be348a5a691f2fde38bfcaa",
             "step_id": 8,
             "sequence": 7,
             "state": "FAILED",
-            "timestamp": "2026-10-08T04:17:59.465634+00:00",
+            "timestamp": "2026-10-08T04:27:42.178710+00:00",
             "agent_role": "harness",
             "error_type": "abstained"
           }
@@ -1264,7 +1264,7 @@ window.CORE_EVIDENCE = {
                     }
                   ],
                   "output_hash": "80d2c962e221f2318143f7ef64047dff81fa13012047fe1bc3db335b156cae5b",
-                  "latency_ms": 0.055
+                  "latency_ms": 0.049
                 }
               ],
               "claims": [
@@ -1293,7 +1293,7 @@ window.CORE_EVIDENCE = {
               }
             }
           ],
-          "integrity_hash": "3fc8b600690e05444ae71a92608637851278fc76ab0b723c97a85ce4446210cf"
+          "integrity_hash": "1a3dade094402a7b3abbcd26ef54e38c35d849223fc7ecf492981065569fbc16"
         }
       },
       "replay": {
@@ -1343,80 +1343,80 @@ window.CORE_EVIDENCE = {
           "provenance": []
         },
         "calls": 1,
-        "latency_ms": 0.389,
+        "latency_ms": 0.376,
         "trajectory": [
           {
-            "run_id": "695b8a830df64862bbcf5dd8350cdc2d",
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
             "step_id": 1,
             "sequence": 0,
             "state": "CREATED",
-            "timestamp": "2026-10-08T04:17:59.466273+00:00",
+            "timestamp": "2026-10-08T04:27:42.179300+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "695b8a830df64862bbcf5dd8350cdc2d",
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
             "step_id": 2,
             "sequence": 1,
             "state": "PLANNING",
-            "timestamp": "2026-10-08T04:17:59.466283+00:00",
+            "timestamp": "2026-10-08T04:27:42.179309+00:00",
             "agent_role": "harness",
             "input_hash": "6b10d70187394308b6407638dbfc10e65af6159ceee4bb09258cd83e7dcd0b30"
           },
           {
-            "run_id": "695b8a830df64862bbcf5dd8350cdc2d",
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
             "step_id": 3,
             "sequence": 2,
             "state": "EXECUTING",
-            "timestamp": "2026-10-08T04:17:59.466309+00:00",
+            "timestamp": "2026-10-08T04:27:42.179325+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "695b8a830df64862bbcf5dd8350cdc2d",
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
             "step_id": 4,
             "sequence": 3,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.466378+00:00",
+            "timestamp": "2026-10-08T04:27:42.179392+00:00",
             "agent_role": "harness",
-            "output_hash": "6eb5850ec01130d04af3371631345605edd8becc4f50d506a722cc9d84892225"
+            "output_hash": "af3f805aa6209ff150913ec79d498703680b86f1f91fc3a69f556fdebda54060"
           },
           {
-            "run_id": "695b8a830df64862bbcf5dd8350cdc2d",
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
             "step_id": 5,
             "sequence": 4,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.466381+00:00",
+            "timestamp": "2026-10-08T04:27:42.179397+00:00",
             "agent_role": "harness",
             "tool_name": "document_lookup",
             "tool_version": "1.0",
             "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
             "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
             "error_type": "ok",
-            "latency_ms": 0.042
+            "latency_ms": 0.039
           },
           {
-            "run_id": "695b8a830df64862bbcf5dd8350cdc2d",
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
             "step_id": 6,
             "sequence": 5,
             "state": "VERIFYING",
-            "timestamp": "2026-10-08T04:17:59.466387+00:00",
+            "timestamp": "2026-10-08T04:27:42.179405+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "695b8a830df64862bbcf5dd8350cdc2d",
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
             "step_id": 7,
             "sequence": 6,
             "state": "REFLECTING",
-            "timestamp": "2026-10-08T04:17:59.466401+00:00",
+            "timestamp": "2026-10-08T04:27:42.179419+00:00",
             "agent_role": "harness",
             "verification": "REJECT",
             "retry_reason": "invalid_citation"
           },
           {
-            "run_id": "695b8a830df64862bbcf5dd8350cdc2d",
+            "run_id": "7ca2f79b6e4143138183c4d765a95da7",
             "step_id": 8,
             "sequence": 7,
             "state": "FAILED",
-            "timestamp": "2026-10-08T04:17:59.466405+00:00",
+            "timestamp": "2026-10-08T04:27:42.179423+00:00",
             "agent_role": "harness",
             "error_type": "abstained"
           }
@@ -1480,7 +1480,7 @@ window.CORE_EVIDENCE = {
                     }
                   ],
                   "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
-                  "latency_ms": 0.042
+                  "latency_ms": 0.039
                 }
               ],
               "claims": [
@@ -1509,7 +1509,7 @@ window.CORE_EVIDENCE = {
               }
             }
           ],
-          "integrity_hash": "1a02c2767f3386418019e205ab3e50e7015c825128a73dfb262f754ef573af1b"
+          "integrity_hash": "c633197caa3d0dcd67270271ebaccd39de7e6df00756c3515dd054b67a682d4d"
         }
       },
       "replay": {
@@ -1581,128 +1581,128 @@ window.CORE_EVIDENCE = {
           ]
         },
         "calls": 2,
-        "latency_ms": 0.582,
+        "latency_ms": 0.515,
         "trajectory": [
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 1,
             "sequence": 0,
             "state": "CREATED",
-            "timestamp": "2026-10-08T04:17:59.464474+00:00",
+            "timestamp": "2026-10-08T04:27:42.177671+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 2,
             "sequence": 1,
             "state": "PLANNING",
-            "timestamp": "2026-10-08T04:17:59.464487+00:00",
+            "timestamp": "2026-10-08T04:27:42.177682+00:00",
             "agent_role": "harness",
             "input_hash": "86cebd49b069ffd20b74294fe33b21757356460201f766bfcb867e58af9889e7"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 3,
             "sequence": 2,
             "state": "EXECUTING",
-            "timestamp": "2026-10-08T04:17:59.464508+00:00",
+            "timestamp": "2026-10-08T04:27:42.177705+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 4,
             "sequence": 3,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.464590+00:00",
+            "timestamp": "2026-10-08T04:27:42.177780+00:00",
             "agent_role": "harness",
-            "output_hash": "b170c55a9fdd9454b34e120239e0ee6643661b48315f373c4d1a2e5cdeebd4a8"
+            "output_hash": "042fbd3fba90bf1041013c4056333fe16cef3e18043b7705da1e141c67c351cd"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 5,
             "sequence": 4,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.464594+00:00",
+            "timestamp": "2026-10-08T04:27:42.177783+00:00",
             "agent_role": "harness",
             "tool_name": "document_lookup",
             "tool_version": "1.0",
             "input_hash": "a6214e0a99f499d3ad63f91910ac635690329dcd0698c7d32cdc1537a3188182",
             "output_hash": "0f61616a05a47b314fcc73d9aeef9cd2e3d249d565491f224c71505c67c0577b",
             "error_type": "ok",
-            "latency_ms": 0.05
+            "latency_ms": 0.044
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 6,
             "sequence": 5,
             "state": "VERIFYING",
-            "timestamp": "2026-10-08T04:17:59.464600+00:00",
+            "timestamp": "2026-10-08T04:27:42.177790+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 7,
             "sequence": 6,
             "state": "REFLECTING",
-            "timestamp": "2026-10-08T04:17:59.464609+00:00",
+            "timestamp": "2026-10-08T04:27:42.177799+00:00",
             "agent_role": "harness",
             "verification": "REJECT",
             "retry_reason": "irrelevant_evidence,missing_or_duplicate_claim"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 8,
             "sequence": 7,
             "state": "RETRYING",
-            "timestamp": "2026-10-08T04:17:59.464613+00:00",
+            "timestamp": "2026-10-08T04:27:42.177802+00:00",
             "agent_role": "harness",
             "retry_reason": "irrelevant_evidence,missing_or_duplicate_claim"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 9,
             "sequence": 8,
             "state": "EXECUTING",
-            "timestamp": "2026-10-08T04:17:59.464616+00:00",
+            "timestamp": "2026-10-08T04:27:42.177805+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 10,
             "sequence": 9,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.464692+00:00",
+            "timestamp": "2026-10-08T04:27:42.177872+00:00",
             "agent_role": "harness",
-            "output_hash": "f333dbc66a74c73b463db6b99cbbb1c40ee381d1398756702f0fbc04267e0730"
+            "output_hash": "5565bc8baebcbf267412c5b86483ea6e3f086a3bffffdd41ff0e877ccc5c7d7c"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 11,
             "sequence": 10,
             "state": "OBSERVING",
-            "timestamp": "2026-10-08T04:17:59.464695+00:00",
+            "timestamp": "2026-10-08T04:27:42.177875+00:00",
             "agent_role": "harness",
             "tool_name": "structured_lookup",
             "tool_version": "1.0",
             "input_hash": "cfba6e19cb82a17f7ffe51322a6e0d2bd7e6bd0a2ed0040f75d99b95a0184c0d",
             "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
             "error_type": "ok",
-            "latency_ms": 0.047
+            "latency_ms": 0.041
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 12,
             "sequence": 11,
             "state": "VERIFYING",
-            "timestamp": "2026-10-08T04:17:59.464713+00:00",
+            "timestamp": "2026-10-08T04:27:42.177879+00:00",
             "agent_role": "harness"
           },
           {
-            "run_id": "cde256f9a3b34c01bf174ac890f1a75b",
+            "run_id": "8218e5aa1a744e23af0f4d1dccf332c2",
             "step_id": 13,
             "sequence": 12,
             "state": "COMPLETED",
-            "timestamp": "2026-10-08T04:17:59.464735+00:00",
+            "timestamp": "2026-10-08T04:27:42.177898+00:00",
             "agent_role": "harness",
             "verification": "PASS"
           }
@@ -1774,7 +1774,7 @@ window.CORE_EVIDENCE = {
                     }
                   ],
                   "output_hash": "0f61616a05a47b314fcc73d9aeef9cd2e3d249d565491f224c71505c67c0577b",
-                  "latency_ms": 0.05
+                  "latency_ms": 0.044
                 }
               ],
               "claims": [
@@ -1827,7 +1827,7 @@ window.CORE_EVIDENCE = {
                     }
                   ],
                   "output_hash": "e0a037659321aaa16770922b899f477f182fd00bc66f7fd2f71f7a7d76df8f56",
-                  "latency_ms": 0.047
+                  "latency_ms": 0.041
                 }
               ],
               "claims": [
@@ -1868,7 +1868,7 @@ window.CORE_EVIDENCE = {
               }
             }
           ],
-          "integrity_hash": "ebf871cb3a399ec0f84dce3f923fe75d634ebf3cd4c631aed959e57f0b2aa225"
+          "integrity_hash": "edb565af09a5559dd69fd0ca34376c15258c82c4c606bb915a67c94dbea42d2e"
         }
       },
       "replay": {

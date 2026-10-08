@@ -111,8 +111,8 @@ and time. Conformance and evaluation reuse these cases and are not independent e
 
 ## Test categories
 
-On 2026-10-08, local validation passed **76 methods**: the preserved 57-method baseline
-plus 11 actual-core export/integrity tests, 5 subprocess CLI/output tests and 3 HTML-link tests.
+On 2026-10-08, local validation passed **79 methods**: the preserved 57-method baseline
+plus 14 actual-core export/integrity tests, 5 subprocess CLI/output tests and 3 HTML-link tests.
 The 24 conformance scenarios are exercised inside one method, not counted as 24 extra methods.
 Browser checks and historical Docker execution evidence are separate from that count.
 

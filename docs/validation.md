@@ -11,7 +11,7 @@
 
 | 검증 | 실제 결과와 범위 |
 |---|---|
-| Python 3.10 로컬 회귀 | **76 passed / 0 failed**: 기존 57 + exporter 11 + subprocess CLI 5 + HTML 링크 3 |
+| Python 3.10 로컬 회귀 | **79 passed / 0 failed**: 기존 57 + exporter 14 + subprocess CLI 5 + HTML 링크 3 |
 | 합성 평가 재실행 | Baseline 8/24 · Harness 24/24, 설계된 verification/recovery ablation |
 | Artifact | 실제 Runtime 4개 실행 + 동일 recovery bundle의 Replay 항목, 5개 시나리오; JSON/JS 일치·원본 무결성·신선도 검사 통과 |
 | 실제 Chrome | 실제 viewport 1440×913 및 500×757에서 모든 시나리오·timeline·검증 signal·claim/provenance·원문 offset·키보드 탭·상대 링크 검사 통과 |
@@ -24,6 +24,8 @@
 브라우저 검사 스크립트는 설치된 Chrome과 Python 표준 라이브러리만 사용하며, 별도 UI 검증입니다.
 추가 휴대폰 캡처는 이미 설치된 로컬 도구를 사용했고 새 프로젝트 의존성은 추가하지 않았습니다.
 브라우저 결과·캡처는 로컬 검토용 `outputs/`에 두며 공개 운영 기록으로 취급하지 않습니다.
+Python 버전에 따른 부동소수점 합산 차이는 파생 지연 평균에만 작은 허용 오차를 적용합니다.
+개별 관측값·원본 hash·비지연 요약 필드는 유지하고 버전 간 반올림·의미 있는 변조를 별도 회귀로 검사합니다.
 독립 LLM·실제 도메인 정확도·외부 환경 전체 Replay·호스팅된 사이트 검증은 수행하지 않았습니다.
 아래 57개·23개·229개 수치는 기존 날짜의 이력이며 새 합산 결과가 아닙니다.
 

@@ -2,6 +2,7 @@
 import asyncio
 import copy
 import json
+import math
 from pathlib import Path
 import tempfile
 import unittest
@@ -185,9 +186,8 @@ class CoreExporterTests(unittest.TestCase):
             changed = copy.deepcopy(self.artifact)
             # The summary can have equal Python values but a different JSON type.
             changed["evaluation"]["summary"]["harness"]["unsafe_answers"] = False
-            exporter.write_artifacts(changed, path)
-            with self.assertRaisesRegex(ValueError, "stale demo artifact"):
-                exporter.check_artifacts(self.artifact, path)
+            with self.assertRaisesRegex(ValueError, "evaluation summary drift"):
+                exporter.write_artifacts(changed, path)
             # JS must also remain exactly the same typed JSON, not bool == int.
             exporter.write_artifacts(self.artifact, path)
             script = path / "core-evidence.js"
@@ -196,6 +196,55 @@ class CoreExporterTests(unittest.TestCase):
             script.write_text(exporter.JS_PREFIX + json.dumps(js_value) + ";\n")
             with self.assertRaisesRegex(ValueError, "UI JS/JSON mismatch"):
                 exporter.check_artifacts(self.artifact, path)
+
+    def test_latency_summary_accepts_cross_version_rounding_without_rewriting_raw(self):
+        for aggregator in (lambda values: math.fsum(values) / len(values),
+                           lambda values: math.nextafter(math.fsum(values) / len(values), math.inf)):
+            with self.subTest(aggregator=aggregator):
+                changed = copy.deepcopy(self.artifact)
+                for arm in ("baseline", "harness"):
+                    latencies = [row[arm]["latency_ms"] for row in changed["evaluation"]["cases"]]
+                    changed["evaluation"]["summary"][arm]["average_latency_ms"] = aggregator(latencies)
+                original_hash = digest(changed)
+                exporter.validate_artifact(changed)
+                self.assertEqual(digest(exporter.semantic_content(changed)),
+                                 digest(exporter.semantic_content(self.artifact)))
+                text, script = exporter.artifact_texts(changed)
+                loaded = json.loads(text)
+                self.assertEqual(digest(loaded), original_hash)
+                self.assertEqual(digest(json.loads(script[len(exporter.JS_PREFIX):-2])), original_hash)
+                self.assertEqual(digest(changed), original_hash)
+                with tempfile.TemporaryDirectory() as directory:
+                    path = Path(directory)
+                    exporter.write_artifacts(changed, path)
+                    before = {p.name: p.read_bytes() for p in path.iterdir()}
+                    exporter.check_artifacts(self.artifact, path)
+                    self.assertEqual(before, {p.name: p.read_bytes() for p in path.iterdir()})
+
+    def test_latency_summary_rejects_meaningful_drift_and_invalid_types(self):
+        original = self.artifact["evaluation"]["summary"]["baseline"]["average_latency_ms"]
+        for value in (original + 0.001, original * 1.1, -original,
+                      True, None, "1.5", float("nan"), float("inf")):
+            with self.subTest(value=value):
+                changed = copy.deepcopy(self.artifact)
+                changed["evaluation"]["summary"]["baseline"]["average_latency_ms"] = value
+                with self.assertRaises(ValueError):
+                    exporter.validate_artifact(changed)
+        changed = copy.deepcopy(self.artifact)
+        del changed["evaluation"]["summary"]["baseline"]["average_latency_ms"]
+        with self.assertRaisesRegex(ValueError, "evaluation summary drift"):
+            exporter.validate_artifact(changed)
+
+    def test_non_latency_summary_is_exact_typed_json_even_for_tiny_rounding(self):
+        for key, value in (("cases", 24.0), ("task_success", 8.0), ("unsafe_answers", False),
+                           ("average_calls", math.nextafter(
+                               self.artifact["evaluation"]["summary"]["baseline"]["average_calls"], math.inf)),
+                           ("unknown", 0)):
+            with self.subTest(key=key):
+                changed = copy.deepcopy(self.artifact)
+                changed["evaluation"]["summary"]["baseline"][key] = value
+                with self.assertRaisesRegex(ValueError, "evaluation summary drift"):
+                    exporter.validate_artifact(changed)
 
     def test_exporter_uses_actual_runtime_candidate_and_evaluation_functions(self):
         with patch.object(exporter.Runtime, "run", autospec=True, side_effect=Runtime.run) as run:

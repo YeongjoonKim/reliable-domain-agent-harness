@@ -1,6 +1,6 @@
 # Evaluation / 평가 범위
 
-2026-10-08 로컬 공개 검증은 **76 test methods 통과**입니다. 기존 57개에 산출물·CLI·HTML 링크 회귀 19개를 추가했습니다. 24 synthetic conformance scenarios와 동일 데이터의 paired evaluation은 [Public Core](public-core.md)에 있으며, commit별 CI와 브라우저 결과는 [검증 기록](validation.md)에서 구분합니다. 아래 초기 경량 데모 평가는 별도 보존 이력입니다.
+2026-10-08 로컬 공개 검증은 **79 test methods 통과**입니다. 기존 57개에 산출물·CLI·HTML 링크 회귀 22개를 추가했습니다. 24 synthetic conformance scenarios와 동일 데이터의 paired evaluation은 [Public Core](public-core.md)에 있으며, commit별 CI와 브라우저 결과는 [검증 기록](validation.md)에서 구분합니다. 아래 초기 경량 데모 평가는 별도 보존 이력입니다.
 
 ## 공개 코어 비교 평가
 
