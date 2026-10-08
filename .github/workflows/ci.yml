@@ -25,6 +25,8 @@ jobs:
         run: python3 scripts/check_repository.py
       - name: Architecture SVG and Mermaid sync
         run: python3 scripts/render_architecture.py --check
+      - name: Core evidence artifacts match executable sources
+        run: python3 scripts/export_demo.py --check
       - name: Regression tests
         run: python3 -m unittest discover -s tests -v
       - name: Offline example smoke
@@ -33,3 +35,9 @@ jobs:
         run: |
           python3 -m src.harness.demo
           python3 -m src.harness.evaluation
+          python3 scripts/export_demo.py
+      - name: Default commands preserve tracked examples and sources
+        run: git diff --exit-code
+      - name: Browser scenarios, exact spans and local links
+        if: matrix.python-version == '3.12'
+        run: python3 scripts/check_demo_browser.py

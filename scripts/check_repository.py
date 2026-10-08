@@ -1,6 +1,7 @@
 """외부 연결 없이 파일·구문·링크와 제한된 비밀정보 패턴을 검사한다."""
 import ast
 import hashlib
+from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
@@ -8,6 +9,7 @@ import subprocess
 import struct
 import sys
 import zlib
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 RULES = {
@@ -18,6 +20,43 @@ RULES = {
 }
 EXCLUDED = {".git", "__pycache__", ".venv", "outputs"}
 ALLOWED = {".py", ".md", ".json", ".svg", ".mmd", ".html", ".css", ".js", ".yml", ".cff"}
+
+
+class HTMLReferences(HTMLParser):
+    """실제 HTML의 링크·리소스와 fragment 대상을 수집한다."""
+    def __init__(self):
+        super().__init__()
+        self.references, self.ids = [], set()
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if "id" in attrs:
+            self.ids.add(attrs["id"])
+        for name in ("href", "src"):
+            if attrs.get(name):
+                self.references.append(attrs[name])
+
+
+def html_link_rules(root, path, text):
+    document = HTMLReferences()
+    document.feed(text)
+    issues = []
+    for target in document.references:
+        parsed = urlsplit(target)
+        if parsed.scheme or parsed.netloc:
+            continue
+        local = (path.parent / unquote(parsed.path)).resolve() if parsed.path else path.resolve()
+        if not local.is_relative_to(root.resolve()) or not local.is_file():
+            issues.append("broken-html-link")
+            continue
+        if parsed.fragment and local.suffix == ".html":
+            linked = document
+            if local != path.resolve():
+                linked = HTMLReferences()
+                linked.feed(local.read_text(encoding="utf-8"))
+            if unquote(parsed.fragment) not in linked.ids:
+                issues.append("broken-html-fragment")
+    return issues
 
 
 def secret_rules(text):
@@ -80,6 +119,8 @@ def inspect_file(root, path):
             json.loads(text)
         except ValueError:
             issues.append("json-syntax")
+    if path.suffix == ".html":
+        issues.extend(html_link_rules(root, path, text))
     if path.suffix == ".md":
         for target in re.findall(r"\]\(([^)]+)\)", text):
             if target.startswith(("https://", "http://", "#")):

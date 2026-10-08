@@ -4,6 +4,64 @@ Independently authored with synthetic data; no private source, prompts, schemas 
 were copied. `src/sample_agent.py` and the original dashboard remain a separate lightweight
 compatibility example. Their snapshots are not relabelled as executions of the new core.
 
+## Run and explore
+
+From the repository root, with Python 3.10+ and no external packages, credentials or GPU:
+
+```sh
+python3 -m src.harness.demo
+python3 -m src.harness.evaluation
+python3 -m unittest discover -s tests -v
+python3 scripts/check_repository.py
+```
+
+Normal core CLI runs write fresh results under ignored `outputs/`. Tracked `examples/`
+are reviewed snapshots and require explicit `--update-examples` to replace.
+
+| Command | Default output |
+|---|---|
+| `python3 -m src.harness.demo` | `outputs/recovery.json` |
+| `python3 -m src.harness.evaluation` | `outputs/paired-evaluation.json` and `outputs/evaluation-cases.json` |
+| `python3 scripts/export_demo.py` | `outputs/demo/core-evidence.json` and `outputs/demo/core-evidence.js` |
+
+The exporter calls the real synthetic Runtime, verification and replay paths. Use
+`python3 scripts/export_demo.py --update-demo` only to refresh reviewed `demo/` artifacts.
+`python3 scripts/export_demo.py --check` reruns the core and compares the tracked demo
+artifacts without writing; it checks semantic consistency while retaining raw run IDs,
+timestamps and timings in the stored artifacts. `--check` and `--update-demo` are separate modes.
+
+Optional actual-browser validation uses an installed Chrome/Chromium executable and
+Python's standard library, without a browser automation package:
+
+```sh
+python3 scripts/check_demo_browser.py
+```
+
+It checks every scenario, raw timeline event, verification signal, accepted/candidate claim,
+provenance, exact source/citation offsets and local link under a repository URL prefix.
+Desktop and narrow-window checks record the actual viewport dimensions; the original
+legacy scenarios are also exercised. Results go to ignored `outputs/browser-validation.json`.
+CI runs this separate browser check on Python 3.12. It is not part of the Python-only quick start.
+
+The [Core Evidence Explorer](../demo/index.html) displays generated Runtime artifacts,
+not a live service or an LLM response. It includes valid evidence, irrelevant evidence with
+recovery, conflict, invalid citation span, and configuration/evidence replay.
+Rejected claims are not accepted answers; a failed run can be the expected safe abstention.
+
+GitHub displays that HTML as source. To use the interactive explorer locally:
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Open [localhost:8000/demo/](http://localhost:8000/demo/) and follow the execution JSON,
+source, test and CI links. [Full generated artifacts](../demo/core-evidence.json) retain
+the underlying run and replay data. The browser selects stored scenarios; it does not
+execute Python, contact external APIs or rerun tools.
+The [legacy dashboard](../demo/legacy.html) keeps the original explanatory UI and its
+separate `src/sample_agent.py` snapshot. Its proposed extensions are not the status of
+implemented Public Core replay. [Static hosting status](validation.md#static-demo-and-pages).
+
 ## Execution and verification
 
 `Need` preserves subject, metric, unit, as-of date and maximum age. `Plan` supplies bounded
@@ -52,6 +110,14 @@ Measured latencies are in the JSON artifact. Reliability on designed failures co
 and time. Conformance and evaluation reuse these cases and are not independent evidence.
 
 ## Test categories
+
+On 2026-10-08, local validation passed **76 methods**: the preserved 57-method baseline
+plus 11 actual-core export/integrity tests, 5 subprocess CLI/output tests and 3 HTML-link tests.
+The 24 conformance scenarios are exercised inside one method, not counted as 24 extra methods.
+Browser checks and historical Docker execution evidence are separate from that count.
+
+The counts below describe the **2026-10-02, 57-method baseline**. They are not a claim
+about the current revision's final count; use the commit-specific CI and [validation record](validation.md).
 
 | Category | Executable evidence |
 |---|---|

@@ -1,6 +1,6 @@
 # Evaluation / 평가 범위
 
-현재 새 코어의 전체 57 test methods, 24 synthetic conformance scenarios 및 동일 데이터의 paired evaluation은 [Public Core](public-core.md)에 있습니다. 아래는 보존된 초기 데모 평가입니다.
+2026-10-08 로컬 공개 검증은 **76 test methods 통과**입니다. 기존 57개에 산출물·CLI·HTML 링크 회귀 19개를 추가했습니다. 24 synthetic conformance scenarios와 동일 데이터의 paired evaluation은 [Public Core](public-core.md)에 있으며, commit별 CI와 브라우저 결과는 [검증 기록](validation.md)에서 구분합니다. 아래 초기 경량 데모 평가는 별도 보존 이력입니다.
 
 ## 공개 코어 비교 평가
 
@@ -9,6 +9,12 @@
 Conformance와 비교 평가가 같은 24개 시나리오를 사용하므로 독립 holdout이 아닙니다.
 이 수치는 설계된 실패에 대한 제어 흐름 평가이며 농업 정확도·LLM 성능 비교로 해석하지 않습니다.
 [결과 JSON](../examples/paired-evaluation.json)과 [지표 정의](public-core.md#paired-synthetic-evaluation)를 제공합니다.
+
+[Core Evidence Explorer](../demo/index.html)의 5개 시나리오는 이 코어의 실제 Runtime·verifier·replay를
+실행해 생성한 저장 산출물을 탐색합니다. 별도의 5개 성능 benchmark나 브라우저의 live 실행은 아닙니다.
+정상 근거·복구 성공과 충돌·잘못된 인용의 안전한 거부를 함께 표시하며, 모든 시나리오의 상태가
+`COMPLETED`여야 하는 것은 아닙니다. 일반 평가 실행은 새 결과를 `outputs/`에 쓰며,
+공식 예제 갱신은 명시적 `--update-examples`로 구분합니다.
 
 ## 초기 경량 데모
 

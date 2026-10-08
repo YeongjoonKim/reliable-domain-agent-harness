@@ -1,5 +1,12 @@
 # Changelog — Agent Harness
 
+## 2026-10-08 — Core Evidence Explorer
+
+- 공개 Python Core의 실제 실행·검증·복구·Replay 산출물을 탐색하는 정적 데모를 추가하고 기존 경량 데모를 보존했습니다.
+- README 첫 화면에서 데모·로컬 실행·테스트·CI로 이어지는 검증 경로와 구현별 경계를 정리했습니다.
+- 실행 산출물 생성·무결성·신선도 검사와 브라우저 회귀를 연결하고 기본 CLI 출력을 `outputs/`로 분리했습니다.
+- 운영 코드·데이터·승인된 캡처·게시 정책·라이선스는 변경하지 않았습니다.
+
 ## 2026-10-03 — Execution evidence and current architecture
 
 - 관리자 실행 제어와 현재 저장된 실행·모델·배치 화면을 보강했습니다.

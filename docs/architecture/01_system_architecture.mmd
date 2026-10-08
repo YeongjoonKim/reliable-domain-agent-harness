@@ -1,30 +1,30 @@
 flowchart TB
-  subgraph lane0["PRODUCTION CONSULTATION"]
+  subgraph lane0["INDEPENDENT PUBLIC CORE"]
     direction LR
-    n0_0["Request + context<br/>User / session scope<br/>Recent turns + memory"]
-    n0_1["LLM plan + retrieval<br/>Existing SQL / vector / KG<br/>Web and Vision routes"]
-    n0_2["Answer + verification<br/>Evidence gate / repair<br/>Domain response checks"]
-    n0_3["SSE + operations<br/>Response and trace<br/>Quality / regression review"]
+    n0_0["Explicit Need + Plan<br/>Synthetic input / fixtures<br/>Time and call limits"]
+    n0_1["Registry + execution<br/>Schema / permission / version<br/>Bounded tool observations"]
+    n0_2["Verify + recover<br/>Need / value / exact span<br/>Reject / declared retry / abstain"]
+    n0_3["Provenance + replay<br/>Claim / source / tool hashes<br/>Reverify with zero external calls"]
     n0_0 --> n0_1
     n0_1 --> n0_2
     n0_2 --> n0_3
   end
-  subgraph lane1["SCIENTIFIC ADMIN RUNTIME"]
+  subgraph lane1["PRODUCTION CONSULTATION"]
     direction LR
-    n1_0["Goal + limits<br/>Separate admin entry<br/>Explicit run ownership"]
-    n1_1["Plan + registered tools<br/>Model-generated plan<br/>Bounded execution / retry"]
-    n1_2["Evidence span review<br/>Model selects span IDs<br/>Server checks exact text"]
-    n1_3["Persist + replay<br/>Steps / evidence / hashes<br/>Frozen observations"]
+    n1_0["Request + context<br/>User / session scope<br/>Recent turns + memory"]
+    n1_1["LLM plan + retrieval<br/>Existing SQL / vector / KG<br/>Web and Vision routes"]
+    n1_2["Answer + verification<br/>Evidence gate / repair<br/>Domain response checks"]
+    n1_3["SSE + operations<br/>Response and trace<br/>Quality / regression review"]
     n1_0 --> n1_1
     n1_1 --> n1_2
     n1_2 --> n1_3
   end
-  subgraph lane2["INDEPENDENT PUBLIC CORE"]
+  subgraph lane2["SEPARATE SCIENTIFIC RUNTIME"]
     direction LR
-    n2_0["Explicit Need + Plan<br/>Synthetic input / fixtures<br/>Declared fallback attempts"]
-    n2_1["Typed Registry<br/>Schema / permission<br/>Timeout / call budget"]
-    n2_2["Claim verification<br/>Scope / unit / freshness<br/>Exact span / source hash"]
-    n2_3["Result + evaluation<br/>Trace and frozen replay<br/>Paired synthetic cases"]
+    n2_0["Goal + limits<br/>Separate admin entry<br/>Explicit run ownership"]
+    n2_1["Plan + registered tools<br/>Model-generated plan<br/>Bounded execution / retry"]
+    n2_2["Evidence span review<br/>Model selects span IDs<br/>Server checks exact text"]
+    n2_3["Persist + replay<br/>Steps / evidence / hashes<br/>Frozen observations"]
     n2_0 --> n2_1
     n2_1 --> n2_2
     n2_2 --> n2_3

@@ -1,95 +1,96 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="835" viewBox="0 0 1440 835" role="img" aria-labelledby="title desc">
-<title id="title">Agent systems: three implementation paths</title>
-<desc id="desc">Implemented responsibilities reviewed 2026-10-03. Separate entry points and evidence scopes; the public core runs independently of the private services.</desc>
+<title id="title">Execution, verification, recovery and replay</title>
+<desc id="desc">Independent Public Core · separate operational and Scientific evidence. The synthetic Public Core runs independently. Operational and separate Scientific evidence do not imply shared code or automatic service integration.</desc>
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#53808d"/></marker></defs>
 <rect width="1440" height="835" rx="18" fill="#f3f6fa"/>
 <g font-family="Arial, sans-serif">
-<text x="40" y="52" font-size="32" font-weight="700" fill="#142b43">Agent systems: three implementation paths</text>
-<text x="40" y="87" font-size="19" fill="#536477">Implemented responsibilities reviewed 2026-10-03</text>
-<text x="40" y="131" font-size="17" font-weight="700" fill="#18796e">PRODUCTION CONSULTATION</text>
+<text x="40" y="52" font-size="32" font-weight="700" fill="#142b43">Execution, verification, recovery and replay</text>
+<text x="40" y="87" font-size="19" fill="#536477">Independent Public Core · separate operational and Scientific evidence</text>
+<text x="40" y="131" font-size="17" font-weight="700" fill="#18796e">INDEPENDENT PUBLIC CORE</text>
 <g data-node="n0_0"><rect x="40.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="40.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
-<text x="59.0" y="185" font-size="21" font-weight="700" fill="#17314b">Request + context</text>
-<text x="59.0" y="218" font-size="18" fill="#4a6075">User / session scope</text>
-<text x="59.0" y="242" font-size="18" fill="#4a6075">Recent turns + memory</text>
+<text x="59.0" y="185" font-size="21" font-weight="700" fill="#17314b">Explicit Need + Plan</text>
+<text x="59.0" y="218" font-size="18" fill="#4a6075">Synthetic input / fixtures</text>
+<text x="59.0" y="242" font-size="18" fill="#4a6075">Time and call limits</text>
 </g>
 <path d="M358.0 220 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n0_1"><rect x="388.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="388.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
-<text x="407.0" y="185" font-size="21" font-weight="700" fill="#17314b">LLM plan + retrieval</text>
-<text x="407.0" y="218" font-size="18" fill="#4a6075">Existing SQL / vector / KG</text>
-<text x="407.0" y="242" font-size="18" fill="#4a6075">Web and Vision routes</text>
+<text x="407.0" y="185" font-size="21" font-weight="700" fill="#17314b">Registry + execution</text>
+<text x="407.0" y="218" font-size="18" fill="#4a6075">Schema / permission / version</text>
+<text x="407.0" y="242" font-size="18" fill="#4a6075">Bounded tool observations</text>
 </g>
 <path d="M706.0 220 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n0_2"><rect x="736.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="736.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
-<text x="755.0" y="185" font-size="21" font-weight="700" fill="#17314b">Answer + verification</text>
-<text x="755.0" y="218" font-size="18" fill="#4a6075">Evidence gate / repair</text>
-<text x="755.0" y="242" font-size="18" fill="#4a6075">Domain response checks</text>
+<text x="755.0" y="185" font-size="21" font-weight="700" fill="#17314b">Verify + recover</text>
+<text x="755.0" y="218" font-size="18" fill="#4a6075">Need / value / exact span</text>
+<text x="755.0" y="242" font-size="18" fill="#4a6075">Reject / declared retry / abstain</text>
 </g>
 <path d="M1054.0 220 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n0_3"><rect x="1084.0" y="153" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="1084.0" y="153" width="5" height="134" rx="2" fill="#18796e"/>
-<text x="1103.0" y="185" font-size="21" font-weight="700" fill="#17314b">SSE + operations</text>
-<text x="1103.0" y="218" font-size="18" fill="#4a6075">Response and trace</text>
-<text x="1103.0" y="242" font-size="18" fill="#4a6075">Quality / regression review</text>
+<text x="1103.0" y="185" font-size="21" font-weight="700" fill="#17314b">Provenance + replay</text>
+<text x="1103.0" y="218" font-size="18" fill="#4a6075">Claim / source / tool hashes</text>
+<text x="1103.0" y="242" font-size="18" fill="#4a6075">Reverify with zero external calls</text>
 </g>
-<text x="40" y="346" font-size="17" font-weight="700" fill="#375c98">SCIENTIFIC ADMIN RUNTIME</text>
+<text x="40" y="346" font-size="17" font-weight="700" fill="#375c98">PRODUCTION CONSULTATION</text>
 <g data-node="n1_0"><rect x="40.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="40.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
-<text x="59.0" y="400" font-size="21" font-weight="700" fill="#17314b">Goal + limits</text>
-<text x="59.0" y="433" font-size="18" fill="#4a6075">Separate admin entry</text>
-<text x="59.0" y="457" font-size="18" fill="#4a6075">Explicit run ownership</text>
+<text x="59.0" y="400" font-size="21" font-weight="700" fill="#17314b">Request + context</text>
+<text x="59.0" y="433" font-size="18" fill="#4a6075">User / session scope</text>
+<text x="59.0" y="457" font-size="18" fill="#4a6075">Recent turns + memory</text>
 </g>
 <path d="M358.0 435 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n1_1"><rect x="388.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="388.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
-<text x="407.0" y="400" font-size="21" font-weight="700" fill="#17314b">Plan + registered tools</text>
-<text x="407.0" y="433" font-size="18" fill="#4a6075">Model-generated plan</text>
-<text x="407.0" y="457" font-size="18" fill="#4a6075">Bounded execution / retry</text>
+<text x="407.0" y="400" font-size="21" font-weight="700" fill="#17314b">LLM plan + retrieval</text>
+<text x="407.0" y="433" font-size="18" fill="#4a6075">Existing SQL / vector / KG</text>
+<text x="407.0" y="457" font-size="18" fill="#4a6075">Web and Vision routes</text>
 </g>
 <path d="M706.0 435 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n1_2"><rect x="736.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="736.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
-<text x="755.0" y="400" font-size="21" font-weight="700" fill="#17314b">Evidence span review</text>
-<text x="755.0" y="433" font-size="18" fill="#4a6075">Model selects span IDs</text>
-<text x="755.0" y="457" font-size="18" fill="#4a6075">Server checks exact text</text>
+<text x="755.0" y="400" font-size="21" font-weight="700" fill="#17314b">Answer + verification</text>
+<text x="755.0" y="433" font-size="18" fill="#4a6075">Evidence gate / repair</text>
+<text x="755.0" y="457" font-size="18" fill="#4a6075">Domain response checks</text>
 </g>
 <path d="M1054.0 435 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n1_3"><rect x="1084.0" y="368" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="1084.0" y="368" width="5" height="134" rx="2" fill="#375c98"/>
-<text x="1103.0" y="400" font-size="21" font-weight="700" fill="#17314b">Persist + replay</text>
-<text x="1103.0" y="433" font-size="18" fill="#4a6075">Steps / evidence / hashes</text>
-<text x="1103.0" y="457" font-size="18" fill="#4a6075">Frozen observations</text>
+<text x="1103.0" y="400" font-size="21" font-weight="700" fill="#17314b">SSE + operations</text>
+<text x="1103.0" y="433" font-size="18" fill="#4a6075">Response and trace</text>
+<text x="1103.0" y="457" font-size="18" fill="#4a6075">Quality / regression review</text>
 </g>
-<text x="40" y="561" font-size="17" font-weight="700" fill="#7a5899">INDEPENDENT PUBLIC CORE</text>
+<text x="40" y="561" font-size="17" font-weight="700" fill="#7a5899">SEPARATE SCIENTIFIC RUNTIME</text>
 <g data-node="n2_0"><rect x="40.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="40.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
-<text x="59.0" y="615" font-size="21" font-weight="700" fill="#17314b">Explicit Need + Plan</text>
-<text x="59.0" y="648" font-size="18" fill="#4a6075">Synthetic input / fixtures</text>
-<text x="59.0" y="672" font-size="18" fill="#4a6075">Declared fallback attempts</text>
+<text x="59.0" y="615" font-size="21" font-weight="700" fill="#17314b">Goal + limits</text>
+<text x="59.0" y="648" font-size="18" fill="#4a6075">Separate admin entry</text>
+<text x="59.0" y="672" font-size="18" fill="#4a6075">Explicit run ownership</text>
 </g>
 <path d="M358.0 650 H383.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n2_1"><rect x="388.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="388.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
-<text x="407.0" y="615" font-size="21" font-weight="700" fill="#17314b">Typed Registry</text>
-<text x="407.0" y="648" font-size="18" fill="#4a6075">Schema / permission</text>
-<text x="407.0" y="672" font-size="18" fill="#4a6075">Timeout / call budget</text>
+<text x="407.0" y="615" font-size="21" font-weight="700" fill="#17314b">Plan + registered tools</text>
+<text x="407.0" y="648" font-size="18" fill="#4a6075">Model-generated plan</text>
+<text x="407.0" y="672" font-size="18" fill="#4a6075">Bounded execution / retry</text>
 </g>
 <path d="M706.0 650 H731.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n2_2"><rect x="736.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="736.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
-<text x="755.0" y="615" font-size="21" font-weight="700" fill="#17314b">Claim verification</text>
-<text x="755.0" y="648" font-size="18" fill="#4a6075">Scope / unit / freshness</text>
-<text x="755.0" y="672" font-size="18" fill="#4a6075">Exact span / source hash</text>
+<text x="755.0" y="615" font-size="21" font-weight="700" fill="#17314b">Evidence span review</text>
+<text x="755.0" y="648" font-size="18" fill="#4a6075">Model selects span IDs</text>
+<text x="755.0" y="672" font-size="18" fill="#4a6075">Server checks exact text</text>
 </g>
 <path d="M1054.0 650 H1079.0" stroke="#53808d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 <g data-node="n2_3"><rect x="1084.0" y="583" width="316.0" height="134" rx="10" fill="#fff" stroke="#c8d5df"/>
 <rect x="1084.0" y="583" width="5" height="134" rx="2" fill="#7a5899"/>
-<text x="1103.0" y="615" font-size="21" font-weight="700" fill="#17314b">Result + evaluation</text>
-<text x="1103.0" y="648" font-size="18" fill="#4a6075">Trace and frozen replay</text>
-<text x="1103.0" y="672" font-size="18" fill="#4a6075">Paired synthetic cases</text>
+<text x="1103.0" y="615" font-size="21" font-weight="700" fill="#17314b">Persist + replay</text>
+<text x="1103.0" y="648" font-size="18" fill="#4a6075">Steps / evidence / hashes</text>
+<text x="1103.0" y="672" font-size="18" fill="#4a6075">Frozen observations</text>
 </g>
-<text x="40" y="789" font-size="18" fill="#536477">Separate entry points and evidence scopes; the public core runs independently of the private services.</text>
+<text x="40" y="789" font-size="18" fill="#536477">The synthetic Public Core runs independently. Operational and separate Scientific evidence do not imply shared code or</text>
+<text x="40" y="813" font-size="18" fill="#536477">automatic service integration.</text>
 </g>
 </svg>
